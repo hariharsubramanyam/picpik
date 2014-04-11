@@ -1,0 +1,35 @@
+/* app css stylesheet */
+
+.maincontainer {
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.photodiv{
+  margin-top: 10px;
+}
+
+#navbar{
+  background-color: rgb(72,72,72);
+}
+
+.btn{
+  background-color: rgb(100,100,100);
+}
+
+.btn span{
+  display: block;
+  padding-top: 3px;
+}
+
+.btn:hover{
+  background-color: black;
+}
+
+.btn:hover span, .btn:focus span{
+  color: white;
+}
+
+.btn {
+  width: 75px;
+}

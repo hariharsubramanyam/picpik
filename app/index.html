@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>PicPik</title>
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" type="text/css" href="../bower_components/gridly/stylesheets/jquery.gridly.css">
+  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/custom_gridly.css">
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
+      <div class="container" >
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#"><img src="../assets/icons/pic_pik_logo.png"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <!-- <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div> -->
+            <button type="button" class="btn btn-md white">
+              <span class="glyphicon glyphicon-fullscreen"></span>
+              <span >Preview</span>
+            </button>
+            <button type="button" class="btn btn-md white">
+              <span class="glyphicon glyphicon-star"></span>
+              <span >Select</span>
+            </button>
+            <button type="button" class="btn btn-md white">
+              <span class="glyphicon glyphicon-trash"></span>
+              <span >Remove</span>
+            </button>
+            <button type="button" class="btn btn-md white">
+              <span class="glyphicon glyphicon-th"></span>
+              <span >Group</span>
+            </button>
+            <button type="button" class="btn btn-md white">
+              <span class="glyphicon glyphicon-tag"></span>
+              <span >Tag</span>
+            </button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+  <div ng-view class="maincontainer">
+
+  </div>
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../bower_components/gridly/javascripts/jquery.gridly.js"></script>
+  <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
