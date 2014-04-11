@@ -1,11 +1,11 @@
 <div class="container-fluid" id="gridly_and_photo_div">
 	<div class="row">
-		<div class="gridly col-md-9">
+		<div class="gridly col-md-10" id="photo_div">
 	    	<div class="brick small" ng-repeat="pic in pics" data-ng-init="init()">
 	    		<img ng-src="{{pic}}" class="gridlyimage"/>
 	    	</div>
 		</div>
-		<div class="col-md-3" style="border: 1px blue solid;">
+		<div class="col-md-2 affix" style="border: 1px blue solid;" id="tag_div">
 			<p>Here I am</p>
 		</div>
 	</div>

@@ -30,3 +30,16 @@
 #gridly_and_photo_div{
   padding-left: 30px;
 }
+
+#photo_div {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+#tag_div{
+  margin-top: 70px;
+  margin-left: 1200px;
+  background-color: rgb(72,72,72);
+  text-align: right;
+  height: 700px;
+}
