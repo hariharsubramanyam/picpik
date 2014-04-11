@@ -32,7 +32,7 @@ angular.module('myApp.controllers', [])
   	for(var i = 1; i <=50; i++){
   		$scope.pics.push({
         src:"../assets/pictures/pic"+i+".jpg",
-        selected:false
+        selected_class:"unselected_image"
       });
   	}
 
@@ -51,8 +51,12 @@ angular.module('myApp.controllers', [])
       return $scope.pics.length;
     };
     
-    $scope.on_pick_click = function(pic){
-      pic.selected = true;
+    $scope.on_pic_click = function(pic){
+      if(pic.selected_class == "selected_image"){
+        pic.selected_class = "unselected_image";
+      }else{
+        pic.selected_class = "selected_image";
+      }
     };
 
 

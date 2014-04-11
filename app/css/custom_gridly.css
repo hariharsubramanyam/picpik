@@ -4,8 +4,6 @@ body{
 .brick.small{
   width: 140px;
   height: 140px;
-  border:3px solid black;
-
 }
 
 .brick.large{
@@ -132,4 +130,12 @@ input.tag_label{
 
 .add_tag_image{
   height: 25px;
+}
+
+.selected_image{
+  border: 5px solid rgb(230,230,0);
+}
+
+.unselected_image{
+  border:2px solid black;
 }
