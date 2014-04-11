@@ -6,6 +6,7 @@
 
 .gray_button{
   background-color: rgb(100,100,100);
+  width: 75px;
 }
 
 .gray_button span{
@@ -21,8 +22,25 @@
   color: white;
 }
 
-.gray_button {
+.orange_button{
+  background-color: orange;
   width: 75px;
+  height: 60px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.orange_button span{
+  display: block;
+  padding-top: 3px;
+}
+
+.orange_button:hover{
+  background-color: black;
+}
+
+.orange_button:hover span, .btn:focus span{
+  color: white;
 }
 
 .white{

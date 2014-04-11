@@ -129,3 +129,7 @@ span.tag_label{
 input.tag_label{
   border: 1px dashed black;
 }
+
+.add_tag_image{
+  height: 25px;
+}
