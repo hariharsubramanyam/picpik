@@ -1,8 +1,3 @@
-.gridly{
-  position: relative;
-  width: 960px;
-}
-
 .brick.small{
   width: 140px;
   height: 140px;
@@ -22,7 +17,7 @@
   height: 300px;
 }
 
-img{
+.gridlyimage{
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -30,4 +25,8 @@ img{
 
 .white{
   color:white;
+}
+
+#gridly_and_photo_div{
+  padding-left: 30px;
 }

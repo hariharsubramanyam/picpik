@@ -1,5 +1,13 @@
-<div class="gridly container photodiv" >
-    <div class="brick small" ng-repeat="pic in pics" data-ng-init="init()">
-    	<img ng-src="{{pic}}"/>
-    </div>
+<div class="container-fluid" id="gridly_and_photo_div">
+	<div class="row">
+		<div class="gridly col-md-9">
+	    	<div class="brick small" ng-repeat="pic in pics" data-ng-init="init()">
+	    		<img ng-src="{{pic}}" class="gridlyimage"/>
+	    	</div>
+		</div>
+		<div class="col-md-3" style="border: 1px blue solid;">
+			<p>Here I am</p>
+		</div>
+	</div>
 </div>
+
