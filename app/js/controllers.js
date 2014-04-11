@@ -2,15 +2,28 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
-  .controller('MyCtrl1', ["$scope", function($scope) {
+var controllers = angular.module('myApp.controllers', []);
+controllers.directive('myPostRepeatDirective', function() {
+  return function(scope, element, attrs) {
+    if (scope.$last){
+      // iteration is complete, do whatever post-processing
+      // is necessary
+      $('.gridly').gridly({
+        base: 60, // px
+        gutter: 20, // px
+        columns: 13
+      });
+    }
+  };
+});
+  controllers.controller('MyCtrl1', ["$scope", "$filter", function($scope, $filter) {
   	$scope.pics = [];
     $scope.pic_dimension = 140;
     $scope.tags = [
       {
         name:"Harihar",
         count:0,
-        color:"blue"
+        color:"blue",
       },
       {
         name:"Cosmos",
@@ -29,25 +42,19 @@ angular.module('myApp.controllers', [])
       }
     ];
 
-  	var num_pics_registered = 0;
     var current_selected_image = null;
   	for(var i = 1; i <=50; i++){
   		$scope.pics.push({
         src:"../assets/pictures/pic"+i+".jpg",
-        selected_class:"unselected_image"
+        selected_class:"unselected_image",
+        tags: []
       });
   	}
 
+
     $scope.init = function(){
-    	num_pics_registered += 1;
-    	if(num_pics_registered == $scope.pics.length){
-    		$('.gridly').gridly({
-	      		base: 60, // px
-	      		gutter: 20, // px
-	      		columns: 13
-	    	});
-    	}
-    };
+      //draw_gridly();
+    }
 
     $scope.numPics = function(){
       return $scope.pics.length;
