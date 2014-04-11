@@ -4,23 +4,47 @@
   background-color: rgb(72,72,72);
 }
 
-.btn{
+.gray_button{
   background-color: rgb(100,100,100);
 }
 
-.btn span{
+.gray_button span{
   display: block;
   padding-top: 3px;
 }
 
-.btn:hover{
+.gray_button:hover{
   background-color: black;
 }
 
-.btn:hover span, .btn:focus span{
+.gray_button:hover span, .btn:focus span{
   color: white;
 }
 
-.btn {
+.gray_button {
   width: 75px;
+}
+
+.white{
+  color:white;
+}
+
+.orange{
+  color: orange;
+}
+
+.blue {
+  color: blue;
+}
+
+.red{
+  color: red;
+}
+
+.green{
+  color: green;
+}
+
+.yellow{
+  color: yellow;
 }

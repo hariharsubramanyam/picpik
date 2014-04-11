@@ -5,12 +5,32 @@
 angular.module('myApp.controllers', [])
   .controller('MyCtrl1', ["$scope", function($scope) {
   	$scope.pics = [];
-    $scope.selected_pics = {};
+    $scope.tags = [
+      {
+        name:"Harihar",
+        count:"10",
+        color:"blue"
+      },
+      {
+        name:"Cosmos",
+        count:"30",
+        color:"red"
+      },
+      {
+        name:"Lars",
+        count:"50",
+        color:"green"
+      }
+    ];
+
   	var num_pics_registered = 0;
   	for(var i = 1; i <=50; i++){
-  		$scope.pics.push("../assets/pictures/pic"+i+".jpg");
-      $scope.selected_pics[$scope.pics[i]] = false;
+  		$scope.pics.push({
+        src:"../assets/pictures/pic"+i+".jpg",
+        selected:false
+      });
   	}
+
     $scope.init = function(){
     	num_pics_registered += 1;
     	if(num_pics_registered == $scope.pics.length){
@@ -21,8 +41,14 @@ angular.module('myApp.controllers', [])
 	    	});
     	}
     };
-    $scope.on_pick_click = function(pic_name){
-      $scope.selected_pics[pic_name] = true;
+
+    $scope.numPics = function(){
+      return $scope.pics.length;
     };
+    
+    $scope.on_pick_click = function(pic){
+      pic.selected = true;
+    };
+
 
   }]);

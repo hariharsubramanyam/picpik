@@ -23,9 +23,6 @@
     max-width: 100%;
 }
 
-.white{
-  color:white;
-}
 
 #gridly_and_photo_div{
   padding-left: 30px;
@@ -38,8 +35,70 @@
 
 #tag_div{
   margin-top: 70px;
-  margin-left: 1200px;
+  margin-left: 1185px;
   background-color: rgb(72,72,72);
   text-align: right;
   height: 700px;
+}
+
+#tag_div .background_div{
+  background-color: white;
+  border: 1px solid black;
+}
+
+#tag_div h1{
+  font-family: font-family: 'Smythe';
+  font-weight: 200;
+}
+
+.tag_icon{
+  background-color: white;
+}
+
+.tag_icon span{
+  font-size: 3em;
+}
+
+.tag_icon:hover{
+  background-color: rgb(240,240,240);
+}
+
+.tag_icon:focus .orange{
+  color: orange;
+}
+
+.tag_icon:focus .blue {
+  color: blue;
+}
+
+.tag_icon:focus .red{
+  color: red;
+}
+
+.tag_icon:focus .green{
+  color: green;
+}
+
+.tag_icon:focus .yellow{
+  color: yellow;
+}
+
+.progress .orange{
+  background-color: orange;
+}
+
+.progress .blue{
+  background-color: blue;
+}
+
+.progress .red{
+  background-color: red;
+}
+
+.progress .green{
+  background-color: green;
+}
+
+.progress .yellow{
+  background-color: yellow;
 }

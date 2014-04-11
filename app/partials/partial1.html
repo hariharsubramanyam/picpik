@@ -2,11 +2,23 @@
 	<div class="row">
 		<div class="gridly col-md-10" id="photo_div">
 	    	<div class="brick small" ng-repeat="pic in pics" data-ng-init="init()">
-	    		<img ng-src="{{pic}}" class="gridlyimage"/>
+	    		<img ng-src="{{pic.src}}" class="gridlyimage"/>
 	    	</div>
 		</div>
-		<div class="col-md-2 affix" style="border: 1px blue solid;" id="tag_div">
-			<p>Here I am</p>
+		<div class="col-md-2 affix container-fluid" id="tag_div">
+			<div id="tag_heading" class="row background_div">
+				<h1 class="centered col-offset-4 col-md-6">Tags</h1>
+			</div>
+			<div class="row background_div" ng-repeat="tag in tags">
+			<button type="button" class="btn btn-md white pull-left tag_icon" >
+              <span class="glyphicon glyphicon-tag {{tag.color}}"></span>
+            </button> 
+ 	 			<div class="progress">
+   			 		<div class="progress-bar {{tag.color}}" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
+  						<span class="sr-only">40% Complete (success)</span>
+  					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
