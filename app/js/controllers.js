@@ -5,6 +5,7 @@
 angular.module('myApp.controllers', [])
   .controller('MyCtrl1', ["$scope", function($scope) {
   	$scope.pics = [];
+    $scope.pic_dimension = 140;
     $scope.tags = [
       {
         name:"Harihar",
@@ -29,6 +30,7 @@ angular.module('myApp.controllers', [])
     ];
 
   	var num_pics_registered = 0;
+    var current_selected_image = null;
   	for(var i = 1; i <=50; i++){
   		$scope.pics.push({
         src:"../assets/pictures/pic"+i+".jpg",
