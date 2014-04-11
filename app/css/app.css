@@ -1,4 +1,7 @@
 /* app css stylesheet */
+.app_title_header{
+  display: inline; font-size:3.5em; color: white; margin-top:10px; margin-left:5px;
+}
 
 #navbar{
   background-color: rgb(72,72,72);
