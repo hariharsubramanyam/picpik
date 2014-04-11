@@ -1,3 +1,6 @@
+body{
+  font-family: 'Poiret One'
+}
 .brick.small{
   width: 140px;
   height: 140px;
@@ -47,7 +50,6 @@
 }
 
 #tag_div h1{
-  font-family: font-family: 'Smythe';
   font-weight: 200;
 }
 
@@ -101,4 +103,15 @@
 
 .progress .yellow{
   background-color: yellow;
+}
+
+.white_background{
+  background-color: white;
+}
+
+.tag_label{
+  font-size: 1.5em;
+  vertical-align: center;
+  margin-left: 10px;
+  margin-top: 5px;
 }
