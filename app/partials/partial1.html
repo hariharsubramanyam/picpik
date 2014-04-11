@@ -11,17 +11,20 @@
 			</div>
 			<div class="background_div" ng-repeat="tag in tags">
 				<div class="row white_background">
-					<button type="button" class="btn btn-sm white pull-left tag_icon white_backgroud" >
-              			<span class="glyphicon glyphicon-tag {{tag.color}}"></span>
+					<button type="button" class="btn btn-sm white pull-left tag_icon white_background" >
+              			<span class="glyphicon glyphicon-tag {{tag.color}} tag_image"></span>
             		</button> 	
-            		<span class="pull-left tag_label">{{tag.name}}</span>
+            		<input type="text" class="pull-left tag_label form-control" value="{{tag.name}}"></input>
             		<span class="pull-left tag_label">({{tag.count}})</span>
+            		<button type="button" class="btn btn-sm white pull-right white_background tag_icon pull-right" >
+              			<span class="glyphicon glyphicon-remove {{tag.color}}"></span>
+            		</button>
 				</div>
 				<div class="row white_background">
 					<div class="progress white_backgroud">
-   			 		<div class="progress-bar {{tag.color}}" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
-  						<span class="sr-only">40% Complete (success)</span>
-  					</div>
+   			 			<div class="progress-bar {{tag.color}}" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
+  							<span class="sr-only">40% Complete (success)</span>
+  						</div>
 				</div>
 				</div>
 			</div>

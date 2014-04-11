@@ -57,8 +57,8 @@ body{
   background-color: white;
 }
 
-.tag_icon span{
-  font-size: 3em;
+.tag_icon .tag_image{
+  font-size: 2em;
 }
 
 .tag_icon:hover{
@@ -83,6 +83,10 @@ body{
 
 .tag_icon:focus .yellow{
   color: yellow;
+}
+
+.progress{
+  height: 10px;
 }
 
 .progress .orange{
@@ -112,6 +116,16 @@ body{
 .tag_label{
   font-size: 1.5em;
   vertical-align: center;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-top: 5px;
+  max-width: 100px;
+  margin-bottom: 5px;
+}
+
+span.tag_label{
+  max-width: 50px;
+}
+
+input.tag_label{
+  border: 1px dashed black;
 }

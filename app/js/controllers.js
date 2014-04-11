@@ -8,18 +8,23 @@ angular.module('myApp.controllers', [])
     $scope.tags = [
       {
         name:"Harihar",
-        count:"0",
+        count:0,
         color:"blue"
       },
       {
         name:"Cosmos",
-        count:"30",
+        count:30,
         color:"red"
       },
       {
         name:"Lars",
-        count:"50",
+        count:50,
         color:"green"
+      },
+      {
+        name:"Beneah",
+        count:20,
+        color:"orange"
       }
     ];
 
