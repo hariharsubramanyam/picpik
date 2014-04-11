@@ -1,5 +1,9 @@
 <div class="container-fluid" id="gridly_and_photo_div">
 	<div class="row">
+		<div id="search_div" class="affix">
+			<input type="search" class="form-control pull-right " placeholder="Search" id="txt_search">	
+		</div>
+		<hr>
 		<div class="gridly col-md-10" id="photo_div">
 	    	<div class="brick normal" ng-repeat="pic in pics" data-ng-init="init()" ng-click="on_pic_click(pic)">
 	    		<img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>

@@ -27,14 +27,31 @@ body{
   padding-left: 30px;
 }
 
+#search_div{
+  margin-top: 70px;
+  width: 1180px;
+  background-color: rgba(72,72,72,0.5);
+  z-index: 1000;
+}
+
+#txt_search{
+  display: block;
+  width: 300px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  font-size: 2em;
+  height: 40px;
+}
+
 #photo_div {
-  margin-top: 80px;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 
 #tag_div{
-  margin-top: 70px;
-  margin-left: 1185px;
+  margin-top: 33px;
+  margin-left: 1180px;
   background-color: rgb(72,72,72);
   text-align: right;
   height: 700px;
