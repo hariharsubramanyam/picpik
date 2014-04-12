@@ -1,9 +1,15 @@
 body{
   font-family: 'Poiret One'
 }
+
 .brick.normal{
   width: 140px;
   height: 140px;
+}
+
+.brick.small{
+  width: 80px;
+  height: 80px;
 }
 
 .brick.large{
@@ -22,6 +28,18 @@ body{
     max-width: 100%;
 }
 
+.gridly{
+  position: relative;
+}
+
+
+.subgroup_gridly{
+  margin-left: 50px;
+}
+
+.subgroup_header{
+  margin-left: 50px;
+}
 
 #gridly_and_photo_div{
   padding-left: 30px;

@@ -3,10 +3,26 @@
 		<div id="search_div" class="affix">
 			<input type="search" class="form-control pull-right " placeholder="Search..." id="txt_search" ng-model="search_query" >	
 		</div>
-		<div class="gridly col-md-10" id="photo_div">
-	    	<div class="brick normal" ng-repeat="pic in pics | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
+		<div class="col-md-10" id="photo_div">
+			<div ng-repeat="group in pic_data">
+				<h1>{{group.group_name}}</h1>
+				<div class="gridly maingroup_gridly">
+					<div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
+		    			<img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
+		    		</div>
+	    		</div>
+	    		<div ng-repeat="subgroup in group.subgroups">
+	    			<h2 class="subgroup_header">{{subgroup.group_name}}</h2>
+	    			<div class="gridly subgroup_gridly">
+	    				<div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(subpic)" my-post-repeat-directive>
+	    				<img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
+	    			</div>
+	    			</div>
+	    		</div>
+			</div>
+	    	<!-- <div class="brick normal" ng-repeat="pic in pics | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
 	    		<img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
-	    	</div>
+	    	</div> -->
 		</div>
 		<div class="col-md-2 affix container-fluid" id="tag_div">
 			<div id="tag_heading" class="row background_div">

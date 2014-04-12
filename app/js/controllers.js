@@ -8,10 +8,16 @@ controllers.directive('myPostRepeatDirective', function() {
     if (scope.$last){
       // iteration is complete, do whatever post-processing
       // is necessary
-      $('.gridly').gridly({
+      $('.gridly.maingroup_gridly').gridly({
         base: 60, // px
         gutter: 20, // px
-        columns: 13
+        columns: 15
+      });
+
+      $('.gridly.subgroup_gridly').gridly({
+        base: 25, // px
+        gutter: 5, // px
+        columns: 20
       });
     }
   };
@@ -50,6 +56,8 @@ controllers.directive('myPostRepeatDirective', function() {
         tags: []
       });
   	}
+
+    $scope.pic_data = pic_data;
 
 
     $scope.init = function(){
