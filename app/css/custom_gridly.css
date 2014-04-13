@@ -172,15 +172,24 @@ input.tag_label{
 
 .group_header{
   display: inline;
+  font-size: 2.5em;
+  border: 1px dashed black;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px;
 }
 
 .subgroup_header{
   margin-left: 50px;
+  font-size: 1.5em;
+  border: 1px dashed black;
+  padding-left: 5px;
+  padding-right: 5px;
   display: inline;
 }
 
 .group_header_remove{
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .subgroup_header_remove{

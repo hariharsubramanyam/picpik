@@ -5,7 +5,7 @@
 		</div>
 		<div class="col-md-10" id="photo_div">
 			<div ng-repeat="group in pic_data">
-				<h1 class="group_header">{{group.group_name}}</h1>
+				<span class="group_header" contenteditable="true">{{group.group_name}}</span>
 				<button type="button" class="btn btn-sm white_background tag_icon group_header_remove" >
               			<span class="glyphicon glyphicon-remove black"></span>
             	</button>
@@ -15,7 +15,7 @@
 		    		</div>
 	    		</div>
 	    		<div ng-repeat="subgroup in group.subgroups">
-	    			<h2 class="subgroup_header">{{subgroup.group_name}}</h2>
+	    			<span class="subgroup_header" contenteditable="true">{{subgroup.group_name}}</span>
 	    			<button type="button" class="btn btn-sm white_background tag_icon subgroup_header_remove" >
               			<span class="glyphicon glyphicon-remove black"></span>
             		</button>
