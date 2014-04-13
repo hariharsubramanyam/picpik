@@ -5,7 +5,10 @@
 		</div>
 		<div class="col-md-10" id="photo_div">
 			<div ng-repeat="group in pic_data">
-				<h1>{{group.group_name}}</h1>
+				<h1 class="group_header">{{group.group_name}}</h1>
+				<button type="button" class="btn btn-sm white_background tag_icon group_header_remove" >
+              			<span class="glyphicon glyphicon-remove black"></span>
+            	</button>
 				<div class="gridly maingroup_gridly">
 					<div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
 		    			<img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
@@ -13,6 +16,9 @@
 	    		</div>
 	    		<div ng-repeat="subgroup in group.subgroups">
 	    			<h2 class="subgroup_header">{{subgroup.group_name}}</h2>
+	    			<button type="button" class="btn btn-sm white_background tag_icon subgroup_header_remove" >
+              			<span class="glyphicon glyphicon-remove black"></span>
+            		</button>
 	    			<div class="gridly subgroup_gridly">
 	    				<div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(subpic)" my-post-repeat-directive>
 	    				<img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
@@ -40,7 +46,7 @@
             		</button> 	
             		<input type="text" class="pull-left tag_label form-control" value="{{tag.name}}"></input>
             		<span class="pull-left tag_label">({{tag.count}})</span>
-            		<button type="button" class="btn btn-sm white pull-right white_background tag_icon pull-right" >
+            		<button type="button" class="btn btn-sm white white_background tag_icon pull-right" >
               			<span class="glyphicon glyphicon-remove {{tag.color}}"></span>
             		</button>
 				</div>
