@@ -23,6 +23,8 @@ controllers.directive('myPostRepeatDirective', function() {
   };
 });
   controllers.controller('MyCtrl1', ["$scope", "$filter", function($scope, $filter) {
+    $scope.num_selected = 0;
+    $(".navbar-form").hide();
   	$scope.pics = [];
     $scope.pic_dimension = 140;
     $scope.tags = [
@@ -71,8 +73,16 @@ controllers.directive('myPostRepeatDirective', function() {
     $scope.on_pic_click = function(pic){
       if(pic.selected_class == "selected_image"){
         pic.selected_class = "unselected_image";
+        $scope.num_selected -= 1;
       }else{
         pic.selected_class = "selected_image";
+        $scope.num_selected += 1;
+      }
+
+      if($scope.num_selected > 0){
+        $(".navbar-form").show();
+      }else{
+        $(".navbar-form").hide();
       }
     };
 
