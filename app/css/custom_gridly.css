@@ -2,6 +2,14 @@ body{
   font-family: 'Poiret One'
 }
 
+.num_selected{
+  display: inline; font-size:2.5em; color: white; margin-top:10px; margin-left:20px; margin-right: 10px;
+}
+
+.modal-body{
+  overflow: visible;
+}
+
 .brick.normal{
   width: 140px;
   height: 140px;
@@ -93,6 +101,10 @@ body{
   background-color: rgb(240,240,240);
 }
 
+.tag_icon:focus .black{
+  color: black;
+}
+
 .tag_icon:focus .orange{
   color: orange;
 }
@@ -115,6 +127,10 @@ body{
 
 .progress{
   height: 10px;
+}
+
+.progress .black{
+  background-color: black;
 }
 
 .progress .orange{
