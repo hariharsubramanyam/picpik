@@ -74,7 +74,7 @@
                       <span class="glyphicon glyphicon-remove black"></span>
                   </button>
               <div class="gridly subgroup_gridly">
-                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-hide="pic.mode != 1">
+                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-hide="subpic.mode != 1">
                 <img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
               </div>
               </div>
@@ -145,10 +145,7 @@
   <script type="text/javascript" src="../bower_components/gridly/javascripts/jquery.gridly.js"></script>
   <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
   <script type="text/javascript" src="js/picture_data.js"></script>
 </body>
 </html>
