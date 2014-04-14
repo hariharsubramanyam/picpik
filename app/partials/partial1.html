@@ -3,6 +3,7 @@
 		<div id="search_div" class="affix">
 			<input type="search" class="form-control pull-right " placeholder="Search..." id="txt_search" ng-model="search_query" >	
 			<h1 class="num_selected pull-left">{{selected_pictures.length}} Selected</h1>
+			<button type="button" id="btnDeselectAll" class="btn btn-sm white_background" ng-click="deselectAll()">Deselect All</button>
 		</div>
 		<div class="col-md-10" id="photo_div">
 			<div ng-repeat="group in pic_data">

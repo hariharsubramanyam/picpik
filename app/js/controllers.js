@@ -23,8 +23,8 @@ controllers.directive('myPostRepeatDirective', function() {
   controllers.controller('MyCtrl1', ["$scope", "$filter", function($scope, $filter) {
     $scope.selected_pictures = [];
     $(".navbar-form").hide();
-  	$scope.pics = [];
-    $scope.pic_dimension = 140;
+    $("#btnDeselectAll").hide();
+    $scope.pic_data = pic_data;
     $scope.tags = [
       {
         name:"Harihar",
@@ -70,25 +70,19 @@ controllers.directive('myPostRepeatDirective', function() {
     };
 
 
-
-    var current_selected_image = null;
-  	for(var i = 1; i <=50; i++){
-  		$scope.pics.push({
-        src:"../assets/pictures/pic"+i+".jpg",
-        selected_class:"unselected_image",
-        tags: []
-      });
-  	}
-
-    $scope.pic_data = pic_data;
-
-
     $scope.init = function(){
       //draw_gridly();
     }
 
     $scope.numPics = function(){
-      return $scope.pics.length;
+      var num = 0;
+      for(var i = 0; i < $scope.pic_data.length; i++){
+        num += $scope.pic_data[i].pictures.length;
+        for(var j = 0; j < $scope.pic_data[i].subgroups.length; j++){
+          num += $scope.pic_data[i].subgroups[j].pictures.length;
+        }
+      }
+      return num;
     };
     
     $scope.on_pic_click = function(pic){
@@ -99,15 +93,22 @@ controllers.directive('myPostRepeatDirective', function() {
         pic.selected_class = "selected_image";
         $scope.selected_pictures.push(pic);
       }
-
       if($scope.selected_pictures.length > 0){
         $(".navbar-form").show();
+        $("#btnDeselectAll").show();
       }else{
         $(".navbar-form").hide();
+        $("#btnDeselectAll").hide();
       }
-      
-      console.log($scope.selected_pictures);
     };
 
+    $scope.deselectAll = function(){
+      for(var i = 0; i < $scope.selected_pictures.length; i++){
+        $scope.selected_pictures[i].selected_class = "unselected_image";
+      }
+      $scope.selected_pictures = [];
+      $(".navbar-form").hide();
+      $("#btnDeselectAll").hide();
+    };
 
   }]);
