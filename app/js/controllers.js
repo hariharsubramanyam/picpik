@@ -1,22 +1,27 @@
 'use strict';
 
+function redraw_gridly(){
+  $('.gridly.maingroup_gridly').gridly({
+        base: 60, // px
+        gutter: 20, // px
+        columns: 15
+    });
+
+  $('.gridly.subgroup_gridly').gridly({
+        base: 25, // px
+        gutter: 5, // px
+        columns: 20
+  });
+  $('.gridly').gridly('layout');
+}
+
 var controllers = angular.module('myApp.controllers', []);
 controllers.directive('myPostRepeatDirective', function() {
   return function(scope, element, attrs) {
     if (scope.$last){
       // iteration is complete, do whatever post-processing
       // is necessary
-      $('.gridly.maingroup_gridly').gridly({
-        base: 60, // px
-        gutter: 20, // px
-        columns: 15
-      });
-
-      $('.gridly.subgroup_gridly').gridly({
-        base: 25, // px
-        gutter: 5, // px
-        columns: 20
-      });
+      redraw_gridly();
     }
   };
 });
@@ -29,6 +34,7 @@ controllers.directive('myPostRepeatDirective', function() {
     $scope.pic_data = pic_data;
     $scope.favorite_pictures = [];
     $scope.deleted_pictures = [];
+    $scope.hasInitialized = false;
     $scope.tags = [
       {
         name:"Harihar",
@@ -52,6 +58,19 @@ controllers.directive('myPostRepeatDirective', function() {
       }
     ];
 
+    $scope.foreachPic = function(callback){
+      for(var i = 0; i < $scope.pic_data.length; i++){
+        for(var j = 0; j < $scope.pic_data[i].pictures.length; j++){
+          callback($scope.pic_data[i].pictures[j]);
+        }
+        for(var j = 0; j < $scope.pic_data[i].subgroups.length; j++){
+          for(var k = 0; k < $scope.pic_data[i].subgroups[j].pictures.length; k++){
+            callback($scope.pic_data[i].subgroups[j].pictures[k]);
+          }
+        }
+      }
+    }
+
     $scope.onTagButtonClick = function(){
       console.log("Tag button clicked");
       $("#tag_modal").modal("show");
@@ -68,11 +87,10 @@ controllers.directive('myPostRepeatDirective', function() {
     $scope.onDeleteButtonClick = function(){
       for(var i = 0; i < $scope.selected_pictures.length; i++){
         $scope.selected_pictures[i].mode = $scope.MODE_DELETED;
+        $scope.deleted_pictures.push($scope.selected_pictures[i]);
       }
       $scope.deselectAll();
-      $('.gridly').each(function(index, value){
-        console.log(value);
-      });
+      redraw_gridly();
     };
 
     $scope.onGroupButtonClick = function(){
@@ -81,6 +99,7 @@ controllers.directive('myPostRepeatDirective', function() {
 
 
     $scope.init = function(pic){
+      $scope.hasInitialized = true;
       pic.selected_class = "unselected_image";
       pic.tags = [];
       pic.mode = $scope.MODE_VISIBLE;
@@ -118,6 +137,15 @@ controllers.directive('myPostRepeatDirective', function() {
       }
       $scope.selected_pictures = [];
       $(".navbar-form").hide();
+    };
+
+    $scope.isVisible = function(pic){
+      if(!$scope.hasInitialized){
+        $scope.foreachPic(function(pic){
+          $scope.init(pic);
+        });
+      }
+      return pic.mode == $scope.MODE_VISIBLE;
     };
 
   }]);

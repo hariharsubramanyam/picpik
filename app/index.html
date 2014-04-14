@@ -63,7 +63,7 @@
                       <span class="glyphicon glyphicon-remove black"></span>
                 </button>
           <div class="gridly maingroup_gridly">
-            <div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init(pic)" ng-click="on_pic_click(pic)" my-post-repeat-directive ng-hide="pic.mode != 1">
+            <div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init(pic)" ng-click="on_pic_click(pic)" my-post-repeat-directive ng-if="isVisible(pic)">
                 <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
               </div>
             </div>
@@ -73,7 +73,7 @@
                       <span class="glyphicon glyphicon-remove black"></span>
                   </button>
               <div class="gridly subgroup_gridly">
-                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-hide="subpic.mode != 1">
+                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-if="subpic.mode == MODE_VISIBLE">
                 <img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
               </div>
               </div>
