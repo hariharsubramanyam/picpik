@@ -7,9 +7,10 @@ define([
     'views/pic',
     'views/group',
     'views/navbar',
+    'views/tagpanel',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, GroupSet, PicView, GroupView, NavBarView, statsTemplate, Common) {
+], function($, _, Backbone, PicSet, GroupSet, PicView, GroupView, NavBarView, TagPanelView, statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
      */
@@ -36,6 +37,10 @@ define([
             this.navBar = new NavBarView();
             console.log(this.navBar);
             
+            this.tagPanel = new TagPanelView();
+            console.log(this.tagPanel);
+
+            
             this.$main = $('#main');
             
             this.$footer = $('#footer-stats');
@@ -55,6 +60,11 @@ define([
             
             $("#navBarContainer").append(this.navBar.$el);
             this.navBar.render();
+            
+            $("#tag_div").append(this.tagPanel.$el);
+            this.tagPanel.render();
+            
+            
             this.$('#filters a').removeClass('selected')
             .filter('[href="#/' + (Common.picFilter || '') + '"]')
             .addClass('selected');

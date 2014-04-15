@@ -28,7 +28,11 @@ define([
         
         toggleDeleted: function() {
             this.save({deleted: !this.get("deleted")});
-        },        
+        },
+        
+        hasTag: function(tag) {
+            return _.contains(this.tagList, tag.get('tagId'));
+        }
     });
     return Pic;
 });

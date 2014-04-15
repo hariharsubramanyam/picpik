@@ -47,33 +47,6 @@
           </div> -->
       </div>
       <div class="col-md-2 affix container-fluid" id="tag_div">
-        <div id="tag_heading" class="row background_div">
-          <h1 class="centered col-offset-4 col-md-6">Tags</h1>
-          <button type="button" class="btn btn-md white orange_button">
-                    <!-- <span class="glyphicon glyphicon-tag"></span> -->
-                    <img src="../assets/icons/add_tag.png" class="add_tag_image">
-                    <span >Add Tag</span>
-                </button>
-        </div>
-        <div class="background_div" ng-repeat="tag in tags">
-          <div class="row white_background">
-            <button type="button" class="btn btn-sm white pull-left tag_icon white_background" >
-                      <span class="glyphicon glyphicon-tag {{tag.color}} tag_image"></span>
-                  </button>   
-                  <input type="text" class="pull-left tag_label form-control" value="{{tag.name}}"></input>
-                  <span class="pull-left tag_label">({{tag.count}})</span>
-                  <button type="button" class="btn btn-sm white white_background tag_icon pull-right" >
-                      <span class="glyphicon glyphicon-remove {{tag.color}}"></span>
-                  </button>
-          </div>
-          <div class="row white_background">
-            <div class="progress white_backgroud">
-                <div class="progress-bar {{tag.color}}" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
-                  <span class="sr-only">40% Complete (success)</span>
-                </div>
-          </div>
-          </div>
-        </div>
       </div>
     </div>
 </div>
