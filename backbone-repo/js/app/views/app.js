@@ -3,11 +3,13 @@ define([
     'underscore',
     'backbone',
     'collections/picset',
+    'collections/groupset',
     'views/pic',
+    'views/group',
     'views/navbar',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, PicView, NavBarView, statsTemplate, Common) {
+], function($, _, Backbone, PicSet, GroupSet, PicView, GroupView, NavBarView, statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
      */
@@ -17,7 +19,7 @@ define([
         statsTemplate: _.template(statsTemplate),
         
         events: {
-            "click #add-pic": "createPic"
+            "click #add-group": "createGroup"
         },
         
         initialize: function() {  
@@ -27,6 +29,10 @@ define([
             this.listenTo(PicSet, 'change:completed', this.filterOne);
             this.listenTo(PicSet, 'filter', this.filterAll);
             
+            
+            this.listenTo(GroupSet, 'add', this.addOneGroup);
+            this.listenTo(GroupSet, 'reset', this.addAllGroups);
+            
             this.navBar = new NavBarView();
             console.log(this.navBar);
             
@@ -35,6 +41,7 @@ define([
             this.$footer = $('#footer-stats');
             
             PicSet.fetch();
+            GroupSet.fetch();
         },
         
         render: function() {            
@@ -45,7 +52,6 @@ define([
                 num_favorited: favorited,
                 num_deleted: deleted
             }));
-            
             
             $("#navBarContainer").append(this.navBar.$el);
             this.navBar.render();
@@ -64,6 +70,15 @@ define([
             PicSet.each(this.addOne, this);
         },
         
+        addOneGroup: function(group) {
+            var view = new GroupView({model: group});
+            this.$('#group_container').append(view.render().el);
+        },
+        
+        addAllGroups: function() {
+            GroupSet.each(this.addOneGroup, this);
+        },
+        
         filterOne: function (pic) {
             pic.trigger('visible');
         },
@@ -75,6 +90,11 @@ define([
         createPic: function(e) {
             console.log('create pic!');
             PicSet.create({title: "New Pic"});
+        },
+        
+        createGroup: function(e) {
+            console.log('create group!');
+            GroupSet.create({name: "A New Group!"});
         },
         
     });

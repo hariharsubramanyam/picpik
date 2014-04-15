@@ -1,0 +1,22 @@
+<div ng-repeat="group in pic_data">
+          <span class="group_name group_header" contenteditable="true"><%= name %></%></span>
+          <button type="button" class="remove_group_button btn btn-sm white_background tag_icon group_header_remove" >
+                      <span class="glyphicon glyphicon-remove black"></span>
+                </button>
+          <div class="gridly maingroup_gridly">
+            <div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init(pic)" ng-click="on_pic_click(pic)" my-post-repeat-directive ng-if="isVisible(pic)">
+                <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
+              </div>
+            </div>
+            <div ng-repeat="subgroup in group.subgroups">
+              <span class="subgroup_header" contenteditable="true">{{subgroup.group_name}}</span>
+              <button type="button" class="btn btn-sm white_background tag_icon subgroup_header_remove" >
+                      <span class="glyphicon glyphicon-remove black"></span>
+                  </button>
+              <div class="gridly subgroup_gridly">
+                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-if="subpic.mode == MODE_VISIBLE">
+                <img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
+              </div>
+              </div>
+            </div>
+        </div>
