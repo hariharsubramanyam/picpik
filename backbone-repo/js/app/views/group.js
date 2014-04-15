@@ -2,9 +2,11 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'collections/picset',
+    'views/pic',
     'text!templates/group.html',
     'common'
-], function($, _, Backbone, groupTemplate, Common) {
+], function($, _, Backbone, PicSet, PicView, groupTemplate, Common) {
     /**
      * The View object for a Group in the grid.
      * The view object is a div
@@ -17,6 +19,7 @@ define([
         events: {
             "blur .group_name":  "closeName",
             "click .remove_group_button":  "removeGroup",            
+            "click .add_pic_to_group": "addPicToGroup",
         },
         
         initialize: function() {
@@ -27,14 +30,29 @@ define([
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('favorited', this.model.get('favorited'));
-            this.toggleVisible();
+            this.toggleVisible();      
+            
+            // Render Pics     
+            this.$picgrid = this.$('.pic_grid');
+            console.log(this.$picgrid.html());
+            console.log("GetPics:");
+            console.log(this.model.getPics());
+            _.each(this.model.getPics(), this.addPic, this);
+
             
 			this.$input = this.$('.group_name');            
             return this;
         },
-            
+        
+        addPic: function(pic) {
+            if (pic) {
+                var view = new PicView({model: pic});
+                this.$picgrid.append(view.render().$el);            
+            }
+        },
+
         removeGroup: function() {
-            this.model.destroy();
+            this.model.destroyGroup();
         },
         
         toggleFavorited: function() {
@@ -66,10 +84,14 @@ define([
         },
         closeName: function() {
             var value = this.$input.html();
-            console.log(value);
             this.model.save({name: value});
             //this.model.trigger("change");
-        }
+        },
+        addPicToGroup: function() {
+            var newPic = PicSet.create({title: "New Pic"});
+            this.model.addPic(newPic);
+            this.addPic(newPic);
+        },
         
     });
     return GroupView;

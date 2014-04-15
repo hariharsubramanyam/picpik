@@ -17,18 +17,18 @@ define([
         events: {
             "click  .favorite" : "toggleFavorited",
             "click  .delete" : "toggleDeleted",
+            "click  .destroy" : "destroy",
         },
         
         initialize: function() {
-            this.listenTo(this.model, 'change', this.render);
-            this.listenTo(this.model, 'destroy', this.remove);
-            this.listenTo(this.model, 'visible', this.toggleVisible);
+            //this.listenTo(this.model, 'change', this.render);
+            //this.listenTo(this.model, 'destroy', this.remove);
+            //this.listenTo(this.model, 'visible', this.toggleVisible);
         },
         
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('favorited', this.model.get('favorited'));
-            this.toggleVisible();
             return this;
         },
         
@@ -42,14 +42,12 @@ define([
             }).bind(this));
         },
         
-        toggleVisible: function() {
-            if (this.isHidden()) {
-                this.$el.hide();
-            } else {
-                this.$el.show();
-            }
+        destroy: function() {
+            this.$el.fadeOut(400, (function() {
+                this.model.destroy();
+            }).bind(this));
         },
-        
+                
         isHidden: function() {
             var isDeleted = this.model.get('deleted');
             var isFavorited = this.model.get('favorited');

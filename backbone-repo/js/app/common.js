@@ -4,6 +4,6 @@ define([], function () {
 		picFilter: '', // empty, active, completed
 
 		// What is the enter key constant?
-		ENTER_KEY: 13
+		ENTER_KEY: 13,
 	};
 });

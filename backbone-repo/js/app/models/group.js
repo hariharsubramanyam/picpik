@@ -1,8 +1,9 @@
 define([
     'underscore',
     'backbone',
-    'require'
-], function (_, Backbone, require) {
+    'require',
+    'collections/picset'
+], function (_, Backbone, require, PicSet) {
     'use strict';
     /**
      * The basic Group Model represents a list of images that the group contains.
@@ -20,8 +21,25 @@ define([
         },
         
         addPic: function(pic) {
-            this.save({children: children.push(picId)});
+            var children = this.get('children')
+            children.push(pic.get('picId'));
+            this.save({children: children});
         },
+        
+        getPics: function() {
+            var pics =  _.map(this.get('children'), function(aPicId) {
+                return PicSet.findWhere({picId: aPicId});
+            });
+            return pics;
+        },
+        
+        destroyGroup: function() {
+            _.each(this.getPics(), function(pic) {
+                if (pic) {
+                    pic.destroy();
+                }}, this);
+            this.destroy();
+        }
     });
     return Group;
 });

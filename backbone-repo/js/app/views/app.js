@@ -23,11 +23,11 @@ define([
         },
         
         initialize: function() {  
-            this.listenTo(PicSet, 'add', this.addOne);
-            this.listenTo(PicSet, 'reset', this.addAll);
-            this.listenTo(PicSet, 'all', this.render);
-            this.listenTo(PicSet, 'change:completed', this.filterOne);
-            this.listenTo(PicSet, 'filter', this.filterAll);
+            //this.listenTo(PicSet, 'add', this.addOne);
+            //this.listenTo(PicSet, 'reset', this.addAll);
+            //this.listenTo(PicSet, 'all', this.render);
+            //this.listenTo(PicSet, 'change:completed', this.filterOne);
+            //this.listenTo(PicSet, 'filter', this.filterAll);
             
             
             this.listenTo(GroupSet, 'add', this.addOneGroup);
