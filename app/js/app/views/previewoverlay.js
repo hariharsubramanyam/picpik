@@ -28,10 +28,10 @@ define([
             if (this.active) {
                 if (this.pics.length  == 1) {
                     this.$el.show();
-                    this.$el.html(this.singleImageTemplate({imgsrc: this.pics[0].get('picSrc')}));
+                    this.$el.html(this.singleImageTemplate({pic: this.pics[0]}));
                 }else if (this.pics.length > 1) {
                     this.$el.show();
-                    this.$el.html(this.multiImageTemplate());
+                    this.$el.html(this.multiImageTemplate({pics: this.pics}));
                 } else {
                     this.$el.hide();
                 }
