@@ -1,13 +1,14 @@
 define([
     'jquery',
+    'freewall',
     'jqueryGridly',
     'underscore',
     'backbone',
     'collections/picset',
-    'views/picdebug',
+    'views/pic',
     'text!templates/group.html',
     'common'
-], function($, gridly, _, Backbone, PicSet, PicDebugView, groupTemplate, Common) {
+], function($, freewall, gridly, _, Backbone, PicSet, PicView, groupTemplate, Common) {
     /**
      * The View object for a Group in the grid.
      * The view object is a div
@@ -37,11 +38,32 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('favorited', this.model.get('favorited'));
             this.toggleVisible();      
-            
+                        
+            /* Gridly */
+            $('.pic_grid').gridly({
+                base: 60, // px 
+                gutter: 20, // px
+                columns: 12
+            });
             
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
-            _.each(this.model.getPics(), this.addPic, this);
+            _.each(this.model.getPics(), this.addPic, this);            
+            
+            /* Freewall
+            var wall = new freewall(this.$('.pic_grid'));
+            wall.reset({
+				draggable: true,
+				selector: '.pic',                
+				animate: true,
+				cellW: 150,
+				cellH: 150,
+				onResize: function() {
+					wall.refresh();
+				}
+			});
+            wall.fitWidth();
+            */
                         
 			this.$input = this.$('.group_name');            
             return this;
@@ -53,7 +75,7 @@ define([
         
         addPic: function(pic) {
             if (pic) {
-                var view = new PicDebugView({model: pic});
+                var view = new PicView({model: pic});
                 this.$picgrid.append(view.render().$el);            
             }
         },

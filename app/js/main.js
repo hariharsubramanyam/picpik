@@ -21,6 +21,10 @@ require.config({
         jqueryGridly: {
             deps: ['jquery'],
             exports: 'Gridly'
+        },
+        freewall: {
+            deps: ['jquery'],
+            exports: 'freewall'
         }
     },
     paths: {
@@ -30,6 +34,7 @@ require.config({
         backboneLocalstorage: '../lib/backbone.localStorage',
         text: '../lib/requirejs-text',
         jqueryGridly: '../lib/jquery.gridly',
+        freewall: '../lib/freewall'
     }
 });
 

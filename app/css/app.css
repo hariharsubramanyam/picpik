@@ -355,3 +355,15 @@ input.tag_label {
 .filter_box {
   background-color: #EEE;
 }
+.pic_grid {
+  position: relative;
+  width: 900px;
+}
+.pic {
+  height: 140px;
+  width: 140px;
+}
+.pic_img {
+  height: 140px;
+  width: 140px;
+}
