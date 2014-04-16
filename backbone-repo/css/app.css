@@ -133,7 +133,7 @@
   padding-left: 30px;
 }
 
-#search_div{
+#haribar{
   margin-top: 70px;
   width: 1180px;
   background-color: rgba(72,72,72,0.5);
@@ -293,4 +293,15 @@ input.tag_label{
 
 .subgroup_header_remove{
   margin-bottom: 10px;
+}
+
+#actionbar {
+    position:absolute;
+    top: 90px;
+    width: 1000px;
+    background-color: #CCC;
+}
+
+.selected .thumb {
+    border: 2px solid #0FF;
 }

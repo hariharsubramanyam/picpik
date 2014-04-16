@@ -21,7 +21,7 @@ define([
             "click  .destroy" : "destroy",
             "click  .add_tag" : "addTag",
             "click  .remove_tag" : "removeTag",
-            
+            "click  .thumb" : "toggleSelection",
         },
         
         initialize: function() {
@@ -31,6 +31,8 @@ define([
             this.listenTo(TagSet, 'reset', this.renderTagChoices);
             this.listenTo(TagSet, 'remove', this.renderTagChoices);
             
+            this.listenTo(this.model, 'change:selected', this.updateSelectionClass);
+            
             //this.listenTo(this.model, 'change', this.render);
             //this.listenTo(this.model, 'visible', this.toggleVisible);
             this.selected = false;
@@ -38,7 +40,7 @@ define([
         
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
-            this.$el.toggleClass('favorited', this.model.get('favorited'));
+            this.$el.toggleClass('selected', this.model.selected);
             this.renderTagChoices();
             return this;
         },
@@ -95,7 +97,18 @@ define([
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
             this.model.removeTag(tag);
-        }
+        },
+        
+        toggleSelection: function() {
+            if (this.model.selected) {
+                this.model.deselect();
+            } else {
+                this.model.select();
+            }
+        },
+        updateSelectionClass: function() {
+            this.$el.toggleClass('selected', this.model.selected);            
+        },
     });
     return PicView;
 });

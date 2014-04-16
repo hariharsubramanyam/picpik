@@ -28,17 +28,13 @@
   <div>
     <div class="container-fluid" id="gridly_and_photo_div">
     <div class="row">
-      <div id="search_div" class="affix">
-        <input type="search" class="form-control pull-right " placeholder="Search..." id="txt_search" ng-model="search_query" > 
-        <h1 class="num_selected pull-left">{{selected_pictures.length}} Selected</h1>
-        <button type="button" id="btnDeselectAll" class="btn btn-sm white_background" ng-click="deselectAll()" ng-show="selected_pictures.length > 0">Deselect All</button>
-    <button id="add-pic" style="z-index:1">Add Pic</button>
-    <button id="add-group" style="z-index:1">Add Group</button>
-          
-      </div>
-        
-        
+        <div id="actionbar_container" class="affix">
+        </div>
       <div class="col-md-10" id="photo_div">
+      <div id="search_div">
+        <input type="search" class="form-control " placeholder="Search..." id="txt_search" ng-model="search_query" > 
+      </div>
+    <button id="add-group" style="z-index:1">Add Group</button>
         <div id="group_container">
         </div>
         

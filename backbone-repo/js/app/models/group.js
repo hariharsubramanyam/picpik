@@ -22,7 +22,6 @@ define([
         
         addPicListeners: function() {
             var children = this.get('children');
-            console.log(children);
             _.each(children, function(picId) {
                 var pic = PicSet.findWhere({picId: picId});
                 this.listenTo(pic, "destroy", function () {this.removePic(pic)});

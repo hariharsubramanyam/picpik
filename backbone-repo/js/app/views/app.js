@@ -10,9 +10,10 @@ define([
     'views/group',
     'views/navbar',
     'views/tagpanel',
+    'views/actionbar',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView, NavBarView, TagPanelView, statsTemplate, Common) {
+], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView, NavBarView, TagPanelView, ActionBarView, statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
      */
@@ -38,6 +39,8 @@ define([
             
             this.navBar = new NavBarView();            
             this.tagPanel = new TagPanelView();
+            this.actionBar = new ActionBarView();            
+
             
             this.$main = $('#main');
             
@@ -63,6 +66,9 @@ define([
             
             $("#tag_div").append(this.tagPanel.$el);
             this.tagPanel.render();
+            
+            $("#actionbar_container").append(this.actionBar.$el);
+            this.actionBar.render();
             
             
             this.$('#filters a').removeClass('selected')

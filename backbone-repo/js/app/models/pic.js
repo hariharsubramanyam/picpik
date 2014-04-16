@@ -2,7 +2,8 @@ define([
     'underscore',
     'backbone',
     'require',
-], function (_, Backbone, require) {
+    'common', 
+], function (_, Backbone, require, Common) {
     'use strict';
     /**
      * The basic Pic Model represents an image that can be
@@ -25,9 +26,28 @@ define([
             };
         },
         
+        initialize: function() {
+            this.selected = false;
+        },
+        
+        select: function() {
+            if (!this.selected) {
+                Common.selectPic(this);
+            }
+            this.selected = true;  
+            this.trigger("change:selected");            
+        },
+        
+        deselect: function() {
+            if (this.selected) {
+                Common.deselectPic(this);
+            }
+            this.selected = false;  
+            this.trigger("change:selected");
+        },
+        
         addTagListeners: function() {
             var tagList = this.get('tagList');
-            console.log(tagList);
             _.each(tagList, function(tagId) {
                 var tag = require("collections/tagset").findWhere({tagId: tagId});
                 this.listenTo(tag, "destroy", function () {this.removeTag(tag)});
