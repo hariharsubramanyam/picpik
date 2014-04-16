@@ -16,11 +16,6 @@ define([
         template: _.template(picTemplate),
         
         events: {
-            "click  .favorite" : "toggleFavorited",
-            "click  .delete" : "toggleDeleted",
-            "click  .destroy" : "destroy",
-            "click  .add_tag" : "addTag",
-            "click  .remove_tag" : "removeTag",
             "click  .thumb" : "toggleSelection",
             "dblclick  .thumb" : "doubleClick",            
         },
@@ -28,13 +23,10 @@ define([
         initialize: function() {
             this.listenTo(this.model, 'destroy', this.remove);
             this.listenTo(this.model, 'change', this.render);
-            this.listenTo(TagSet, 'all', this.renderTagChoices);
             
             this.listenTo(this.model, 'change:selected', this.updateSelectionClass);
             this.listenTo(Backbone, 'filterChanged', this.updateVisibility);
             
-            //this.listenTo(this.model, 'change', this.render);
-            //this.listenTo(this.model, 'visible', this.toggleVisible);
             this.selected = false;
         },
         
@@ -42,55 +34,8 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
                         
-            this.renderTagChoices();
             this.updateVisibility();
             return this;
-        },
-        
-        renderTagChoices: function() {
-            this.$(".tag_choice").html("");
-            TagSet.each(function(tag) {
-                var info = tag.toJSON();
-                var hasTag = this.model.hasTag(tag);
-                if (hasTag) {
-                    info['has_tag'] = "X ";
-                } else {
-                    info['has_tag'] = "";
-                }
-                this.$(".tag_choice").append(
-                    _.template(" <option value='<%= tagId %>'><%= has_tag %><%= name %></option>")
-                    (info));
-            }, this);
-        },
-        
-        toggleFavorited: function() {
-            this.model.toggleFavorited();
-        },
-        
-        toggleDeleted: function() {
-            this.model.toggleDeleted();
-        },
-        
-        destroy: function() {
-            this.$el.fadeOut(400, (function() {
-                this.model.destroy();
-            }).bind(this));
-        },
-        
-        addTag: function() {
-            var tagId = parseInt(this.$(".tag_choice").val());
-            var tag = TagSet.findWhere({tagId: tagId});
-            if (tag) {
-                this.model.addTag(tag);
-            }
-        },
-        
-        removeTag: function() {
-            var tagId = parseInt(this.$(".tag_choice").val());
-            var tag = TagSet.findWhere({tagId: tagId});
-            if (tag) {
-                this.model.removeTag(tag);
-            }
         },
         
         toggleSelection: function() {

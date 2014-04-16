@@ -4,10 +4,10 @@ define([
     'underscore',
     'backbone',
     'collections/picset',
-    'views/pic',
+    'views/picdebug',
     'text!templates/group.html',
     'common'
-], function($, gridly, _, Backbone, PicSet, PicView, groupTemplate, Common) {
+], function($, gridly, _, Backbone, PicSet, PicDebugView, groupTemplate, Common) {
     /**
      * The View object for a Group in the grid.
      * The view object is a div
@@ -53,7 +53,7 @@ define([
         
         addPic: function(pic) {
             if (pic) {
-                var view = new PicView({model: pic});
+                var view = new PicDebugView({model: pic});
                 this.$picgrid.append(view.render().$el);            
             }
         },

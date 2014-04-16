@@ -3,7 +3,7 @@
     <h1>Previewing:</h1>
     <div img="preview_imgs">
         <% _.each(pics, function(pic) {%>
-            <img src="assets/pics/300x300/<%= pic.get('picSrc') %>"/>
+            <img src="assets/<%= pic.get('picSrc') %>"/>
         <% }); %>
     </div>
 </div>

@@ -6,7 +6,6 @@ define([
     'collections/groupset',
     'collections/tagset',
     
-    'views/pic',
     'views/group',
     'views/tagpanel',
     'views/actionbar',
@@ -18,7 +17,7 @@ define([
     'demo-loader',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView,
+], function($, _, Backbone, PicSet, GroupSet, TagSet, GroupView,
             TagPanelView, 
             ActionBarView, 
             PreviewOverlayView, 

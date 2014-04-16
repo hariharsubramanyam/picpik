@@ -1,0 +1,14 @@
+<div class="pic">
+    <img class="thumb" src="assets/<%= picSrc %>" height="50px" width="50px"/>
+    <input class="favorite" type="checkbox" <%= favorited ? 'checked="checked"' : '' %> />
+    <label>Favorite</label>
+    <input class="delete" type="checkbox" <%= deleted ? 'checked="checked"' : '' %> />
+    <label>Deleted</label>
+    <button class="destroy" type="button">Destroy</button>
+    <label>Tags:</label>
+<%= tagList %>
+    <select class ='tag_choice' name="tag">
+    </select>
+    <button class="add_tag" type="button">Assign Tag</button>
+    <button class="remove_tag" type="button">Remove Tag</button>
+</div>
