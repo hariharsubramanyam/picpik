@@ -11,7 +11,15 @@ define([
         model: Group,
         
         localStorage: new Backbone.LocalStorage("picpik-groupset"),
-                
+        
+        rootGroup: function() {
+            return this.findWhere({groupId: 0});
+        },
+        
+        nextGroupId: function() {
+            if (!this.length) return 1;
+            return this.last().get('groupId') + 1;
+        },
     });
     
     // GroupSet is a "singleton" picture set

@@ -1,10 +1,11 @@
 <div ng-repeat="group in pic_data">
-          <span class="group_name group_header" contenteditable="true"><%= name %></%></span>
+          <span class="group_name group_header" contenteditable="true"><%= name %></span>
+              <%= groupId %>
           <button type="button" class="remove_group_button btn btn-sm white_background tag_icon group_header_remove" >
                       <span class="glyphicon glyphicon-remove black"></span>
                 </button>
     <div class="gridly pic_grid">
-        <%= children %>
+        <% _.each(children, function(child) {print(child['value'] + ", "); }); %>
     </div>
     <button class="add_pic_to_group">Add Pic</button>
         
