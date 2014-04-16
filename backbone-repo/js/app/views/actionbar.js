@@ -3,10 +3,8 @@ define([
     'underscore',
     'backbone',
     'text!templates/actionbar.html',
-    'views/navbar',
     'common',
 ], function($, _, Backbone, actionBarTemplate, 
-            NavBarView, 
             Common) {
     /**
      * The View object for a Picture in the grid.
@@ -18,14 +16,17 @@ define([
         template: _.template(actionBarTemplate),
         
         events: {
-            "click #btnDeselectAll" : "deselectAll"
+            "click #btnDeselectAll" : "deselectAll",
+            "click  #previewButton" : "previewClicked",
+            "click  #deleteButton" : "deleteClicked",
+            "click  #groupButton" : "groupClicked",
+            "click  #tagButton" : "tagClicked",
+            "click  #starButton" : "starClicked",            
         },
         
         initialize: function() {
             this.listenTo(Common, "selectionChange", this.render);
 
-            
-            this.navBar = new NavBarView();            
         },
         
         render: function() {
@@ -35,19 +36,40 @@ define([
                 this.$el.hide();
             } else {
                 this.$el.show();
-            }
-            
-
-            $("#navBarContainer").append(this.navBar.$el);
-            this.navBar.render();            
+            }            
             
             return this;
         },
         
         deselectAll: function() {
             Common.deselectAll();
-        }
+        },
+                
+        previewClicked: function() {
+            Backbone.trigger("previewPics", Common.selectedPics);
+        },
         
+        deleteClicked: function() {
+            _.each(Common.selectedPics, function(pic) { pic.markDeleted() });
+        },
+        
+        groupClicked: function() {
+            Backbone.trigger("groupPics", Common.selectedPics);
+        },
+        
+        tagClicked: function() {
+            Backbone.trigger("tagPics", Common.selectedPics);
+        },
+        
+        starClicked: function() {
+            var allFavorited = _.every(Common.selectedPics, function(pic) {return pic.get('favorited')});
+            if (allFavorited) {
+                _.each(Common.selectedPics, function(pic) { pic.unfavorite() });
+            } else {
+                _.each(Common.selectedPics, function(pic) { pic.favorite() });
+                
+            }
+        },
     });
     return ActionBarView;
 });
