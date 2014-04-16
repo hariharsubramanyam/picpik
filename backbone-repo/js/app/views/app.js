@@ -34,18 +34,14 @@ define([
             this.listenTo(GroupSet, 'add', this.addOneGroup);
             this.listenTo(GroupSet, 'reset', this.addAllGroups);
             
-            this.navBar = new NavBarView();
-            console.log(this.navBar);
-            
+            this.navBar = new NavBarView();            
             this.tagPanel = new TagPanelView();
-            console.log(this.tagPanel);
-
             
             this.$main = $('#main');
             
             this.$footer = $('#footer-stats');
             
-            PicSet.fetch();
+            PicSet.fetch();            
             GroupSet.fetch();
         },
         

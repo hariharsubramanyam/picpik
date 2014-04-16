@@ -23,7 +23,8 @@ define([
         addPic: function(pic) {
             var children = this.get('children')
             children.push(pic.get('picId'));
-            this.save({children: children});
+            this.save("children", children);
+            this.trigger("change");
         },
         
         getPics: function() {
@@ -39,7 +40,8 @@ define([
                     pic.destroy();
                 }}, this);
             this.destroy();
-        }
+        },
+        
     });
     return Group;
 });

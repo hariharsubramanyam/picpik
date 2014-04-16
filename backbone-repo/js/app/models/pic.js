@@ -14,11 +14,14 @@ define([
          * and favorited attributes.
          */
         defaults: function() {
+            var nextPicId = require("collections/picset").nextPicId();
             return {
                 title: "Untitled Photo",
                 deleted: false,
                 favorited: false,
-                picId: require("collections/picset").nextPicId(),
+                picId: nextPicId,
+                picSrc: "pic" + ( (nextPicId % 4) + 1) + ".jpg",
+                tagList: [],
             };
         },
         
@@ -31,7 +34,7 @@ define([
         },
         
         hasTag: function(tag) {
-            return _.contains(this.tagList, tag.get('tagId'));
+            return _.contains(this.get('tagList'), tag.get('tagId'));
         }
     });
     return Pic;

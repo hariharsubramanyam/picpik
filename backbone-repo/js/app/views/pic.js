@@ -22,7 +22,7 @@ define([
         
         initialize: function() {
             //this.listenTo(this.model, 'change', this.render);
-            //this.listenTo(this.model, 'destroy', this.remove);
+            this.listenTo(this.model, 'destroy', this.remove);
             //this.listenTo(this.model, 'visible', this.toggleVisible);
         },
         

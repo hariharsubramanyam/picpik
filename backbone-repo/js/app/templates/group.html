@@ -4,7 +4,7 @@
                       <span class="glyphicon glyphicon-remove black"></span>
                 </button>
     <div class="pic_grid">
-        PicGridContents
+        <%= children %>
     </div>
           <div class="gridly maingroup_gridly">
             <div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init(pic)" ng-click="on_pic_click(pic)" my-post-repeat-directive ng-if="isVisible(pic)">

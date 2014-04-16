@@ -1,8 +1,9 @@
 define([
     'underscore',
     'backbone',
-    'require'
-], function (_, Backbone, require) {
+    'require',
+    'collections/picset',
+], function (_, Backbone, require, PicSet) {
     'use strict';
     /**
      * The basic Tag model represents an tag that pics can be assigned to.
@@ -14,14 +15,14 @@ define([
          */
         defaults: function() {
             return {
-                tagName: "Tag Name",
+                name: "Tag Name",
                 tagId: require("collections/tagset").nextTagId(),
-                
+                color: "red",                
             };
         },  
         
         getPics: function() {
-            return PicSet.filter(function(pic) {pic.hasTag(this)});
+            return PicSet.filter(function(pic) {pic.hasTag(this)}, this);
         },
     });
     return Tag;

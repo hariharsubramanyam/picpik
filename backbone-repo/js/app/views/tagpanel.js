@@ -2,8 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'views/tag',
+    'collections/tagset',
     'text!templates/tagpanel.html',
-], function($, _, Backbone, tagpanelTemplate) {
+], function($, _, Backbone, TagView, TagSet, tagpanelTemplate) {
     /**
      */
     var TagPanelView = Backbone.View.extend({
@@ -16,17 +18,31 @@ define([
         },
         
         initialize: function() {
+            
+            this.listenTo(TagSet, 'add', this.addOneTag);
+            this.listenTo(TagSet, 'reset', this.addAllTags);
         },
         
         render: function() {
             this.$el.html(this.template());
-            console.log(this.template());
+            TagSet.fetch();
             return this;
         },
         
+        addOneTag: function(tag) {
+            var view = new TagView({model: tag});
+            this.$('#tags_div').append(view.render().el);
+        },
+        
+        addAllTags: function() {
+            TagSet.each(this.addOneTag, this);
+        },
+
+        
         addTagClicked: function() {
-            console.log("Add Tag Clicked!");
-        },        
+            TagSet.create({name: "New Tag"});
+        },
+        
     });
     return TagPanelView;
 });

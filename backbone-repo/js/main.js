@@ -40,5 +40,4 @@ require([
     // Initialize the application view
     var appView = new AppView();  
     appView.render();
-    console.log(appView);
 });

@@ -24,6 +24,7 @@ define([
         
         initialize: function() {
             this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change:children', this.renderChildren);
             this.listenTo(this.model, 'destroy', this.remove);
         },
         
@@ -34,14 +35,15 @@ define([
             
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
-            console.log(this.$picgrid.html());
-            console.log("GetPics:");
-            console.log(this.model.getPics());
             _.each(this.model.getPics(), this.addPic, this);
 
             
 			this.$input = this.$('.group_name');            
             return this;
+        },
+        
+        renderChildren: function() {
+            console.log("render children");  
         },
         
         addPic: function(pic) {
@@ -85,14 +87,12 @@ define([
         closeName: function() {
             var value = this.$input.html();
             this.model.save({name: value});
-            //this.model.trigger("change");
         },
+        
         addPicToGroup: function() {
             var newPic = PicSet.create({title: "New Pic"});
             this.model.addPic(newPic);
-            this.addPic(newPic);
         },
-        
     });
     return GroupView;
 });

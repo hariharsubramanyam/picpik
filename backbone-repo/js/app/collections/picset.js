@@ -22,7 +22,7 @@ define([
         
         nextPicId: function() {
             if (!this.length) return 1;
-            return (this.last().get('picId') % 4) + 1;
+            return this.last().get('picId') + 1;
         },
         
         comparator: 'order'
