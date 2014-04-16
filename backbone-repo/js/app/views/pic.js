@@ -30,6 +30,7 @@ define([
             this.listenTo(TagSet, 'all', this.renderTagChoices);
             
             this.listenTo(this.model, 'change:selected', this.updateSelectionClass);
+            this.listenTo(Backbone, 'filterChanged', this.updateVisibility);
             
             //this.listenTo(this.model, 'change', this.render);
             //this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -40,12 +41,13 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
             this.renderTagChoices();
+            this.updateVisibility();
             return this;
         },
         
         renderTagChoices: function() {
             this.$(".tag_choice").html("");
-            TagSet.each(function(tag) {     
+            TagSet.each(function(tag) {
                 var info = tag.toJSON();
                 var hasTag = this.model.hasTag(tag);
                 if (hasTag) {
@@ -72,16 +74,6 @@ define([
                 this.model.destroy();
             }).bind(this));
         },
-                
-        isHidden: function() {
-            var isDeleted = this.model.get('deleted');
-            var isFavorited = this.model.get('favorited');
-            return (
-                (!isFavorited && Common.picFilter === "favorited") ||
-                (isDeleted && Common.picFilter != "deleted") ||
-                (!isDeleted && Common.picFilter === "deleted")
-            );
-        },
         
         addTag: function() {
             var tagId = parseInt(this.$(".tag_choice").val());
@@ -102,6 +94,16 @@ define([
                 this.model.select();
             }
         },
+        
+        updateVisibility: function() {
+            var visible = Common.picVisible(this.model);
+            if (visible) {
+                this.$el.show();
+            } else {
+                this.$el.hide();
+            }
+        },
+        
         updateSelectionClass: function() {
             this.$el.toggleClass('selected', this.model.selected);            
         },

@@ -36,6 +36,7 @@ define([
             this.save("children", children);
             this.trigger("change");
             this.listenTo(pic, "destroy", function () {this.removePic(pic)});
+            this.listenTo(pic, "leaveGroup", function () {this.removePic(pic)});
         },
         
         removePic: function(pic) {

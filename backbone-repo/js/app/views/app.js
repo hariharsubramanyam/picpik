@@ -13,6 +13,7 @@ define([
     'views/previewoverlay',
     'views/tagoverlay',
     'views/groupoverlay',
+    'views/filterbox',
     
     'demo-loader',
     'text!templates/stats.html',
@@ -23,6 +24,7 @@ define([
             PreviewOverlayView, 
             TagOverlayView,
             GroupOverlayView,
+            FilterBoxView,
             DemoLoader,
             statsTemplate, Common) {
     /**
@@ -54,6 +56,7 @@ define([
             this.previewOverlay = new PreviewOverlayView();
             this.tagOverlay = new TagOverlayView();
             this.groupOverlay = new GroupOverlayView();
+            this.filterBox = new FilterBoxView();
 
             
             this.$main = $('#main');
@@ -89,6 +92,10 @@ define([
             
             $("#group_overlay_container").append(this.groupOverlay.$el);
             this.groupOverlay.render();
+            
+            $("#search_div").append(this.filterBox.$el);
+            this.filterBox.render();
+            
             
             
             this.$('#filters a').removeClass('selected')

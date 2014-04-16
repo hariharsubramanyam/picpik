@@ -28,7 +28,48 @@ define([
         
         deselectAll: function() {
             _.each(this.selectedPics, function(pic) { pic.deselect(); });
-        }
+        },
+        
+        
+        favoritesOnly: false,
+        setFavoritesOnly: function(val) {
+            this.favoritesOnly = val;
+            Backbone.trigger("filterChanged");
+        },
+        
+        showDeleted: false,
+        setDeletedFilter: function(val) {
+            this.showDeleted = val;
+            Backbone.trigger("filterChanged");
+        },
+        
+        visibleTags: [],
+        addVisibleTag: function(tag) {
+            if (!_.contains(this.visibleTags, tag)) {
+                this.visibleTags.append(tag);
+                Backbone.trigger("filterChanged");
+            }
+        },
+        
+        removeVisibleTag: function(tagToDelete) {
+            this.visibleTags = _.filter(this.visibleTags, function(tag) { return tag != tagToDelete; });
+            Backbone.trigger("filterChanged");
+        },
+        
+        picVisible: function(pic) {
+            return true;
+            if (this.favoritesOnly && pic.get('favorited')) {
+                return false;
+            }
+            if (pic.get('deleted') && !this.showDeleted) {
+                return false;
+            }
+            if (this.visibleTags.length > 0 && !pic.hasTag(this.visibleTags[0])) {
+                return false;
+            }
+            return true;
+        },
+        
 	};
     
     // Make Common also an Event Bus

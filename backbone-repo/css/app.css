@@ -349,3 +349,7 @@ input.tag_label{
     top:0;
     z-index:2000;
 }
+
+.filter_box {
+    background-color:#EEE;
+}
