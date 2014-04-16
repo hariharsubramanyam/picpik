@@ -1,12 +1,8 @@
-<div id = 'tag_panel'>
-<div id="tag_heading" class="row background_div">
-  <h1 class="centered col-offset-4 col-md-6">Tags</h1>
+<div class="tags-panel">
+  <div class="heading-text">Tags</div>
   <button type="button" class="add_tag_btn btn btn-md white orange_button">
-            <!-- <span class="glyphicon glyphicon-tag"></span> -->
-            <img src="../assets/icons/add_tag.png" class="add_tag_image">
-            <span >Add Tag </span>
-        </button>
-</div>
-<div id="tags_div" class="background_div" ng-repeat="tag in tags">
-</div>
+    <img src="../assets/icons/add_tag.png" class="add_tag_image">
+    <span>Add Tag</span>
+  </button>
+  <div class="tags" id="tags_div" ng-repeat="tag in tags"></div>
 </div>
