@@ -1,12 +1,13 @@
 define([
     'jquery',
+    'jqueryGridly',
     'underscore',
     'backbone',
     'collections/picset',
     'views/pic',
     'text!templates/group.html',
     'common'
-], function($, _, Backbone, PicSet, PicView, groupTemplate, Common) {
+], function($, gridly, _, Backbone, PicSet, PicView, groupTemplate, Common) {
     /**
      * The View object for a Group in the grid.
      * The view object is a div
@@ -33,10 +34,10 @@ define([
             this.$el.toggleClass('favorited', this.model.get('favorited'));
             this.toggleVisible();      
             
+            
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
             _.each(this.model.getPics(), this.addPic, this);
-
             
 			this.$input = this.$('.group_name');            
             return this;

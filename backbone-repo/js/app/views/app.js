@@ -97,7 +97,6 @@ define([
             this.filterBox.render();
             
             
-            
             this.$('#filters a').removeClass('selected')
             .filter('[href="#/' + (Common.picFilter || '') + '"]')
             .addClass('selected');

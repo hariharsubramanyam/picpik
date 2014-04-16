@@ -44,6 +44,17 @@ define([
         },
         
         visibleTags: [],
+        
+        setVisibleTag: function(tag) {
+            this.visibleTags = [tag];
+            Backbone.trigger("filterChanged");            
+        },
+        
+        clearVisibleTags: function() {
+            this.visibleTags = [];
+            Backbone.trigger("filterChanged");            
+        },        
+        
         addVisibleTag: function(tag) {
             if (!_.contains(this.visibleTags, tag)) {
                 this.visibleTags.append(tag);
@@ -57,13 +68,13 @@ define([
         },
         
         picVisible: function(pic) {
-            return true;
-            if (this.favoritesOnly && pic.get('favorited')) {
+            if (this.favoritesOnly && !pic.get('favorited')) {
                 return false;
             }
             if (pic.get('deleted') && !this.showDeleted) {
                 return false;
             }
+            console.log(this.visibleTags);
             if (this.visibleTags.length > 0 && !pic.hasTag(this.visibleTags[0])) {
                 return false;
             }

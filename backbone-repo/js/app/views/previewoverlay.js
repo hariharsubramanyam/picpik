@@ -2,8 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/previewOverlay.html',
-    'text!templates/multiPreviewOverlay.html',
+    'text!templates/previewoverlay.html',
+    'text!templates/multipreviewoverlay.html',
     'common'
 ], function($, _, Backbone, previewOverlayTemplate, multiPreviewOverlayTemplate, Common) {
     /**

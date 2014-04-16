@@ -21,11 +21,14 @@ define([
         events: {
             "click  #favorites_only" : "clickFavoritesOnly",
             "click  #show_deleted" : "clickDeleted",
+            "change  .tag_choice" : "pickTag",
             
         },
         
         initialize: function() {
             this.listenTo(Common, "filterTag", this.filterTag);
+            
+            this.listenTo(TagSet, 'all', this.renderTagChoices);            
         },
         
         render: function() {
@@ -40,12 +43,12 @@ define([
         
         clickDeleted: function() {
             console.log('click deleted');
-            Common.setDeletedFilter(this.$("#show_deleted").attr("checked"));
+            Common.setDeletedFilter(this.$("#show_deleted").is(":checked"));
         },
         
         clickFavoritesOnly: function() {
-            console.log('click fav');
-            Common.setFavoritesOnly(this.$("#favorites_only").attr("checked"));
+            console.log('click fav');            
+            Common.setFavoritesOnly(this.$("#favorites_only").is(":checked"));
         },
         
         renderTagChoices: function() {
@@ -59,6 +62,17 @@ define([
                     (info));
             }, this);
         },
+        
+        pickTag: function() {
+            var tagId = this.$(".tag_choice").val();
+            console.log(tagId);
+            if (tagId == "all") {
+                Common.clearVisibleTags();
+            } else {
+                var tag = TagSet.findWhere({tagId: parseInt(tagId)});
+                Common.setVisibleTag(tag);
+            }
+        }
         
     });
     return FilterBoxView;

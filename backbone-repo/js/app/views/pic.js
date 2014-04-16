@@ -40,6 +40,7 @@ define([
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
+                        
             this.renderTagChoices();
             this.updateVisibility();
             return this;
@@ -78,13 +79,17 @@ define([
         addTag: function() {
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
-            this.model.addTag(tag);
+            if (tag) {
+                this.model.addTag(tag);
+            }
         },
         
         removeTag: function() {
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
-            this.model.removeTag(tag);
+            if (tag) {
+                this.model.removeTag(tag);
+            }
         },
         
         toggleSelection: function() {
@@ -96,6 +101,7 @@ define([
         },
         
         updateVisibility: function() {
+            console.log("Update vis");
             var visible = Common.picVisible(this.model);
             if (visible) {
                 this.$el.show();
