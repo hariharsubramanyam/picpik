@@ -22,6 +22,8 @@ define([
             "blur .group_name":  "closeName",
             "click .remove_group_button":  "removeGroup",            
             "click .add_pic_to_group": "addPicToGroup",
+            "mouseup .pic_grid": "resizePicGrid",
+            
         },
         
         initialize: function() {
@@ -40,19 +42,16 @@ define([
             this.toggleVisible();      
                         
             /* Gridly */
-            $('.pic_grid').gridly({
+            /*$('.pic_grid').gridly({
                 base: 60, // px 
                 gutter: 20, // px
                 columns: 12
-            });
+            });*/
             
-            // Render Pics     
-            this.$picgrid = this.$('.pic_grid');
-            _.each(this.model.getPics(), this.addPic, this);            
-            
-            /* Freewall
-            var wall = new freewall(this.$('.pic_grid'));
-            wall.reset({
+             // Freewall
+            this.wall = new freewall(this.$('.pic_grid'));
+            var wall = this.wall;
+            this.wall.reset({
 				draggable: true,
 				selector: '.pic',                
 				animate: true,
@@ -60,13 +59,24 @@ define([
 				cellH: 150,
 				onResize: function() {
 					wall.refresh();
-				}
+				},
 			});
-            wall.fitWidth();
-            */
+            this.wall.fitWidth();
+			$(window).trigger("resize");
+            
+            
+            // Render Pics     
+            this.$picgrid = this.$('.pic_grid');
+            _.each(this.model.getPics(), this.addPic, this);            
+            
+           
                         
 			this.$input = this.$('.group_name');            
             return this;
+        },
+        
+        resizePicGrid: function() {
+            console.log("MouseUp");
         },
         
         renderChildren: function() {
@@ -76,7 +86,7 @@ define([
         addPic: function(pic) {
             if (pic) {
                 var view = new PicView({model: pic});
-                this.$picgrid.append(view.render().$el);            
+                this.$picgrid.append(view.render().$el); 
             }
         },
 
