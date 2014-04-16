@@ -4,13 +4,15 @@ define([
     'backbone',
     'collections/picset',
     'collections/groupset',
+    'collections/tagset',
+    
     'views/pic',
     'views/group',
     'views/navbar',
     'views/tagpanel',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, GroupSet, PicView, GroupView, NavBarView, TagPanelView, statsTemplate, Common) {
+], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView, NavBarView, TagPanelView, statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
      */
@@ -43,6 +45,8 @@ define([
             
             PicSet.fetch();            
             GroupSet.fetch();
+            GroupSet.each(function(group) { group.addPicListeners(); });
+
         },
         
         render: function() {            

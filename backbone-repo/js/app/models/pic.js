@@ -1,7 +1,7 @@
 define([
     'underscore',
     'backbone',
-    'require'
+    'require',
 ], function (_, Backbone, require) {
     'use strict';
     /**
@@ -25,6 +25,15 @@ define([
             };
         },
         
+        addTagListeners: function() {
+            var tagList = this.get('tagList');
+            console.log(tagList);
+            _.each(tagList, function(tagId) {
+                var tag = require("collections/tagset").findWhere({tagId: tagId});
+                this.listenTo(tag, "destroy", function () {this.removeTag(tag)});
+            }, this);
+        },
+        
         toggleFavorited: function() {
             this.save({favorited: !this.get("favorited")});
         },
@@ -35,6 +44,25 @@ define([
         
         hasTag: function(tag) {
             return _.contains(this.get('tagList'), tag.get('tagId'));
+        },
+        
+        addTag: function(tag) {
+            var tagList = this.get('tagList')
+            tagList.push(tag.get('tagId'));
+            this.save("tagList", tagList);
+            tag.trigger("change");
+            this.trigger("change");
+            this.listenTo(tag, "destroy", function () {console.log("Tag Destroyed"); this.removeTag(tag)});
+        },
+        
+        removeTag: function(tag) {
+            var tagList = this.get('tagList')
+            var tagIdToRemove = tag.get('tagId');
+            tagList = _.filter(tagList, function(tagId) { return tagId != tagIdToRemove; });
+            this.stopListening(tag);
+            this.save("tagList", tagList);
+            tag.trigger("change");
+            this.trigger("change");
         }
     });
     return Pic;

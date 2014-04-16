@@ -20,11 +20,30 @@ define([
             };
         },
         
+        addPicListeners: function() {
+            var children = this.get('children');
+            console.log(children);
+            _.each(children, function(picId) {
+                var pic = PicSet.findWhere({picId: picId});
+                this.listenTo(pic, "destroy", function () {this.removePic(pic)});
+            }, this);
+        },
+        
+        
         addPic: function(pic) {
-            var children = this.get('children')
+            var children = this.get('children');
             children.push(pic.get('picId'));
             this.save("children", children);
             this.trigger("change");
+            this.listenTo(pic, "destroy", function () {this.removePic(pic)});
+        },
+        
+        removePic: function(pic) {
+            var children = this.get('children');
+            var picIdToRemove = pic.get('picId');
+            children = _.filter(children, function(picId) { return picId != picIdToRemove; });
+            this.save("children", children);
+            this.trigger("change");       
         },
         
         getPics: function() {

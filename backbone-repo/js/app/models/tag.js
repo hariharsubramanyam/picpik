@@ -22,7 +22,8 @@ define([
         },  
         
         getPics: function() {
-            return PicSet.filter(function(pic) {pic.hasTag(this)}, this);
+            var pics =  PicSet.filter(function(pic) {return pic.hasTag(this)}, this);
+            return pics;
         },
     });
     return Tag;

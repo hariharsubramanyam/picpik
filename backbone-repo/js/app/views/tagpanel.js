@@ -4,8 +4,9 @@ define([
     'backbone',
     'views/tag',
     'collections/tagset',
+    'collections/picset',
     'text!templates/tagpanel.html',
-], function($, _, Backbone, TagView, TagSet, tagpanelTemplate) {
+], function($, _, Backbone, TagView, TagSet, PicSet, tagpanelTemplate) {
     /**
      */
     var TagPanelView = Backbone.View.extend({
@@ -18,7 +19,6 @@ define([
         },
         
         initialize: function() {
-            
             this.listenTo(TagSet, 'add', this.addOneTag);
             this.listenTo(TagSet, 'reset', this.addAllTags);
         },
@@ -26,6 +26,7 @@ define([
         render: function() {
             this.$el.html(this.template());
             TagSet.fetch();
+            PicSet.each(function(pic) {pic.addTagListeners(); });
             return this;
         },
         
