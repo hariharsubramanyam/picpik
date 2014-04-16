@@ -1,28 +1,32 @@
 <div class="action-bar">
     <div class="count"><%= num_selected %> Selected</div>
-    <button type="button" id="btnDeselectAll" class="btn btn-sm">Cancel</button>          
+    <button type="button" id="btnDeselectAll" class="btn btn-sm btn-cancel">Cancel</button>
 
-	<form>
-	  <button type="button" class="btn btn-md white action-button" id="previewButton">
-	    <span class="glyphicon glyphicon-fullscreen"></span>
-	    <span >Preview</span>
-	  </button>
-	  <button type="button" class="btn btn-md white action-button" id="starButton">
-	    <span class="glyphicon glyphicon-star"></span>
-	    <span >Star</span>
-	  </button>
-	  <button type="button" class="btn btn-md white action-button" id="deleteButton">
-	    <span class="glyphicon glyphicon-trash"></span>
-	    <span >Remove</span>
-	  </button>
-	  <button type="button" class="btn btn-md white action-button" id="groupButton">
-	    <span class="glyphicon glyphicon-th"></span>
-	    <span >Group</span>
-	  </button>
-	  <button type="button" class="btn btn-md white action-button" id="tagButton">
-	    <span class="glyphicon glyphicon-tag"></span>
-	    <span >Tag</span>
-	  </button>
-	</form>
+    <form class="actions">
+      <button type="button" class="btn btn-md white action-button" id="previewButton">
+        <span class="glyphicon glyphicon-fullscreen"></span>
+        <span >Preview</span>
+      </button>
+      <button type="button" class="btn btn-md white action-button" id="starButton">
+        <span class="glyphicon glyphicon-star"></span>
+        <span >Select</span>
+      </button>
+      <button type="button" class="btn btn-md white action-button" id="deleteButton">
+        <span class="glyphicon glyphicon-trash"></span>
+        <span >Remove</span>
+      </button>
+      <button type="button" class="btn btn-md white action-button" id="groupButton">
+        <span class="glyphicon glyphicon-th"></span>
+        <span >Group</span>
+      </button>
+      <button type="button" class="btn btn-md white action-button" id="tagButton">
+        <span class="glyphicon glyphicon-tag"></span>
+        <span >Tag</span>
+      </button>
+    </form>
+
+    <button type="button" id="btnDeselectAll" class="delete_tag_btn btn btn-sm white tag_icon">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
 
 </div>

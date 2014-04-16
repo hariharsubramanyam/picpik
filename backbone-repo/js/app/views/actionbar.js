@@ -18,7 +18,7 @@ define([
         template: _.template(actionBarTemplate),
         
         events: {
-            "click #btnDeselectAll" : "deselectAll"
+            "click .btnDeselectAll" : "deselectAll"
         },
         
         initialize: function() {

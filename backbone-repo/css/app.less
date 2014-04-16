@@ -143,17 +143,43 @@ a {
 }
 
 .actionbar_container {
-  display: block;
-  top: 80px; left: 0px;
   .action-bar {
     position: relative;
     top: 0; left: 0;
     display: block;
-    width: 100%;
+    height: 70px; width: 100%;
     background-color: @white;
     z-index: 999;
     .count {
+      position: relative;
+      top: 15px; left: 30px;
       font-size: 28px;
+      color: @softFontColor;
+    }
+    .btn-cancel {
+      position: absolute;
+      top: 20px; left: 200px;
+      background-color: @grayLight;
+    }
+    .actions {
+      position: absolute;
+      top: 0px; right: 100px;
+      margin: 10px;
+      .action-button {
+        background-color: @grayLight;
+        width: 60px; height: 50px;
+        span {
+          display: block;
+          padding-top: 3px;
+          color: @grayDark;
+        }
+        &:hover {
+          background-color: @gray;
+          span {
+            color: @grayDarkest;
+          }
+        }
+      }
     }
   }
 }
@@ -171,21 +197,9 @@ a {
   background-color: #F7F7F7;
 }
 
-.action-button {
-  background-color: @grayDarkest;
-  width: 75px;
-  span {
-    display: block;
-    padding-top: 3px;
-    color: @grayLight;
-  }
-  &:hover {
-    background-color: @black;
-    span {
-      color: @white;
-    }
-  }
-}
+
+
+
 
 
 
@@ -201,12 +215,6 @@ a {
 .red{ color: red; }
 .green{ color: green; }
 .yellow{ color: yellow; }
-
-#btnDeselectAll{
-  margin-top: 10px;
-  font-size: 1.5em;
-  background-color: rgb(240,240,240);
-}
 
 .modal-body{
   overflow: visible;

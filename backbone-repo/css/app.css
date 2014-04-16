@@ -128,22 +128,50 @@ a {
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn:hover {
   color: #bbbbbb;
 }
-.actionbar_container {
-  display: block;
-  top: 80px;
-  left: 0px;
-}
 .actionbar_container .action-bar {
   position: relative;
   top: 0;
   left: 0;
   display: block;
+  height: 70px;
   width: 100%;
   background-color: #ffffff;
   z-index: 999;
 }
 .actionbar_container .action-bar .count {
+  position: relative;
+  top: 15px;
+  left: 30px;
   font-size: 28px;
+  color: #777777;
+}
+.actionbar_container .action-bar .btn-cancel {
+  position: absolute;
+  top: 20px;
+  left: 200px;
+  background-color: #dddddd;
+}
+.actionbar_container .action-bar .actions {
+  position: absolute;
+  top: 0px;
+  right: 100px;
+  margin: 10px;
+}
+.actionbar_container .action-bar .actions .action-button {
+  background-color: #dddddd;
+  width: 60px;
+  height: 50px;
+}
+.actionbar_container .action-bar .actions .action-button span {
+  display: block;
+  padding-top: 3px;
+  color: #777777;
+}
+.actionbar_container .action-bar .actions .action-button:hover {
+  background-color: #bbbbbb;
+}
+.actionbar_container .action-bar .actions .action-button:hover span {
+  color: #222222;
 }
 .photos {
   position: relative;
@@ -157,21 +185,6 @@ a {
   height: 100%;
   width: 80%;
   background-color: #F7F7F7;
-}
-.action-button {
-  background-color: #222222;
-  width: 75px;
-}
-.action-button span {
-  display: block;
-  padding-top: 3px;
-  color: #dddddd;
-}
-.action-button:hover {
-  background-color: #000000;
-}
-.action-button:hover span {
-  color: #ffffff;
 }
 /***** OLD STUFF *****/
 .black {
@@ -194,11 +207,6 @@ a {
 }
 .yellow {
   color: yellow;
-}
-#btnDeselectAll {
-  margin-top: 10px;
-  font-size: 1.5em;
-  background-color: #f0f0f0;
 }
 .modal-body {
   overflow: visible;
