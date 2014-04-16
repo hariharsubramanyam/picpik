@@ -24,8 +24,12 @@ define([
         },
         
         initialize: function() {
+            // "change" is slower, but will update the info list of children,
+            // "addPic" is better when the only changes we care about are 
+            // rendering new picture additions
+            // - this.listenTo(this.model, 'addPic', this.addPic);
             this.listenTo(this.model, 'change', this.render);
-            this.listenTo(this.model, 'change:children', this.renderChildren);
+            
             this.listenTo(this.model, 'destroy', this.remove);
         },
         
@@ -38,7 +42,7 @@ define([
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
             _.each(this.model.getPics(), this.addPic, this);
-            
+                        
 			this.$input = this.$('.group_name');            
             return this;
         },

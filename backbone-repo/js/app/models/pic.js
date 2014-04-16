@@ -50,7 +50,9 @@ define([
             var tagList = this.get('tagList');
             _.each(tagList, function(tagId) {
                 var tag = require("collections/tagset").findWhere({tagId: tagId});
-                this.listenTo(tag, "destroy", function () {this.removeTag(tag)});
+                if(tag) {
+                    this.listenTo(tag, "destroy", function () {this.removeTag(tag)});
+                }
             }, this);
         },
         
@@ -87,7 +89,8 @@ define([
             this.save("tagList", tagList);
             tag.trigger("change");
             this.trigger("change");
-            this.listenTo(tag, "destroy", function () {console.log("Tag Destroyed"); this.removeTag(tag)});
+            this.listenTo(tag, "destroy", function () {
+                this.removeTag(tag)});
         },
         
         removeTag: function(tag) {
@@ -97,7 +100,6 @@ define([
             this.stopListening(tag);
             this.save("tagList", tagList);
             tag.trigger("change");
-            this.trigger("change");
         },
         
         moveToGroup: function(group) {

@@ -30,8 +30,10 @@ define([
                     console.log(this.PIC_TYPE);
                     var picId = childElt['value'];
                     var pic = PicSet.findWhere({picId: picId});
-                    this.listenTo(pic, "destroy", function () {this.removePic(pic)});
-                    this.listenTo(pic, "leaveGroup", function () {this.removePic(pic)});
+                    if(pic) {
+                        this.listenTo(pic, "destroy", function () {this.removePic(pic)});
+                        this.listenTo(pic, "leaveGroup", function () {this.removePic(pic)});
+                    }
                 }
             }, this);
         },
@@ -62,10 +64,11 @@ define([
             this.addChild(this.PIC_TYPE, pic.get('picId'));            
             this.listenTo(pic, "destroy", function () {this.removePic(pic)});
             this.listenTo(pic, "leaveGroup", function () {this.removePic(pic)});
+            this.trigger("addPic", pic);
         },
         
         removePic: function(pic) {
-            this.addChild(this.PIC_TYPE, pic.get('picId'));            
+            this.removeChild(this.PIC_TYPE, pic.get('picId'));            
         },
         
         getPics: function() {

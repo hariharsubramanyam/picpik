@@ -22,6 +22,7 @@ define([
             "click  .add_tag" : "addTag",
             "click  .remove_tag" : "removeTag",
             "click  .thumb" : "toggleSelection",
+            "dblclick  .thumb" : "doubleClick",            
         },
         
         initialize: function() {
@@ -113,6 +114,11 @@ define([
         updateSelectionClass: function() {
             this.$el.toggleClass('selected', this.model.selected);            
         },
+        
+        doubleClick: function() {
+            Common.deselectAll();            
+            Backbone.trigger("previewPics", [this.model]);
+        }
     });
     return PicView;
 });
