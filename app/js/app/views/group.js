@@ -49,6 +49,7 @@ define([
             });*/
             
              // Freewall
+            
             this.wall = new freewall(this.$('.pic_grid'));
             var wall = this.wall;
             this.wall.reset({
@@ -63,7 +64,6 @@ define([
 			});
             this.wall.fitWidth();
 			$(window).trigger("resize");
-            
             
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
