@@ -92,7 +92,7 @@ define([
             $("#group_overlay_container").append(this.groupOverlay.$el);
             this.groupOverlay.render();
             
-            $("#search_div").append(this.filterBox.$el);
+            $("#filter_container").append(this.filterBox.$el);
             this.filterBox.render();
             
             

@@ -1,13 +1,5 @@
-<div class="filter_box">
-<input type="search" class="form-control " placeholder="Search..." id="txt_search" ng-model="search_query" > 
-    <label>Favorites Only:</label>
-    <input id="favorites_only" type="checkbox" value="favorites"/>
-    |
-    <label>Include Deleted:</label>
-    <input id="show_deleted" type="checkbox" value="deleted"/> 
-    |
-    <label>Tags:</label>
-    <select class ='tag_choice' name="tag">
-    </select>
-    </div>
+<input type="search" class="filter-field" placeholder="filter by tag(s)">
+<!-- <select class ='tag_choice' name="tag"></select> -->
 
+<div class="target select" id="favorites_only"> </div>
+<div class="target delete" id="show_deleted"> </div>
