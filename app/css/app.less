@@ -38,20 +38,32 @@
 html {
   width: 100%;
   height: 100%;
-  min-width: 1024px;
-  min-height: 600px;
+  min-width: 900px;
+  min-height: 500px;
 }
 
 body {
   width: 100%;
   height: 100%;
-  min-width: 1024px;
-  min-height: 600px;
+  min-width: 900px;
+  min-height: 500px;
   padding: 0;
   margin: 0;
   background-color: @grayLightest;
   font-family: @baseFontFamily;
   font-weight: 300;
+}
+
+.main-panel {
+  position: absolute;
+  display: block;
+  top: 0px; left: -210px;
+  height: 100%; width: 100%;
+  padding-top: 80px;
+  padding-left: 210px;
+  background-color: #F7F7F7;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 a {
@@ -81,13 +93,17 @@ a {
 .tags-panel-container {
   position: absolute;
   display: block;
-  top: 80px; right: 0px;
+  top: 0px; right: 0px;
+  padding-top: 80px;
   background-color: @grayDarker;
   height: 100%; width: 210px;
   border-left: solid 1px @grayDarker;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 99;
   .tags-panel {
     position: absolute;
-    top: 0; left: 0;
+    top: 80px; left: 0;
     width: 100%;
     background-color: @white;
     .heading-text {
@@ -142,16 +158,31 @@ a {
   }
 }
 
+#search_div {
+  position: absolute;
+  top: 100px; right: 20px;
+  display: block;
+  height: 70px;
+  z-index: 98;
+}
+
+#txt_search {
+  display: block;
+  height: 40px; width: 300px;
+}
+
 .actionbar_container {
+  height: 70px;
   .action-bar {
     position: relative;
     top: 0; left: 0;
     display: block;
     height: 70px; width: 100%;
     background-color: @white;
-    z-index: 999;
+    z-index: 99;
     .count {
       position: relative;
+      display: inline;
       top: 15px; left: 30px;
       font-size: 28px;
       color: @softFontColor;
@@ -161,20 +192,30 @@ a {
       top: 20px; left: 200px;
       background-color: @grayLight;
     }
+    .btn-x {
+      position: absolute;
+      top: 20px; right: 20px;
+      background-color: @white;
+      color: @grayLight;
+      &:hover {
+        color: @gray;
+      }
+    }
     .actions {
       position: absolute;
-      top: 0px; right: 100px;
+      top: 0px; right: 60px;
       margin: 10px;
       .action-button {
-        background-color: @grayLight;
-        width: 60px; height: 50px;
+        background-color: @grayLighter;
+        width: 64px; height: 50px;
+        border: 0;
         span {
           display: block;
           padding-top: 3px;
           color: @grayDark;
         }
         &:hover {
-          background-color: @gray;
+          background-color: @grayLight;
           span {
             color: @grayDarkest;
           }
@@ -188,19 +229,6 @@ a {
   position: relative;
   margin: 20px;
 }
-
-.main-panel {
-  position: absolute;
-  display: block;
-  top: 80px; left: 0px;
-  height: 100%; width: 80%;
-  background-color: #F7F7F7;
-}
-
-
-
-
-
 
 
 
@@ -252,16 +280,6 @@ a {
 
 .subgroup_gridly{
   margin-left: 50px;
-}
-
-#txt_search{
-  display: block;
-  width: 300px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  font-size: 2em;
-  height: 40px;
 }
 
 .tag_icon {
