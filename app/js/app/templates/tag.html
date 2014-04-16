@@ -15,8 +15,8 @@
   </button>
 
   <div class="progress">
-    <div class="progress-bar <%= color %>" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
-      <span class="sr-only">40% Complete (success)</span>
+    <div class="progress-bar <%= color %>" role="progressbar" aria-valuenow="<%= count %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= count*100.0/total %>%">
+      <span class="sr-only"><%= count*100.0/total%>% Complete (success)</span>
     </div>
   </div>
 

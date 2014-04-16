@@ -6,9 +6,12 @@ define([
     'backbone',
     'collections/picset',
     'views/pic',
+    'views/picdebug',
     'text!templates/group.html',
     'common'
-], function($, freewall, gridly, _, Backbone, PicSet, PicView, groupTemplate, Common) {
+], function($, freewall, gridly, _, Backbone, PicSet, PicView, PicDebugView, groupTemplate, Common) {
+    
+    var PIC_DEBUG = false;
     /**
      * The View object for a Group in the grid.
      * The view object is a div
@@ -30,8 +33,8 @@ define([
             // "change" is slower, but will update the info list of children,
             // "addPic" is better when the only changes we care about are 
             // rendering new picture additions
-            // - this.listenTo(this.model, 'addPic', this.addPic);
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'addPic', this.addPic);
+            //this.listenTo(this.model, 'change', this.render);
             
             this.listenTo(this.model, 'destroy', this.remove);
         },
@@ -47,23 +50,24 @@ define([
                 gutter: 20, // px
                 columns: 12
             });*/
+            if(!PIC_DEBUG) {
             
-             // Freewall
-            
-            this.wall = new freewall(this.$('.pic_grid'));
-            var wall = this.wall;
-            this.wall.reset({
-				draggable: true,
-				selector: '.pic',                
-				animate: true,
-				cellW: 150,
-				cellH: 150,
-				onResize: function() {
-					wall.refresh();
-				},
-			});
-            this.wall.fitWidth();
-			$(window).trigger("resize");
+                 // Freewall
+                this.wall = new freewall(this.$('.pic_grid'));
+                var wall = this.wall;
+                this.wall.reset({
+                    draggable: true,
+                    selector: '.pic',                
+                    animate: true,
+                    cellW: 150,
+                    cellH: 150,
+                    onResize: function() {
+                        wall.refresh();
+                    },
+                });
+                this.wall.fitWidth();
+                $(window).trigger("resize");
+            }
             
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
@@ -85,7 +89,11 @@ define([
         
         addPic: function(pic) {
             if (pic) {
-                var view = new PicView({model: pic});
+                if (PIC_DEBUG) {
+                    var view = new PicDebugView({model: pic});
+                } else {
+                    var view = new PicView({model: pic});                    
+                }
                 this.$picgrid.append(view.render().$el); 
             }
         },

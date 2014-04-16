@@ -2,9 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'collections/picset',
     'text!templates/tag.html',
     'common'
-], function($, _, Backbone, tagTemplate, Common) {
+], function($, _, Backbone, PicSet, tagTemplate, Common) {
     /**
      * The View object for a Tag in the sidebar.
      */
@@ -26,6 +27,7 @@ define([
         render: function() {
             var info = this.model.toJSON();
             info['count'] = this.model.getPics().length;
+            info['total'] = PicSet.size();
             this.$el.html(this.template(info));
             this.$nameInput = this.$(".tag_name_field");
             return this;
