@@ -21,7 +21,7 @@ define([
                 deleted: false,
                 favorited: false,
                 picId: nextPicId,
-                picSrc: "pics/300x300/pic" + ( (nextPicId % 4) + 1) + ".jpg",
+                picSrc: "pics/harihar/pic" + ( (nextPicId % 50) + 1) + ".jpg",
                 tagList: [],
             };
         },
