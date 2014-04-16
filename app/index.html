@@ -3,148 +3,59 @@
 <head>
   <meta charset="utf-8">
   <title>PicPik</title>
-  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" type="text/css" href="../bower_components/gridly/stylesheets/jquery.gridly.css">
-  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap/dist/css/bootstrap.css">
 </head>
-<body ng-controller="MyCtrl1" id="body">
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navbar">
-      <div class="container-fluid" >
-        <div class="navbar-header navbar-left">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="#"><img src="../assets/icons/pic_pik_logo.png"></a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <h1 class="pull-left app_title_header">PicPik</h1>
-          <form class="navbar-form navbar-right" role="form">
-            <button type="button" class="btn btn-md white gray_button" ng-click="onPreviewButtonClick()">
-              <span class="glyphicon glyphicon-fullscreen"></span>
-              <span >Preview</span>
-            </button>
-            <button type="button" class="btn btn-md white gray_button" ng-click="onSelectButtonClick()">
-              <span class="glyphicon glyphicon-star"></span>
-              <span >Select</span>
-            </button>
-            <button type="button" class="btn btn-md white gray_button" ng-click="onDeleteButtonClick()">
-              <span class="glyphicon glyphicon-trash"></span>
-              <span >Remove</span>
-            </button>
-            <button type="button" class="btn btn-md white gray_button" ng-click="onGroupButtonClick()">
-              <span class="glyphicon glyphicon-th"></span>
-              <span >Group</span>
-            </button>
-            <button type="button" class="btn btn-md white gray_button" ng-click="onTagButtonClick()">
-              <span class="glyphicon glyphicon-tag"></span>
-              <span >Tag</span>
-            </button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
+<body id="picpicapp" class="body">
+
+  <div class="globalnav">
+    <a href="#"><img src="./assets/icons/pic_pik_logo.png"></a>
+    <div class="masthead">PicPik</div>
+  </div>
+
+  <div class="tags-panel-container" id="tag_div"></div>
+
+  <div class="main-panel">
+
+    <div id="actionbar_container" class="actionbar_container"></div>
+    <div class="photos">
+      <div id="search_div"></div>
+      <div id="group_container"></div>
+      <button id="add-group" style="z-index:1">Add Group</button>
+      <!-- <div class="brick normal" ng-repeat="pic in pics | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
+        <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
+      </div> -->
     </div>
+      
+    <div id="preview_overlay_container"></div>
+    <div id="tag_overlay_container"></div>
+    <div id="group_overlay_container"></div>
 
-  <div>
-    <div class="container-fluid" id="gridly_and_photo_div">
-    <div class="row">
-      <div id="search_div" class="affix">
-        <input type="search" class="form-control pull-right " placeholder="Search..." id="txt_search" ng-model="search_query" > 
-        <h1 class="num_selected pull-left">{{selected_pictures.length}} Selected</h1>
-        <button type="button" id="btnDeselectAll" class="btn btn-sm white_background" ng-click="deselectAll()" ng-show="selected_pictures.length > 0">Deselect All</button>
-      </div>
-      <div class="col-md-10" id="photo_div">
-        <div ng-repeat="group in pic_data">
-          <span class="group_header" contenteditable="true">{{group.group_name}}</span>
-          <button type="button" class="btn btn-sm white_background tag_icon group_header_remove" >
-                      <span class="glyphicon glyphicon-remove black"></span>
-                </button>
-          <div class="gridly maingroup_gridly">
-            <div class="brick normal" ng-repeat="pic in group.pictures | filter:search_query" data-ng-init="init(pic)" ng-click="on_pic_click(pic)" my-post-repeat-directive ng-if="isVisible(pic)">
-                <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
-              </div>
-            </div>
-            <div ng-repeat="subgroup in group.subgroups">
-              <span class="subgroup_header" contenteditable="true">{{subgroup.group_name}}</span>
-              <button type="button" class="btn btn-sm white_background tag_icon subgroup_header_remove" >
-                      <span class="glyphicon glyphicon-remove black"></span>
-                  </button>
-              <div class="gridly subgroup_gridly">
-                <div class="brick small" ng-repeat="subpic in subgroup.pictures | filter:search_query" data-ng-init="init(subpic)" ng-click="on_pic_click(subpic)" my-post-repeat-directive ng-if="subpic.mode == MODE_VISIBLE">
-                <img ng-src="{{subpic.src}}" class="gridlyimage {{subpic.selected_class}}"/>
-              </div>
-              </div>
-            </div>
-        </div>
-          <!-- <div class="brick normal" ng-repeat="pic in pics | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
-            <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
-          </div> -->
-      </div>
-      <div class="col-md-2 affix container-fluid" id="tag_div">
-        <div id="tag_heading" class="row background_div">
-          <h1 class="centered col-offset-4 col-md-6">Tags</h1>
-          <button type="button" class="btn btn-md white orange_button">
-                    <!-- <span class="glyphicon glyphicon-tag"></span> -->
-                    <img src="../assets/icons/add_tag.png" class="add_tag_image">
-                    <span >Add Tag</span>
-                </button>
-        </div>
-        <div class="background_div" ng-repeat="tag in tags">
-          <div class="row white_background">
-            <button type="button" class="btn btn-sm white pull-left tag_icon white_background" >
-                      <span class="glyphicon glyphicon-tag {{tag.color}} tag_image"></span>
-                  </button>   
-                  <input type="text" class="pull-left tag_label form-control" value="{{tag.name}}"></input>
-                  <span class="pull-left tag_label">({{tag.count}})</span>
-                  <button type="button" class="btn btn-sm white white_background tag_icon pull-right" >
-                      <span class="glyphicon glyphicon-remove {{tag.color}}"></span>
-                  </button>
+    <div class="modal fade" id="tag_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
           </div>
-          <div class="row white_background">
-            <div class="progress white_backgroud">
-                <div class="progress-bar {{tag.color}}" role="progressbar" aria-valuenow="{{tag.count}}" aria-valuemin="0" aria-valuemax="100" style="width: {{tag.count*100/numPics()}}%">
-                  <span class="sr-only">40% Complete (success)</span>
-                </div>
+          <div class="modal-body">
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="modal fade" id="tag_modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
   </div>
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
 
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.js"></script>
-  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="../bower_components/gridly/javascripts/jquery.gridly.js"></script>
-  <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
-  <script type="text/javascript" src="js/picture_data.js"></script>
+  <a id="load-demo" href="javascript:;">Load Demo Data</a>
+
+  <!-- Start the app -->
+  <script data-main="js/main" src="js/lib/require.js"></script>
+
 </body>
 </html>
