@@ -58,6 +58,15 @@ define([
             this.save({favorited: !this.get("favorited")});
         },
         
+        favorite: function() {
+            this.save({favorited: true});            
+        },
+        
+        unfavorite: function() {
+            this.save({favorited: false});            
+        },
+        
+        
         toggleDeleted: function() {
             this.save({deleted: !this.get("deleted")});
         },

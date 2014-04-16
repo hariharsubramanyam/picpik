@@ -11,9 +11,15 @@ define([
     'views/navbar',
     'views/tagpanel',
     'views/actionbar',
+    'views/previewoverlay',
     'text!templates/stats.html',
     'common'
-], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView, NavBarView, TagPanelView, ActionBarView, statsTemplate, Common) {
+], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView,
+            NavBarView, 
+            TagPanelView, 
+            ActionBarView, 
+            PreviewOverlayView, 
+            statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
      */
@@ -39,7 +45,8 @@ define([
             
             this.navBar = new NavBarView();            
             this.tagPanel = new TagPanelView();
-            this.actionBar = new ActionBarView();            
+            this.actionBar = new ActionBarView();   
+            this.previewOverlay = new PreviewOverlayView();
 
             
             this.$main = $('#main');
@@ -69,6 +76,9 @@ define([
             
             $("#actionbar_container").append(this.actionBar.$el);
             this.actionBar.render();
+            
+            $("#preview_overlay_container").append(this.previewOverlay.$el);
+            this.previewOverlay.render();
             
             
             this.$('#filters a').removeClass('selected')

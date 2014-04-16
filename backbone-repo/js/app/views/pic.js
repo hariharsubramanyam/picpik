@@ -26,6 +26,7 @@ define([
         
         initialize: function() {
             this.listenTo(this.model, 'destroy', this.remove);
+            this.listenTo(this.model, 'change', this.render);
             this.listenTo(TagSet, 'add', this.renderTagChoices);
             this.listenTo(TagSet, 'change', this.renderTagChoices);
             this.listenTo(TagSet, 'reset', this.renderTagChoices);

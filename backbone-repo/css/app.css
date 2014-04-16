@@ -305,3 +305,16 @@ input.tag_label{
 .selected .thumb {
     border: 2px solid #0FF;
 }
+
+#preview_overlay_container {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:2000;
+}
+
+.preview_overlay {
+    width:600px;
+    height:600px;
+    background-color:#CCC;    
+}

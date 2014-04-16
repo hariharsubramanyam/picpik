@@ -3,7 +3,8 @@ define([
     'underscore',
     'backbone',
     'text!templates/navbar.html',
-], function($, _, Backbone, navbarTemplate) {
+    'common',
+], function($, _, Backbone, navbarTemplate, Common) {
     /**
      * The View object for a Picture in the grid.
      * The view object is a div
@@ -18,7 +19,7 @@ define([
             "click  #deleteButton" : "deleteClicked",
             "click  #groupButton" : "groupClicked",
             "click  #tagButton" : "tagClicked",
-            "click  #selectButton" : "selectClicked",
+            "click  #starButton" : "starClicked",
         },
         
         initialize: function() {
@@ -31,6 +32,7 @@ define([
         
         previewClicked: function() {
             console.log("preview Clicked!");
+            Backbone.trigger("previewPics", Common.selectedPics);
         },
         
         deleteClicked: function() {
@@ -45,8 +47,14 @@ define([
             console.log("tag Clicked!");
         },
         
-        selectClicked: function() {
-            console.log("select Clicked!");
+        starClicked: function() {
+            var allFavorited = _.every(Common.selectedPics, function(pic) {return pic.get('favorited')});
+            if (allFavorited) {
+                _.each(Common.selectedPics, function(pic) { pic.unfavorite() });
+            } else {
+                _.each(Common.selectedPics, function(pic) { pic.favorite() });
+                
+            }
         },
         
         
