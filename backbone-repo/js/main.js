@@ -17,6 +17,10 @@ require.config({
         backboneLocalstorage: {
             deps: ['backbone'],
             exports: 'Store'
+        },
+        jqueryGridly: {
+            deps: ['jquery'],
+            exports: 'Gridly'
         }
     },
     paths: {
@@ -24,7 +28,8 @@ require.config({
         underscore: '../lib/underscore',
         backbone: '../lib/backbone',
         backboneLocalstorage: '../lib/backbone.localStorage',
-        text: '../lib/requirejs-text'
+        text: '../lib/requirejs-text',
+        jqueryGridly: '../lib/jquery.gridly',
     }
 });
 

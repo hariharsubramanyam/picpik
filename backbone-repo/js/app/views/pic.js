@@ -40,6 +40,7 @@ define([
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
+                        
             this.renderTagChoices();
             this.updateVisibility();
             return this;
