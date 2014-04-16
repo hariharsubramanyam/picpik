@@ -145,18 +145,35 @@ a {
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn:hover {
   color: #bbbbbb;
 }
-#search_div {
-  position: absolute;
+#filter_container {
+  position: fixed;
   top: 100px;
-  right: 20px;
+  right: 230px;
   display: block;
   height: 70px;
   z-index: 98;
 }
-#txt_search {
+.filter-field {
   display: block;
-  height: 40px;
-  width: 300px;
+  height: 30px;
+  width: 360px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: solid 1px #dddddd;
+}
+.target {
+  position: fixed;
+  display: block;
+  bottom: 100px;
+  width: 70px;
+  height: 70px;
+  z-index: 98;
+}
+.target.select {
+  right: 300px;
+}
+.target.delete {
+  right: 250px;
 }
 .actionbar_container {
   height: 70px;
@@ -378,9 +395,6 @@ input.tag_label {
   left: 0;
   top: 0;
   z-index: 2000;
-}
-.filter_box {
-  background-color: #EEE;
 }
 .pic_grid {
   position: relative;
