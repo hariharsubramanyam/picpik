@@ -140,6 +140,10 @@
   z-index: 1000;
 }
 
+#seaerch_div {
+    width:300px;
+}
+
 #txt_search{
   display: block;
   width: 300px;
@@ -300,6 +304,7 @@ input.tag_label{
     top: 90px;
     width: 1000px;
     background-color: #CCC;
+    z-index: 1900;
 }
 
 .selected .thumb {
@@ -317,4 +322,30 @@ input.tag_label{
     width:600px;
     height:600px;
     background-color:#CCC;    
+}
+
+.tag_overlay {
+    width:600px;
+    height:600px;
+    background-color:#CCC;    
+}
+
+#tag_overlay_container {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:2000;
+}
+
+.group_overlay {
+    width:600px;
+    height:600px;
+    background-color:#CCC;    
+}
+
+#group_overlay_container {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:2000;
 }

@@ -3,8 +3,11 @@ define([
     'underscore',
     'backbone',
     'text!templates/actionbar.html',
+    'views/navbar',
     'common',
-], function($, _, Backbone, actionBarTemplate, Common) {
+], function($, _, Backbone, actionBarTemplate, 
+            NavBarView, 
+            Common) {
     /**
      * The View object for a Picture in the grid.
      * The view object is a div
@@ -20,6 +23,9 @@ define([
         
         initialize: function() {
             this.listenTo(Common, "selectionChange", this.render);
+
+            
+            this.navBar = new NavBarView();            
         },
         
         render: function() {
@@ -30,6 +36,11 @@ define([
             } else {
                 this.$el.show();
             }
+            
+
+            $("#navBarContainer").append(this.navBar.$el);
+            this.navBar.render();            
+            
             return this;
         },
         

@@ -66,6 +66,9 @@ define([
             this.save({favorited: false});            
         },
         
+        markDeleted: function() {
+            this.save({deleted: true});
+        },
         
         toggleDeleted: function() {
             this.save({deleted: !this.get("deleted")});
@@ -76,7 +79,10 @@ define([
         },
         
         addTag: function(tag) {
-            var tagList = this.get('tagList')
+            var tagList = this.get('tagList');
+            if (_.contains(tagList, tag.get('tagId'))) {
+                return;
+            }
             tagList.push(tag.get('tagId'));
             this.save("tagList", tagList);
             tag.trigger("change");
@@ -92,7 +98,12 @@ define([
             this.save("tagList", tagList);
             tag.trigger("change");
             this.trigger("change");
-        }
+        },
+        
+        moveToGroup: function(group) {
+            this.trigger("leaveGroup");
+            group.addPic(this);
+        },
     });
     return Pic;
 });

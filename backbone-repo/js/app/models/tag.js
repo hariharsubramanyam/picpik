@@ -17,10 +17,10 @@ define([
             return {
                 name: "Tag Name",
                 tagId: require("collections/tagset").nextTagId(),
-                color: "red",                
+                color: _.sample(["red", "blue", "green", "orange"]),                
             };
-        },  
-        
+        }, 
+                
         getPics: function() {
             var pics =  PicSet.filter(function(pic) {return pic.hasTag(this)}, this);
             return pics;

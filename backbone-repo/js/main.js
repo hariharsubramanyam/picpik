@@ -31,8 +31,9 @@ require.config({
 require([
     'backbone',
     'views/app',
-    'routers/router'
-], function(Backbone, AppView, Workspace) {
+    'routers/router',
+    'demo-loader',
+], function(Backbone, AppView, Workspace, DemoLoader) {
     // Start routing and Backbone.history()
     new Workspace();
     Backbone.history.start();

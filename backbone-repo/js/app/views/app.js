@@ -8,17 +8,22 @@ define([
     
     'views/pic',
     'views/group',
-    'views/navbar',
     'views/tagpanel',
     'views/actionbar',
     'views/previewoverlay',
+    'views/tagoverlay',
+    'views/groupoverlay',
+    
+    'demo-loader',
     'text!templates/stats.html',
     'common'
 ], function($, _, Backbone, PicSet, GroupSet, TagSet, PicView, GroupView,
-            NavBarView, 
             TagPanelView, 
             ActionBarView, 
             PreviewOverlayView, 
+            TagOverlayView,
+            GroupOverlayView,
+            DemoLoader,
             statsTemplate, Common) {
     /**
      * The top-level piece of UI for the App.
@@ -29,7 +34,8 @@ define([
         statsTemplate: _.template(statsTemplate),
         
         events: {
-            "click #add-group": "createGroup"
+            "click #add-group": "createGroup",
+            "click #load-demo": "loadDemoData"            
         },
         
         initialize: function() {  
@@ -43,10 +49,11 @@ define([
             this.listenTo(GroupSet, 'add', this.addOneGroup);
             this.listenTo(GroupSet, 'reset', this.addAllGroups);
             
-            this.navBar = new NavBarView();            
             this.tagPanel = new TagPanelView();
             this.actionBar = new ActionBarView();   
             this.previewOverlay = new PreviewOverlayView();
+            this.tagOverlay = new TagOverlayView();
+            this.groupOverlay = new GroupOverlayView();
 
             
             this.$main = $('#main');
@@ -67,10 +74,7 @@ define([
                 num_favorited: favorited,
                 num_deleted: deleted
             }));
-            
-            $("#navBarContainer").append(this.navBar.$el);
-            this.navBar.render();
-            
+                        
             $("#tag_div").append(this.tagPanel.$el);
             this.tagPanel.render();
             
@@ -79,6 +83,12 @@ define([
             
             $("#preview_overlay_container").append(this.previewOverlay.$el);
             this.previewOverlay.render();
+            
+            $("#tag_overlay_container").append(this.tagOverlay.$el);
+            this.tagOverlay.render();
+            
+            $("#group_overlay_container").append(this.groupOverlay.$el);
+            this.groupOverlay.render();
             
             
             this.$('#filters a').removeClass('selected')
@@ -122,6 +132,10 @@ define([
             console.log('create group!');
             GroupSet.create({name: "A New Group!"});
         },
+        
+        loadDemoData: function() {
+            DemoLoader.loadDemo();
+        }
         
     });
     return AppView;

@@ -25,6 +25,7 @@ define([
             _.each(children, function(picId) {
                 var pic = PicSet.findWhere({picId: picId});
                 this.listenTo(pic, "destroy", function () {this.removePic(pic)});
+                this.listenTo(pic, "leaveGroup", function () {this.removePic(pic)});
             }, this);
         },
         

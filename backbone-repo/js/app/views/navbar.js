@@ -31,20 +31,19 @@ define([
         },
         
         previewClicked: function() {
-            console.log("preview Clicked!");
             Backbone.trigger("previewPics", Common.selectedPics);
         },
         
         deleteClicked: function() {
-            console.log("delete Clicked!");
+            _.each(Common.selectedPics, function(pic) { pic.markDeleted() });
         },
         
         groupClicked: function() {
-            console.log("group Clicked!");
+            Backbone.trigger("groupPics", Common.selectedPics);
         },
         
         tagClicked: function() {
-            console.log("tag Clicked!");
+            Backbone.trigger("tagPics", Common.selectedPics);
         },
         
         starClicked: function() {

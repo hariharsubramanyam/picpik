@@ -26,11 +26,14 @@ define([
         
         render: function() {
             if (this.active) {
-                this.$el.show();
                 if (this.pics.length  == 1) {
+                    this.$el.show();
                     this.$el.html(this.singleImageTemplate({imgsrc: this.pics[0].get('picSrc')}));
-                } else {
+                }else if (this.pics.length > 1) {
+                    this.$el.show();
                     this.$el.html(this.multiImageTemplate());
+                } else {
+                    this.$el.hide();
                 }
             } else {
                 this.$el.hide();
