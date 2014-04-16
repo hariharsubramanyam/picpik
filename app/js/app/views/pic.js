@@ -16,7 +16,9 @@ define([
         template: _.template(picTemplate),
         
         events: {
-            "click  .thumb" : "toggleSelection",
+            "dragstart  .thumb" : "mouseDown",
+            "mouseup  .thumb" : "mouseUp",
+            "mousemove  .thumb" : "mouseMove",
             "dblclick  .thumb" : "doubleClick",            
         },
         
@@ -28,12 +30,14 @@ define([
             this.listenTo(Backbone, 'filterChanged', this.updateVisibility);
             
             this.selected = false;
+            
+            this.partialClick = false;
         },
         
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
-                        
+                                    
             this.updateVisibility();
             return this;
         },
@@ -63,6 +67,20 @@ define([
         doubleClick: function() {
             Common.deselectAll();            
             Backbone.trigger("previewPics", [this.model]);
+        },
+        
+        mouseDown: function() {
+            console.log("mousedown");
+            this.partialClick = true;
+        },
+        
+        mouseMove: function() {
+            this.partialClick = false;
+        },
+        
+        mouseUp: function() {
+            console.log(this.partialClick);
+            this.toggleSelection();
         }
     });
     return PicView;
