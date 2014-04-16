@@ -16,7 +16,7 @@ define([
         template: _.template(actionBarTemplate),
         
         events: {
-            "click .btnDeselectAll" : "deselectAll",
+            "click  .deselectButton" : "deselectAll",
             "click  #previewButton" : "previewClicked",
             "click  #deleteButton" : "deleteClicked",
             "click  #groupButton" : "groupClicked",
