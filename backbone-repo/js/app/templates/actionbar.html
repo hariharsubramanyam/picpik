@@ -1,5 +1,28 @@
 <div class="action-bar">
-    <h1 class="count"><%= num_selected %> Selected</h1>
-    <button type="button" id="btnDeselectAll" class="btn btn-sm white_background" ng-click="deselectAll()" ng-show="selected_pictures.length > 0">Deselect All</button>          
-    <div id="navBarContainer"></div>
+    <div class="count"><%= num_selected %> Selected</div>
+    <button type="button" id="btnDeselectAll" class="btn btn-sm">Cancel</button>          
+
+	<form>
+	  <button type="button" class="btn btn-md white action-button" id="previewButton">
+	    <span class="glyphicon glyphicon-fullscreen"></span>
+	    <span >Preview</span>
+	  </button>
+	  <button type="button" class="btn btn-md white action-button" id="starButton">
+	    <span class="glyphicon glyphicon-star"></span>
+	    <span >Star</span>
+	  </button>
+	  <button type="button" class="btn btn-md white action-button" id="deleteButton">
+	    <span class="glyphicon glyphicon-trash"></span>
+	    <span >Remove</span>
+	  </button>
+	  <button type="button" class="btn btn-md white action-button" id="groupButton">
+	    <span class="glyphicon glyphicon-th"></span>
+	    <span >Group</span>
+	  </button>
+	  <button type="button" class="btn btn-md white action-button" id="tagButton">
+	    <span class="glyphicon glyphicon-tag"></span>
+	    <span >Tag</span>
+	  </button>
+	</form>
+
 </div>

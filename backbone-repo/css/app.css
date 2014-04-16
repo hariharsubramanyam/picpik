@@ -18,7 +18,7 @@ body {
   min-height: 600px;
   padding: 0;
   margin: 0;
-  background-color: #f7f7f7 !important;
+  background-color: #f7f7f7;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
@@ -129,7 +129,6 @@ a {
   color: #bbbbbb;
 }
 .actionbar_container {
-  position: fixed;
   display: block;
   top: 80px;
   left: 0px;
@@ -157,23 +156,24 @@ a {
   left: 0px;
   height: 100%;
   width: 80%;
+  background-color: #F7F7F7;
 }
-/***** OLD STUFF *****/
-.gray_button {
-  background-color: #646464;
+.action-button {
+  background-color: #222222;
   width: 75px;
 }
-.gray_button span {
+.action-button span {
   display: block;
   padding-top: 3px;
+  color: #dddddd;
 }
-.gray_button:hover {
-  background-color: black;
+.action-button:hover {
+  background-color: #000000;
 }
-.gray_button:hover span,
-.btn:focus span {
-  color: white;
+.action-button:hover span {
+  color: #ffffff;
 }
+/***** OLD STUFF *****/
 .black {
   color: black;
 }
