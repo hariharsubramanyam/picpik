@@ -8,19 +8,32 @@
 html {
   width: 100%;
   height: 100%;
-  min-width: 1024px;
-  min-height: 600px;
+  min-width: 900px;
+  min-height: 500px;
 }
 body {
   width: 100%;
   height: 100%;
-  min-width: 1024px;
-  min-height: 600px;
+  min-width: 900px;
+  min-height: 500px;
   padding: 0;
   margin: 0;
   background-color: #f7f7f7;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
+}
+.main-panel {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: -210px;
+  height: 100%;
+  width: 100%;
+  padding-top: 80px;
+  padding-left: 210px;
+  background-color: #F7F7F7;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -46,16 +59,20 @@ a {
 .tags-panel-container {
   position: absolute;
   display: block;
-  top: 80px;
+  top: 0px;
   right: 0px;
+  padding-top: 80px;
   background-color: #444444;
   height: 100%;
   width: 210px;
   border-left: solid 1px #444444;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 99;
 }
 .tags-panel-container .tags-panel {
   position: absolute;
-  top: 0;
+  top: 80px;
   left: 0;
   width: 100%;
   background-color: #ffffff;
@@ -128,6 +145,22 @@ a {
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn:hover {
   color: #bbbbbb;
 }
+#search_div {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  display: block;
+  height: 70px;
+  z-index: 98;
+}
+#txt_search {
+  display: block;
+  height: 40px;
+  width: 300px;
+}
+.actionbar_container {
+  height: 70px;
+}
 .actionbar_container .action-bar {
   position: relative;
   top: 0;
@@ -136,10 +169,11 @@ a {
   height: 70px;
   width: 100%;
   background-color: #ffffff;
-  z-index: 999;
+  z-index: 99;
 }
 .actionbar_container .action-bar .count {
   position: relative;
+  display: inline;
   top: 15px;
   left: 30px;
   font-size: 28px;
@@ -151,16 +185,27 @@ a {
   left: 200px;
   background-color: #dddddd;
 }
+.actionbar_container .action-bar .btn-x {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  color: #dddddd;
+}
+.actionbar_container .action-bar .btn-x:hover {
+  color: #bbbbbb;
+}
 .actionbar_container .action-bar .actions {
   position: absolute;
   top: 0px;
-  right: 100px;
+  right: 60px;
   margin: 10px;
 }
 .actionbar_container .action-bar .actions .action-button {
-  background-color: #dddddd;
-  width: 60px;
+  background-color: #eeeeee;
+  width: 64px;
   height: 50px;
+  border: 0;
 }
 .actionbar_container .action-bar .actions .action-button span {
   display: block;
@@ -168,7 +213,7 @@ a {
   color: #777777;
 }
 .actionbar_container .action-bar .actions .action-button:hover {
-  background-color: #bbbbbb;
+  background-color: #dddddd;
 }
 .actionbar_container .action-bar .actions .action-button:hover span {
   color: #222222;
@@ -176,15 +221,6 @@ a {
 .photos {
   position: relative;
   margin: 20px;
-}
-.main-panel {
-  position: absolute;
-  display: block;
-  top: 80px;
-  left: 0px;
-  height: 100%;
-  width: 80%;
-  background-color: #F7F7F7;
 }
 /***** OLD STUFF *****/
 .black {
@@ -237,15 +273,6 @@ a {
 }
 .subgroup_gridly {
   margin-left: 50px;
-}
-#txt_search {
-  display: block;
-  width: 300px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  font-size: 2em;
-  height: 40px;
 }
 .tag_icon {
   background-color: white;
@@ -351,7 +378,4 @@ input.tag_label {
   left: 0;
   top: 0;
   z-index: 2000;
-}
-.filter_box {
-  background-color: #EEE;
 }
