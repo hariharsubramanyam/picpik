@@ -7,11 +7,74 @@ define([
 ], function (_, Backbone, PicSet, TagSet, GroupSet) {
 	var DemoLoader = {
         loadDemo: function() {
-            PicSet.each(function(pic) { pic.destroy(); });
-            TagSet.each(function(tag) { tag.destroy(); });
-            GroupSet.each(function(group) { group.destroy(); });
+            TagSet.each(function(tag) { 
+                try { tag.destroy(); } catch (err) { }
+            });
+            GroupSet.each(function(group) { 
+                try { group.destroyGroup(); } catch (err) { }
+            });
+            GroupSet.each(function(group) { 
+                try { group.destroy(); } catch (err) { }
+            });
+            PicSet.each(function(pic) { 
+                try { pic.destroy(); } catch (err) { }
+            });
+            TagSet.each(function(tag) { 
+                try { tag.destroy(); } catch (err) { }
+            });            
+            
+            
+            var t1 = TagSet.create({name: "John"});
+            
+            var t2 = TagSet.create({name: "Food"});
+            
+            
+            var p = GroupSet.create({name: "Mumbai"});
+            for (var i = 0; i < 10 + Math.random() * 5 ; i++) {
+                var newPic = PicSet.create({title: "New Pic"});
+                p.addPic(newPic);
+                if (Math.random() < 0.3) {
+                    newPic.addTag(t1);
+                }
+                if (Math.random() < 0.4) {
+                    newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.set({favorited: true});
+                }
+                if (Math.random() < 0.1) {
+                    newPic.set({deleted: true});
+                }
+            }
+            var p = GroupSet.create({name: "New Dehli"});
+            for (var i = 0; i < 15 + Math.random() * 5; i++) {
+                var newPic = PicSet.create({title: "New Pic"});
+                p.addPic(newPic);
+                if (Math.random() < 0.3) {
+                    newPic.addTag(t1);
+                }
+                if (Math.random() < 0.4) {
+                    newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.set({favorited: true});
+                }
+                if (Math.random() < 0.1) {
+                    newPic.set({deleted: true});
+                }
+                
+            }
+            
+
+        },
+        
+        checkFirst: function() {
+            this.loadDemo();
+            
+            /*if (PicSet.size() == 0 && GroupSet.size() == 0) {
+                this.loadDemo();
+            }*/
         }
 	};
-    
     return DemoLoader;
 });
