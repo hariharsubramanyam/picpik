@@ -416,6 +416,23 @@ input.tag_label {
 .selected .thumb {
   border: 4px solid #3399FF;
 }
+.preview_overlay {
+  max-width: 1200px;
+  max-height: 600px;
+  overflow: hidden;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+.preview_imgs {
+  position: relative;
+}
+.preview_imgs img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .tag_overlay,
 .group-overlay {
   height: 30px;
