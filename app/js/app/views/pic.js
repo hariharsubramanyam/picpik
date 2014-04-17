@@ -29,7 +29,6 @@ define([
             this.listenTo(this.model, 'change', this.render);
             
             this.listenTo(this.model, 'change:selected', this.updateSelectionClass);
-            this.listenTo(Backbone, 'filterChanged', this.updateVisibility);
             
             this.selected = false;
             
@@ -37,6 +36,7 @@ define([
         },
         
         render: function() {
+            this.$el.addClass("pic");
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
                                     
@@ -53,12 +53,11 @@ define([
         },
         
         updateVisibility: function() {
-            console.log("Update vis");
             var visible = Common.picVisible(this.model);
             if (visible) {
-                this.$el.show();
+                this.$el.toggleClass('visible', true);
             } else {
-                this.$el.hide();
+                this.$el.toggleClass('visible', false);
             }
         },
         

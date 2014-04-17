@@ -27,7 +27,6 @@ define([
             var children = this.get('children');
             _.each(children, function(childElt) {
                 if(childElt['type'] == this.PIC_TYPE) {
-                    console.log(this.PIC_TYPE);
                     var picId = childElt['value'];
                     var pic = PicSet.findWhere({picId: picId});
                     if(pic) {
