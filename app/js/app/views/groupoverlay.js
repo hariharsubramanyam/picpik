@@ -27,10 +27,8 @@ define([
         render: function() {
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
-                this.$el.show();
                 this.renderGroupChoices();
-            } else {
-                this.$el.hide();
+                $.facebox({ div: '#group_overlay_container' });
             }
             return this;
         },

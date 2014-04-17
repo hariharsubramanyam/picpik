@@ -77,6 +77,11 @@ body {
   background-color: #F7F7F7;
   overflow-y: auto;
   overflow-x: hidden;
+
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+  -o-user-select: none; 
 }
 
 a {
@@ -393,6 +398,12 @@ input.tag_label{
   border: 1px dashed @grayLight ;
   padding: 10px;
   margin-top: 10px;
+
+  -moz-user-select: text; 
+  -khtml-user-select: text; 
+  -webkit-user-select: text; 
+  -o-user-select: text; 
+  
   &:hover, &:focus {
     outline: 0;
   }
@@ -419,40 +430,13 @@ input.tag_label{
     border: 4px solid #3399FF;
 }
 
-#preview_overlay_container {
-    position: fixed;
-    margin-left: 50%;
-    margin-right: 50%;
-    top: 200px;
-    z-index: 1000;
-}
+// preview_overlay is unstyled; just size of photo
 
-.tag_overlay {
-    width:600px;
-    height:600px;
-    background-color:#CCC;    
-}
-
-#tag_overlay_container {
-    position: fixed;
-    margin-left: 50%;
-    margin-right: 50%;
-    top: 200px;
-    z-index: 1000;
-}
-
-.group_overlay {
-    width:600px;
-    height:600px;
-    background-color:#CCC;
-}
-
-#group_overlay_container {
-    position: fixed;
-    margin-left: 50%;
-    margin-right: 50%;
-    top: 200px;
-    z-index: 1000;
+.tag_overlay, .group-overlay {
+    height:30px; width:360px;
+    background-color: @black;
+    border: solid 20px @black;
+    border-radius: 30px;  
 }
 
 .pic_grid {

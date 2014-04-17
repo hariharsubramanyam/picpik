@@ -29,17 +29,15 @@ define([
         render: function() {
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
-                this.$el.show();
                 this.renderTagChoices();
-            } else {
-                this.$el.hide();
+                $.facebox({ div: '#tag_overlay_container' });
             }
             return this;
         },
-        
+
         renderTagChoices: function() {
             this.$(".tag_choice").html("");
-            TagSet.each(function(tag) {     
+            TagSet.each(function(tag) {
                 var info = tag.toJSON();
                 this.$(".tag_choice").append(
                     _.template(" <option value='<%= tagId %>'><%= name %></option>")

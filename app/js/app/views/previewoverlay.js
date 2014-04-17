@@ -27,15 +27,8 @@ define([
         
         render: function() {
             if (this.active) {
-                if (this.pics.length  == 1) {
-                    this.$el.html(this.singleImageTemplate({pic: this.pics[0]}));
-                    $.facebox({ div: '#preview_overlay_container' });
-                } else if (this.pics.length > 1) {
-                    this.$el.html(this.multiImageTemplate({pics: this.pics}));
-                    $.facebox({ div: '#preview_overlay_container' });
-                } else {
-                    // do nothing
-                }
+                this.$el.html(this.multiImageTemplate({pics: this.pics}));
+                $.facebox({ div: '#preview_overlay_container' });
             } 
             return this;
         },
