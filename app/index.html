@@ -13,8 +13,8 @@
 <body id="picpicapp" class="body">
 
   <div class="topnav">
-    <img class="static-topnav-left" src="./assets/icons/static-topnav-left.png">
-    <img class="static-topnav-right" src="./assets/icons/static-topnav-right.png">
+    <img class="static-topnav-left" src="./assets/icons/static-topnav-left.png" draggable="false">
+    <img class="static-topnav-right" src="./assets/icons/static-topnav-right.png" draggable="false">
   </div>
 
   <div class="tags-panel-container" id="tag_div"></div>
@@ -29,7 +29,9 @@
       <button id="add-group" style="z-index:1">Add Group</button>
     </div>
       
-    <div id="preview_overlay_container"></div>
+    <div style="display:none;">
+      <div id="preview_overlay_container"></div>
+    </div>
     <div id="tag_overlay_container"></div>
     <div id="group_overlay_container"></div>
 

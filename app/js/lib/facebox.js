@@ -83,17 +83,17 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0.2,
+      opacity      : 0.7,
       overlay      : true,
-      loadingImage : '../assets/loading.gif',
-      closeImage   : '../assets/closelabel.png',
+      loadingImage : './assets/loading.gif',
+      closeImage   : './assets/x.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
         <div class="content"> \
         </div> \
-        <a href="#" class="close"><img src="/assets/closelabel.png" title="close" class="close_image" /></a> \
+        <a href="#" class="close"><img src="../app/assets/x.png" title="close" class="close_image" /></a> \
       </div> \
     </div>'
     },
@@ -108,7 +108,7 @@
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
       $('#facebox').css({
-        top:	getPageScroll()[1] + (getPageHeight() / 10),
+        top:	getPageScroll()[1] + (getPageHeight() / 5),
         left:	$(window).width() / 2 - 205
       }).show()
 
