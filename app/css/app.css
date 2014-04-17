@@ -415,21 +415,17 @@ input.tag_label {
   top: 200px;
   z-index: 1000;
 }
-.preview_overlay {
-  width: 600px;
-  height: 600px;
-  background-color: #CCC;
-}
 .tag_overlay {
   width: 600px;
   height: 600px;
   background-color: #CCC;
 }
 #tag_overlay_container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2000;
+  position: fixed;
+  margin-left: 50%;
+  margin-right: 50%;
+  top: 200px;
+  z-index: 1000;
 }
 .group_overlay {
   width: 600px;
@@ -437,10 +433,11 @@ input.tag_label {
   background-color: #CCC;
 }
 #group_overlay_container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2000;
+  position: fixed;
+  margin-left: 50%;
+  margin-right: 50%;
+  top: 200px;
+  z-index: 1000;
 }
 .pic_grid {
   position: relative;

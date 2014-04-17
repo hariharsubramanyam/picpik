@@ -427,12 +427,6 @@ input.tag_label{
     z-index: 1000;
 }
 
-.preview_overlay {
-    width:600px;
-    height:600px;
-    background-color:#CCC;    
-}
-
 .tag_overlay {
     width:600px;
     height:600px;
@@ -440,9 +434,11 @@ input.tag_label{
 }
 
 #tag_overlay_container {
-    position: absolute;
-    left:0; top:0;
-    z-index: 2000;
+    position: fixed;
+    margin-left: 50%;
+    margin-right: 50%;
+    top: 200px;
+    z-index: 1000;
 }
 
 .group_overlay {
@@ -452,10 +448,11 @@ input.tag_label{
 }
 
 #group_overlay_container {
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:2000;
+    position: fixed;
+    margin-left: 50%;
+    margin-right: 50%;
+    top: 200px;
+    z-index: 1000;
 }
 
 .pic_grid {
