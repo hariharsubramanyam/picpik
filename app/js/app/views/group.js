@@ -39,6 +39,7 @@ define([
             this.listenTo(this.model, 'destroy', this.remove);
             
             this.listenTo(Backbone, 'filterChanged', this.filterWall);
+            this.listenTo(Backbone, 'imagesDeleted', this.render);
             
             this.picViews = [];
         },
