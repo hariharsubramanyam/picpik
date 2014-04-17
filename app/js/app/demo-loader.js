@@ -69,11 +69,9 @@ define([
         },
         
         checkFirst: function() {
-            this.loadDemo();
-            
-            /*if (PicSet.size() == 0 && GroupSet.size() == 0) {
+            if (PicSet.size() == 0 && GroupSet.size() == 0) {
                 this.loadDemo();
-            }*/
+            }
         }
 	};
     return DemoLoader;
