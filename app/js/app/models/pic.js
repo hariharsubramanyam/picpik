@@ -61,11 +61,11 @@ define([
         },
         
         favorite: function() {
-            this.save({favorited: true});            
+            this.save({favorited: true});
         },
         
         unfavorite: function() {
-            this.save({favorited: false});            
+            this.save({favorited: false});
         },
         
         markDeleted: function() {

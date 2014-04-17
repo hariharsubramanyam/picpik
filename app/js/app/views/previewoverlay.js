@@ -4,8 +4,9 @@ define([
     'backbone',
     'text!templates/previewoverlay.html',
     'text!templates/multipreviewoverlay.html',
-    'common'
-], function($, _, Backbone, previewOverlayTemplate, multiPreviewOverlayTemplate, Common) {
+    'common',
+    'facebox'
+], function($, _, Backbone, previewOverlayTemplate, multiPreviewOverlayTemplate, Common, Facebox) {
     /**
      */
     var PreviewOverlayView = Backbone.View.extend({
@@ -27,9 +28,9 @@ define([
         render: function() {
             if (this.active) {
                 if (this.pics.length  == 1) {
-                    this.$el.show();
                     this.$el.html(this.singleImageTemplate({pic: this.pics[0]}));
-                }else if (this.pics.length > 1) {
+                    $.facebox({ div: this.$el });
+                } else if (this.pics.length > 1) {
                     this.$el.show();
                     this.$el.html(this.multiImageTemplate({pics: this.pics}));
                 } else {

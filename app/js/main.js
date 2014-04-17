@@ -25,6 +25,10 @@ require.config({
         freewall: {
             deps: ['jquery'],
             exports: 'freewall'
+        },
+        facebox: {
+            deps: ['jquery'],
+            exports: 'facebox'
         }
     },
     paths: {
@@ -34,7 +38,8 @@ require.config({
         backboneLocalstorage: '../lib/backbone.localStorage',
         text: '../lib/requirejs-text',
         jqueryGridly: '../lib/jquery.gridly',
-        freewall: '../lib/freewall'
+        freewall: '../lib/freewall',
+        facebox: '../lib/facebox',
     }
 });
 

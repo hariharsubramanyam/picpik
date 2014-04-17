@@ -52,6 +52,19 @@ body {
   background-color: @grayLightest;
   font-family: @baseFontFamily;
   font-weight: 300;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: @grayLight; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: @grayDarkest;
+  }
+
 }
 
 .main-panel {
@@ -76,17 +89,21 @@ a {
 
 // Top-level navbar.
 
-.globalnav {
+.topnav {
   background-color: @grayDarker;
   height: 80px; width: 100%;
   position: fixed;
   top: 0; left: 0;
   z-index: 100;
-  .masthead {
-    color: @white;
-    position: relative;
-    display: inline;
-    font-size: 36px;
+  .static-topnav-left {
+    position: absolute;
+    top: 0px; left: 0px;
+    border: 0;
+  }
+  .static-topnav-right {
+    position: absolute;
+    top: 0px; right: 0px;
+    border: 0;
   }
 }
 
@@ -108,7 +125,7 @@ a {
     background-color: @white;
     .heading-text {
       position: absolute;
-      top: 20px; left: 20px;
+      top: 15px; left: 20px;
       font-size: 28px;
       font-weight: 300;
       font-family: @baseFontFamily;
@@ -162,8 +179,16 @@ a {
   position: fixed;
   top: 100px; right: 230px;
   display: block;
-  height: 70px;
+  height: 30px;
   z-index: 98;
+  .glyphicon-tags {
+    position: absolute;
+    top: 5px; right: 380px;
+    color: @grayLight;
+    font-size: 24px;
+  }
+
+
 }
 
 .filter-field {
@@ -173,6 +198,9 @@ a {
   padding: 10px 20px;
   border-radius: 30px;
   border: solid 1px @grayLight;
+  &:hover, &:focus {
+    outline: 0;
+  }
 }
 
 .target {
@@ -191,7 +219,7 @@ a {
 
 
 .actionbar_container {
-  height: 70px;
+  height: 50px;
   .action-bar {
     position: relative;
     top: 0; left: 0;
@@ -249,7 +277,21 @@ a {
   margin: 20px;
 }
 
-
+.group {
+  position: relative;
+  display: block;
+  padding: 20px;
+  border-bottom: solid 1px @grayLight;
+  .remove_group_button {
+    background-color: rgba(0,0,0,0);
+    position: absolute;
+    top: 20px; left: -15px;
+    color: @gray;
+  }
+  .pic_grid {
+    margin-top: 20px;
+  }
+}
 
 
 
@@ -330,7 +372,7 @@ span.tag_label{
 }
 
 input.tag_label{
-  border: 1px dashed black;
+  border: 1px dashed @grayLight;
 }
 
 .add_tag_image{
@@ -347,17 +389,19 @@ input.tag_label{
 
 .group_header{
   display: inline;
-  font-size: 2.5em;
-  border: 1px dashed black;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-size: 21px;
+  border: 1px dashed @grayLight ;
+  padding: 10px;
   margin-top: 10px;
+  &:hover, &:focus {
+    outline: 0;
+  }
 }
 
 .subgroup_header{
   margin-left: 50px;
   font-size: 1.5em;
-  border: 1px dashed black;
+  border: 1px dashed @grayLight;
   padding-left: 5px;
   padding-right: 5px;
   display: inline;
@@ -372,14 +416,15 @@ input.tag_label{
 }
 
 .selected .thumb {
-    border: 2px solid #0FF;
+    border: 4px solid #3399FF;
 }
 
 #preview_overlay_container {
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:2000;
+    position: fixed;
+    margin-left: 50%;
+    margin-right: 50%;
+    top: 200px;
+    z-index: 1000;
 }
 
 .preview_overlay {
@@ -403,7 +448,7 @@ input.tag_label{
 .group_overlay {
     width:600px;
     height:600px;
-    background-color:#CCC;    
+    background-color:#CCC;
 }
 
 #group_overlay_container {
@@ -415,12 +460,29 @@ input.tag_label{
 
 .pic_grid {
     position: relative;
-    width: 900px;
+    width: 90%;
 }
 
 .pic {
     height: 140px;
     width: 140px;
+    .glyphicon-star,
+    .glyphicon-star-empty {
+      position: absolute;
+      top: 7px; left: 7px;
+      font-size: 18px; 
+      color: @white;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .glyphicon-star-empty {
+      opacity: 0.4;
+      transition: opacity 0.2s;
+      &:hover {
+        opacity: 1.0;
+      }
+   }
 }
 
 .pic_img {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>PicPik</title>
@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet" type="text/css" href="../bower_components/gridly/stylesheets/jquery.gridly.css">
   <link rel="stylesheet" type="text/css" href="./css/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="./css/facebox.css">
+
 </head>
 <body id="picpicapp" class="body">
 
-  <div class="globalnav">
-    <a href="#"><img src="./assets/icons/pic_pik_logo.png"></a>
-    <div class="masthead">PicPik</div>
+  <div class="topnav">
+    <img class="static-topnav-left" src="./assets/icons/static-topnav-left.png">
+    <img class="static-topnav-right" src="./assets/icons/static-topnav-right.png">
   </div>
 
   <div class="tags-panel-container" id="tag_div"></div>
@@ -25,31 +27,11 @@
     <div class="photos">
       <div id="group_container"></div>
       <button id="add-group" style="z-index:1">Add Group</button>
-      <!-- <div class="brick normal" ng-repeat="pic in pics | filter:search_query" data-ng-init="init()" ng-click="on_pic_click(pic)" my-post-repeat-directive>
-        <img ng-src="{{pic.src}}" class="gridlyimage {{pic.selected_class}}"/>
-      </div> -->
     </div>
       
     <div id="preview_overlay_container"></div>
     <div id="tag_overlay_container"></div>
     <div id="group_overlay_container"></div>
-
-    <div class="modal fade" id="tag_modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Modal title</h4>
-          </div>
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
   </div>
 

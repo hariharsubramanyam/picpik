@@ -19,7 +19,9 @@ define([
             "dragstart  .thumb" : "mouseDown",
             "mouseup  .thumb" : "mouseUp",
             "mousemove  .thumb" : "mouseMove",
-            "dblclick  .thumb" : "doubleClick",            
+            "dblclick  .thumb" : "doubleClick",
+            "click .favorite" : "favorite",
+            "click .unfavorite" : "unfavorite",
         },
         
         initialize: function() {
@@ -63,6 +65,14 @@ define([
         updateSelectionClass: function() {
             this.$el.toggleClass('selected', this.model.selected);            
         },
+
+        favorite: function() {
+            this.model.favorite();
+        },
+
+        unfavorite: function() {
+            this.model.unfavorite();
+        },
         
         doubleClick: function() {
             Common.deselectAll();            
@@ -81,7 +91,7 @@ define([
         mouseUp: function() {
             console.log(this.partialClick);
             this.toggleSelection();
-        }
+        },
     });
     return PicView;
 });

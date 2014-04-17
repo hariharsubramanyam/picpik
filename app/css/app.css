@@ -22,6 +22,15 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
+body ::-webkit-scrollbar {
+  width: 10px;
+}
+body ::-webkit-scrollbar-track {
+  background-color: #dddddd;
+}
+body ::-webkit-scrollbar-thumb {
+  background-color: #222222;
+}
 .main-panel {
   position: absolute;
   display: block;
@@ -41,7 +50,7 @@ a {
 /***************************************
 *                NAVBAR                *
 ***************************************/
-.globalnav {
+.topnav {
   background-color: #444444;
   height: 80px;
   width: 100%;
@@ -50,11 +59,17 @@ a {
   left: 0;
   z-index: 100;
 }
-.globalnav .masthead {
-  color: #ffffff;
-  position: relative;
-  display: inline;
-  font-size: 36px;
+.topnav .static-topnav-left {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 0;
+}
+.topnav .static-topnav-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: 0;
 }
 .tags-panel-container {
   position: absolute;
@@ -79,7 +94,7 @@ a {
 }
 .tags-panel-container .tags-panel .heading-text {
   position: absolute;
-  top: 20px;
+  top: 15px;
   left: 20px;
   font-size: 28px;
   font-weight: 300;
@@ -150,8 +165,15 @@ a {
   top: 100px;
   right: 230px;
   display: block;
-  height: 70px;
+  height: 30px;
   z-index: 98;
+}
+#filter_container .glyphicon-tags {
+  position: absolute;
+  top: 5px;
+  right: 380px;
+  color: #dddddd;
+  font-size: 24px;
 }
 .filter-field {
   display: block;
@@ -160,6 +182,10 @@ a {
   padding: 10px 20px;
   border-radius: 30px;
   border: solid 1px #dddddd;
+}
+.filter-field:hover,
+.filter-field:focus {
+  outline: 0;
 }
 .target {
   position: fixed;
@@ -176,7 +202,7 @@ a {
   right: 250px;
 }
 .actionbar_container {
-  height: 70px;
+  height: 50px;
 }
 .actionbar_container .action-bar {
   position: relative;
@@ -238,6 +264,22 @@ a {
 .photos {
   position: relative;
   margin: 20px;
+}
+.group {
+  position: relative;
+  display: block;
+  padding: 20px;
+  border-bottom: solid 1px #dddddd;
+}
+.group .remove_group_button {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 20px;
+  left: -15px;
+  color: #bbbbbb;
+}
+.group .pic_grid {
+  margin-top: 20px;
 }
 /***** OLD STUFF *****/
 .black {
@@ -327,7 +369,7 @@ span.tag_label {
   max-width: 50px;
 }
 input.tag_label {
-  border: 1px dashed black;
+  border: 1px dashed #dddddd;
 }
 .add_tag_image {
   height: 25px;
@@ -340,16 +382,19 @@ input.tag_label {
 }
 .group_header {
   display: inline;
-  font-size: 2.5em;
-  border: 1px dashed black;
-  padding-left: 5px;
-  padding-right: 5px;
+  font-size: 21px;
+  border: 1px dashed #dddddd;
+  padding: 10px;
   margin-top: 10px;
+}
+.group_header:hover,
+.group_header:focus {
+  outline: 0;
 }
 .subgroup_header {
   margin-left: 50px;
   font-size: 1.5em;
-  border: 1px dashed black;
+  border: 1px dashed #dddddd;
   padding-left: 5px;
   padding-right: 5px;
   display: inline;
@@ -361,13 +406,14 @@ input.tag_label {
   margin-bottom: 10px;
 }
 .selected .thumb {
-  border: 2px solid #0FF;
+  border: 4px solid #3399FF;
 }
 #preview_overlay_container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2000;
+  position: fixed;
+  margin-left: 50%;
+  margin-right: 50%;
+  top: 200px;
+  z-index: 1000;
 }
 .preview_overlay {
   width: 600px;
@@ -398,11 +444,30 @@ input.tag_label {
 }
 .pic_grid {
   position: relative;
-  width: 900px;
+  width: 90%;
 }
 .pic {
   height: 140px;
   width: 140px;
+}
+.pic .glyphicon-star,
+.pic .glyphicon-star-empty {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  font-size: 18px;
+  color: #ffffff;
+}
+.pic .glyphicon-star:hover,
+.pic .glyphicon-star-empty:hover {
+  cursor: pointer;
+}
+.pic .glyphicon-star-empty {
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.pic .glyphicon-star-empty:hover {
+  opacity: 1.0;
 }
 .pic_img {
   height: 140px;
