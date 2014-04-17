@@ -39,8 +39,12 @@ define([
             this.$el.addClass("pic");
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
-                                    
+                            
+            var before = this.$el.hasClass('visible');          
             this.updateVisibility();
+            var after = this.$el.hasClass('visible');
+                       
+            this.trigger("visibilityChanged");
             return this;
         },
         
