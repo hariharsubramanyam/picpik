@@ -44,7 +44,9 @@ define([
         },
         
         filterWall: function() {
-            _.each(this.picViews, function(picView) { picView.updateVisibility()}, this);       
+            console.log("Filter Wall...");
+            _.each(this.picViews, function(picView) { 
+                picView.updateVisibility()}, this);       
             this.wall.filter(".visible");
         },
         
@@ -104,6 +106,7 @@ define([
                 } else {
                     var view = new PicView({model: pic});                    
                 }
+                //this.listenTo(view, "visibilityChanged", this.filterWall);
                 this.picViews.push(view);
                 this.$picgrid.append(view.render().$el); 
             }
