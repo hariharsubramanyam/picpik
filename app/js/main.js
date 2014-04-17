@@ -29,7 +29,11 @@ require.config({
         facebox: {
             deps: ['jquery'],
             exports: 'facebox'
-        }
+        },
+        typeahead: {
+            deps: ['jquery'],
+            exports: 'typeahead'
+        },
     },
     paths: {
         jquery: '../lib/jquery',
@@ -40,6 +44,7 @@ require.config({
         jqueryGridly: '../lib/jquery.gridly',
         freewall: '../lib/freewall',
         facebox: '../lib/facebox',
+        typeahead: '../lib/typeahead.bundle'
     }
 });
 

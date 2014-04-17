@@ -37,6 +37,15 @@ define([
             //this.listenTo(this.model, 'change', this.render);
             
             this.listenTo(this.model, 'destroy', this.remove);
+            
+            this.listenTo(Backbone, 'filterChanged', this.filterWall);
+            
+            this.picViews = [];
+        },
+        
+        filterWall: function() {
+            _.each(this.picViews, function(picView) { picView.updateVisibility()}, this);       
+            this.wall.filter(".visible");
         },
         
         render: function() {
@@ -65,6 +74,7 @@ define([
                         wall.refresh();
                     },
                 });
+                wall.filter(".visible");
                 this.wall.fitWidth();
                 $(window).trigger("resize");
             }
@@ -94,6 +104,7 @@ define([
                 } else {
                     var view = new PicView({model: pic});                    
                 }
+                this.picViews.push(view);
                 this.$picgrid.append(view.render().$el); 
             }
         },

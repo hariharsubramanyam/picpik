@@ -37,9 +37,9 @@ define([
             Backbone.trigger("filterChanged");
         },
         
-        showDeleted: false,
-        setDeletedFilter: function(val) {
-            this.showDeleted = val;
+        deletedOnly: false,
+        setDeletedOnly: function(val) {
+            this.deletedOnly = val;
             Backbone.trigger("filterChanged");
         },
         
@@ -63,18 +63,22 @@ define([
         },
         
         removeVisibleTag: function(tagToDelete) {
-            this.visibleTags = _.filter(this.visibleTags, function(tag) { return tag != tagToDelete; });
+            this.visibleTags = _.filter(this.visibleTags, function(tag) { 
+                 return tag != tagToDelete; 
+            });
             Backbone.trigger("filterChanged");
         },
         
         picVisible: function(pic) {
-            if (this.favoritesOnly && !pic.get('favorited')) {
+            if (this.favoritesOnly && !pic.get('favorited') && !pic.get('deleted')) {
                 return false;
             }
-            if (pic.get('deleted') && !this.showDeleted) {
+            if (this.deletedOnly && !pic.get('deleted')) {
                 return false;
             }
-            console.log(this.visibleTags);
+            if (!this.deletedOnly && pic.get('deleted')) {
+                return false;                
+            }
             if (this.visibleTags.length > 0 && !pic.hasTag(this.visibleTags[0])) {
                 return false;
             }
