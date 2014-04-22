@@ -54,6 +54,10 @@ require([
     'routers/router',
     'demo-loader',
 ], function(Backbone, AppView, Workspace, DemoLoader) {
+    // Uncomment this to clear the database if everything fucks up:
+    //localStorage.clear();
+
+     
     // Start routing and Backbone.history()
     new Workspace();
     Backbone.history.start();

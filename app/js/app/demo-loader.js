@@ -28,8 +28,10 @@ define([
             
             var t2 = TagSet.create({name: "Food"});
             
+            var rootGroup = GroupSet.rootGroup();
             
             var p = GroupSet.create({name: "Mumbai"});
+            rootGroup.addSubgroup(p);
             for (var i = 0; i < 10 + Math.random() * 5 ; i++) {
                 var newPic = PicSet.create({title: "New Pic"});
                 p.addPic(newPic);
@@ -47,6 +49,7 @@ define([
                 }
             }
             var p = GroupSet.create({name: "New Dehli"});
+            rootGroup.addSubgroup(p);
             for (var i = 0; i < 15 + Math.random() * 5; i++) {
                 var newPic = PicSet.create({title: "New Pic"});
                 p.addPic(newPic);
@@ -66,6 +69,10 @@ define([
             }
             
 
+        },
+        
+        clearStorage: function() {
+            localStorage.clear();
         },
         
         checkFirst: function() {

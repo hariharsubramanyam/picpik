@@ -36,20 +36,15 @@ define([
         
         events: {
             "click #add-group": "createGroup",
-            "click #load-demo": "loadDemoData"            
+            "click #load-demo": "loadDemoData",
+            "click #clear-storage": "clearLocalStorage"
+            
         },
         
         initialize: function() {  
-            //this.listenTo(PicSet, 'add', this.addOne);
-            //this.listenTo(PicSet, 'reset', this.addAll);
-            //this.listenTo(PicSet, 'all', this.render);
-            //this.listenTo(PicSet, 'change:completed', this.filterOne);
-            //this.listenTo(PicSet, 'filter', this.filterAll);
             
-            
-            this.listenTo(GroupSet, 'add', this.addOneGroup);
-            this.listenTo(GroupSet, 'reset', this.addAllGroups);
-            
+            // Make UI Components
+                        
             this.tagPanel = new TagPanelView();
             this.actionBar = new ActionBarView();   
             this.previewOverlay = new PreviewOverlayView();
@@ -59,12 +54,13 @@ define([
 
             
             this.$main = $('#main');
-            
             this.$footer = $('#footer-stats');
             
             PicSet.fetch();            
             GroupSet.fetch();
             GroupSet.each(function(group) { group.addPicListeners(); });
+            GroupSet.each(function(group) { group.addSubgroupListeners(); });
+            this.renderGroups();
 
         },
         
@@ -111,13 +107,31 @@ define([
             PicSet.each(this.addOne, this);
         },
         
-        addOneGroup: function(group) {
+        addTopLevelGroup: function(group) {
             var view = new GroupView({model: group});
             this.$('#group_container').append(view.render().el);
         },
         
-        addAllGroups: function() {
-            GroupSet.each(this.addOneGroup, this);
+        renderGroups: function() {
+            var rootGroup = GroupSet.rootGroup();
+            
+            // Root Children Debug Message
+            
+            this.$('#root-kids').html(rootGroup.childrenString());
+            this.listenTo(rootGroup, "subgroupAdded", this.addTopLevelGroup);
+            
+            
+            // Render top-level groups
+            var topLevelGroups = rootGroup.getSubgroups();
+            for (var i = 0; i < topLevelGroups.length; i++) {
+                var group = topLevelGroups[i];
+                if (!group) {
+                    console.log("Error! Undefined group found:");
+                    continue;
+                }
+                var view = new GroupView({model: group});
+                this.$('#group_container').append(view.render().el);
+            }
         },
         
         filterOne: function (pic) {
@@ -134,8 +148,12 @@ define([
         },
         
         createGroup: function(e) {
-            console.log('create group!');
-            GroupSet.create({name: "A New Group!"});
+            var newGroup = GroupSet.create({name: "A New Group!"});
+            GroupSet.rootGroup().addSubgroup(newGroup);
+        },
+        
+        clearLocalStorage: function() {
+            DemoLoader.clearStorage();
         },
         
         loadDemoData: function() {

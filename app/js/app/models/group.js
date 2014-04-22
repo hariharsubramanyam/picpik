@@ -11,6 +11,7 @@ define([
      */
     var Group = Backbone.Model.extend({
         PIC_TYPE: "PIC_TYPE",
+        GROUP_TYPE: "GROUP_TYPE",
         /*
          * Default attribtues for the group.
          */
@@ -35,6 +36,31 @@ define([
                     }
                 }
             }, this);
+        },
+        
+        addSubgroupListeners: function() {
+            var GroupSet = require("collections/groupset");
+            var children = this.get('children');
+            _.each(children, function(childElt) {
+                if(childElt['type'] == this.GROUP_TYPE) {
+                    var groupId = childElt['value'];
+                    var group = GroupSet.findWhere({groupId: groupId});
+                    if(group) {
+                        this.listenTo(group, "destroy", 
+                                      function () {this.removeSubgroup(group)});
+                        this.listenTo(group, "leaveGroup", 
+                                      function () {this.removeSubgroup(group)});
+                    }
+                }
+            }, this);
+        },
+        
+        childrenString: function() {
+            var childrenStr = "";
+                _.each(this.get('children'), function(child) {
+                childrenStr += child['type'][0] + ":" + child['value'] + ", ";
+            });
+            return childrenStr;
         },
         
         addChild: function(type, value) {
@@ -70,13 +96,33 @@ define([
             this.removeChild(this.PIC_TYPE, pic.get('picId'));            
         },
         
+        addSubgroup: function(group) {
+            this.addChild(this.GROUP_TYPE, group.get('groupId'));
+            this.listenTo(group, "destroy", function () {this.removeSubgroup(group)});
+            this.listenTo(group, "leaveGroup", function () {this.removeSubgroup(group)});
+            this.trigger("subgroupAdded", group);
+        },
+        
+        removeSubgroup: function(group) {
+            this.removeChild(this.GROUP_TYPE, group.get('groupId'));            
+        },
+        
         getPics: function() {
-            var pics =  _.map(this.get('children'), function(childElt) {
-                if (childElt['type'] = this.PIC_TYPE) {                    
+            var pics =  _.filter(_.map(this.get('children'), function(childElt) {
+                if (childElt['type'] == this.PIC_TYPE) {                    
                     return PicSet.findWhere({picId: childElt['value']});
                 }
-            }, this);
+            }, this), function(x) { return x; });
             return pics;
+        },
+        
+        getSubgroups: function() {
+            var subgroups =  _.filter(_.map(this.get('children'), function(childElt) {
+                if (childElt['type'] == this.GROUP_TYPE) {                    
+                    return require("collections/groupset").findWhere({groupId: childElt['value']});
+                }
+            }, this), function(x) { return x; });
+            return subgroups;
         },
         
         destroyGroup: function() {

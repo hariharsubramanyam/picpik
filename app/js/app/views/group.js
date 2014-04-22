@@ -5,11 +5,12 @@ define([
     'underscore',
     'backbone',
     'collections/picset',
+    'collections/groupset',
     'views/pic',
     'views/picdebug',
     'text!templates/group.html',
     'common'
-], function($, freewall, gridly, _, Backbone, PicSet, PicView, PicDebugView, groupTemplate, Common) {
+], function($, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicDebugView, groupTemplate, Common) {
     
     var PIC_DEBUG = false;
     /**
@@ -25,6 +26,7 @@ define([
             "blur .group_name":  "closeName",
             "click .remove_group_button":  "removeGroup",            
             "click .add_pic_to_group": "addPicToGroup",
+            "click .add_subgroup_to_group": "createSubgroup",
             "mouseup .pic_grid": "resizePicGrid",
             
         },
@@ -33,8 +35,8 @@ define([
             // "change" is slower, but will update the info list of children,
             // "addPic" is better when the only changes we care about are 
             // rendering new picture additions
-            this.listenTo(this.model, 'addPic', this.addPic);
-            //this.listenTo(this.model, 'change', this.render);
+            //this.listenTo(this.model, 'addPic', this.addPic);
+            this.listenTo(this.model, 'change', this.render);
             
             this.listenTo(this.model, 'destroy', this.remove);
             
@@ -84,9 +86,14 @@ define([
             
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
-            _.each(this.model.getPics(), this.addPic, this);            
+            _.each(this.model.getPics(), this.addPicView, this);            
             
-           
+            // Render SubGroups     
+            this.$subgroups = this.$('.subgroups');
+            var subgroups = this.model.getSubgroups();
+            console.log(this.model.get('name'));
+            console.log("Subgroups", subgroups);
+            _.each(subgroups, this.addSubgroupView, this);            
                         
 			this.$input = this.$('.group_name');            
             return this;
@@ -100,7 +107,7 @@ define([
             console.log("render children");  
         },
         
-        addPic: function(pic) {
+        addPicView: function(pic) {
             if (pic) {
                 if (PIC_DEBUG) {
                     var view = new PicDebugView({model: pic});
@@ -112,6 +119,14 @@ define([
                 this.$picgrid.append(view.render().$el); 
             }
         },
+        
+        addSubgroupView: function(group) {
+            if (group) {
+                var view = new GroupView({model: group});                    
+                this.$subgroups.append(view.render().$el); 
+            }
+        },
+
 
         removeGroup: function() {
             this.model.destroyGroup();
@@ -152,6 +167,11 @@ define([
         addPicToGroup: function() {
             var newPic = PicSet.create({title: "New Pic"});
             this.model.addPic(newPic);
+        },
+        
+        createSubgroup: function() {
+            var newSubgroup = GroupSet.create({name: this.model.get('name') +" - Subgroup"});
+            this.model.addSubgroup(newSubgroup);
         },
     });
     return GroupView;
