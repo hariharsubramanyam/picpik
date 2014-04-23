@@ -421,7 +421,7 @@ input.tag_label {
   margin-bottom: 10px;
 }
 .selected .thumb {
-  border: 4px solid #3399FF;
+  border: 10px solid #3399FF;
 }
 .preview_overlay {
   max-width: 1200px;
