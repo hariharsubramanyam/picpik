@@ -32,7 +32,6 @@ define([
             if (this.active && this.pics.length > 0) {
                 this.renderTagChoices();
                 $("#tagModal").modal("show");
-                console.log($("#tagModal").html());
                 // $.facebox({ div: '#tag_overlay_container' });
             }
             return this;
