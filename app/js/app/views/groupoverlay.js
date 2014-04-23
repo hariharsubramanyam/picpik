@@ -44,7 +44,6 @@ define([
         },
         
         groupPics: function(pics) {
-            console.log(pics);
             this.active = true;
             this.pics = pics;
             this.render();
@@ -58,7 +57,6 @@ define([
         movePics: function() {
             var groupId = this.$(".group_choice").val();
             var group = GroupSet.get(groupId);
-            console.log(group);
             _.each(this.pics, function(pic) { pic.moveToGroup(group) });
         },
     

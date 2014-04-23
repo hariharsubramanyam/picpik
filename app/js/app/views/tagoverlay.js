@@ -46,7 +46,6 @@ define([
         },
         
         tagPics: function(pics) {
-            console.log(pics);
             this.active = true;
             this.pics = pics;
             this.render();

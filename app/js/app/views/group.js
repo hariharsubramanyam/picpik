@@ -47,7 +47,6 @@ define([
         },
         
         filterWall: function() {
-            console.log("Filter Wall...");
             _.each(this.picViews, function(picView) { 
                 picView.updateVisibility()}, this);       
             this.wall.filter(".visible");
@@ -91,8 +90,7 @@ define([
             // Render SubGroups     
             this.$subgroups = this.$('.subgroups');
             var subgroups = this.model.getSubgroups();
-            console.log(this.model.get('name'));
-            console.log("Subgroups", subgroups);
+
             _.each(subgroups, this.addSubgroupView, this);            
                         
 			this.$input = this.$('.group_name');            
@@ -100,11 +98,9 @@ define([
         },
         
         resizePicGrid: function() {
-            console.log("MouseUp");
         },
         
         renderChildren: function() {
-            console.log("render children");  
         },
         
         addPicView: function(pic) {

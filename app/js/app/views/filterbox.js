@@ -85,12 +85,10 @@ define([
         },
         
         clickDeleted: function() {
-            console.log('click deleted');
             Common.setDeletedFilter(this.$("#show_deleted").is(":checked"));
         },
         
         clickFavoritesOnly: function() {
-            console.log('click fav');            
             Common.setFavoritesOnly(this.$("#favorites_only").is(":checked"));
         },
         
@@ -102,7 +100,6 @@ define([
         
         applyFilter: function() {
             var selection = $(".filter-field").val();
-            console.log(selection);
             if (selection === "All") {
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
@@ -148,7 +145,6 @@ define([
         
         pickTag: function() {
             var tagId = this.$(".tag_choice").val();
-            console.log(tagId);
             if (tagId == "all") {
                 Common.clearVisibleTags();
             } else {

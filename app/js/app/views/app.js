@@ -126,7 +126,6 @@ define([
             for (var i = 0; i < topLevelGroups.length; i++) {
                 var group = topLevelGroups[i];
                 if (!group) {
-                    console.log("Error! Undefined group found:");
                     continue;
                 }
                 var view = new GroupView({model: group});
@@ -143,7 +142,6 @@ define([
         },
         
         createPic: function(e) {
-            console.log('create pic!');
             PicSet.create({title: "New Pic"});
         },
         

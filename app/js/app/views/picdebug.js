@@ -102,7 +102,6 @@ define([
         },
         
         updateVisibility: function() {
-            console.log("Update vis");
             var visible = Common.picVisible(this.model);
             if (visible) {
                 this.$el.show();

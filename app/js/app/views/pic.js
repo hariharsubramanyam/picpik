@@ -83,7 +83,6 @@ define([
         },
         
         mouseDown: function() {
-            console.log("mousedown");
             this.partialClick = true;
         },
         
@@ -92,7 +91,6 @@ define([
         },
         
         mouseUp: function() {
-            console.log(this.partialClick);
             this.toggleSelection();
         },
     });
