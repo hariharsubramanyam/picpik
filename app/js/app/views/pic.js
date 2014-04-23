@@ -91,8 +91,19 @@ define([
         },
         
         mouseUp: function() {
+            console.log(this.getTagNames());
             this.toggleSelection();
         },
+        getTagNames: function(){
+            var tagNames = [];
+            var model = this.model;
+            _.each(TagSet.toJSON(), function(value, key, list){
+                if (_.contains(model.toJSON().tagList, value.tagId)) {
+                    tagNames.push(value.name);
+                }
+            });
+            return tagNames;
+        }
     });
     return PicView;
 });
