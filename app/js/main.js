@@ -34,6 +34,9 @@ require.config({
             deps: ['jquery'],
             exports: 'typeahead'
         },
+        bootstrap: {
+            deps: ['jquery']
+        }
     },
     paths: {
         jquery: '../lib/jquery',
@@ -44,7 +47,8 @@ require.config({
         jqueryGridly: '../lib/jquery.gridly',
         freewall: '../lib/freewall',
         facebox: '../lib/facebox',
-        typeahead: '../lib/typeahead.bundle'
+        typeahead: '../lib/typeahead.bundle',
+        bootstrap: '../../css/bootstrap/dist/js/bootstrap'
     }
 });
 

@@ -4,7 +4,8 @@ define([
     'backbone',
     'collections/tagset',
     'text!templates/tagoverlay.html',
-    'common'
+    'common',
+    'bootstrap'
 ], function($, _, Backbone, TagSet, tagOverlayTemplate, Common) {
     /**
      */
@@ -30,7 +31,9 @@ define([
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
                 this.renderTagChoices();
-                $.facebox({ div: '#tag_overlay_container' });
+                $("#tagModal").modal("show");
+                console.log($("#tagModal").html());
+                // $.facebox({ div: '#tag_overlay_container' });
             }
             return this;
         },
@@ -57,6 +60,7 @@ define([
         },
         
         addTag: function() {
+            console.log("Tagging pics");
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
             _.each(this.pics, function(pic) { pic.addTag(tag) });
