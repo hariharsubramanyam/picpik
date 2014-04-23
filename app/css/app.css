@@ -209,12 +209,12 @@ a {
   height: 50px;
 }
 .actionbar_container .action-bar {
-  position: relative;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 80px;
+  left: 5px;
   display: block;
   height: 70px;
-  width: 100%;
+  width: 55%;
   background-color: #ffffff;
   z-index: 99;
 }
