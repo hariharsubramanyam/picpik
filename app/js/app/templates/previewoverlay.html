@@ -7,16 +7,18 @@
       </div>
       <div class="modal-body">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <% _.each(pics, function(pic, index) {%>
-              <% if(index == 0) { %>
-                <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="active"></li>
-              <% } else { %>
-                <li data-target="#carousel-example-generic" data-slide-to="<%= index %>"></li>
-              <% } %>
-            <% }); %>
-          </ol>
+          <% if(pics.length > 1) { %>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <% _.each(pics, function(pic, index) {%>
+                <% if(index == 0) { %>
+                  <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="active"></li>
+                <% } else { %>
+                  <li data-target="#carousel-example-generic" data-slide-to="<%= index %>"></li>
+                <% } %>
+              <% }); %>
+            </ol>
+          <% } %>
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
@@ -36,12 +38,14 @@
             </div>
 
             <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+            <% if(pics.length > 1) { %>
+              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+            <% } %>
           </div>
         </div>
       </div><!-- /.modal-content -->
