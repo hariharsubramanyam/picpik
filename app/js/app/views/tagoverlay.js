@@ -32,6 +32,7 @@ define([
             if (this.active && this.pics.length > 0) {
                 this.renderTagChoices();
                 $("#tagModal").modal("show");
+                console.log("Here");
             }
             return this;
         },
