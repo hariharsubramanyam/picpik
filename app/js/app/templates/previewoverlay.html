@@ -6,47 +6,45 @@
         <h4 class="modal-title">Preview <% print(pics.length) %> Image<% if(pics.length > 1){print("s")}%></h4>
       </div>
       <div class="modal-body">
-	    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-  	<% _.each(pics, function(pic, index) {%>
-  		<% if(index == 0) { %>
-  			<li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="active"></li>
-  		<% } else { %>
-  			<li data-target="#carousel-example-generic" data-slide-to="<%= index %>"></li>
-  		<% } %>
-  	<% }); %>
-  </ol>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <% _.each(pics, function(pic, index) {%>
+              <% if(index == 0) { %>
+                <li data-target="#carousel-example-generic" data-slide-to="<%= index %>" class="active"></li>
+              <% } else { %>
+                <li data-target="#carousel-example-generic" data-slide-to="<%= index %>"></li>
+              <% } %>
+            <% }); %>
+          </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-  <% _.each(pics, function(pic, index) {%>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <% _.each(pics, function(pic, index) {%>
 
-		<% if(index == 0) { %>
-			<div class="item active">
-		<% } else { %>
-			<div class="item">
-		<% } %>
-	    	<img src="assets/<%= pic.get('picSrc') %>" class="carousel_pic"/>
-	      <div class="carousel-caption">
-	      </div>
-	    </div>
-	  
-  <% }); %>
-  </div>
+              <% if(index == 0) { %>
+                <div class="item active">
+              <% } else { %>
+                <div class="item">
+              <% } %>
+                  <img src="assets/<%= pic.get('picSrc') %>" class="carousel_pic"/>
+                  <div class="carousel-caption">
+                  </div>
+                </div>
+              
+            <% }); %>
+            </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
-      </div>
-      <div class="modal-footer">
-      	<button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
