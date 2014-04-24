@@ -28,7 +28,7 @@ define([
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
                 this.renderGroupChoices();
-                $.facebox({ div: '#group_overlay_container' });
+                $("#groupModal").modal("show");
             }
             return this;
         },

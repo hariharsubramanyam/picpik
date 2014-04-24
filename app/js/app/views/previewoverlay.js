@@ -27,8 +27,9 @@ define([
         
         render: function() {
             if (this.active) {
-                this.$el.html(this.multiImageTemplate({pics: this.pics}));
-                $.facebox({ div: '#preview_overlay_container' });
+                this.$el.html(this.singleImageTemplate({pics: this.pics}));
+                $('#previewModal').modal("show");
+                $('.carousel').carousel();
             } 
             return this;
         },
