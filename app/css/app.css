@@ -531,6 +531,17 @@ input.tag_label {
   margin: 0;
 }
 .pic {
+  height: 140px;
+  width: 140px;
   position: relative;
   display: inline-block;
+  margin: 10px;
+}
+.pic_target {
+  height: 140px;
+  width: 140px;
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  background-color: red;
 }

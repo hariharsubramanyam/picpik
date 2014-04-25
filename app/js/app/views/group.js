@@ -1,5 +1,6 @@
 define([
     'jquery',
+    'jqueryUI',
     'freewall',
     'jqueryGridly',
     'underscore',
@@ -10,7 +11,7 @@ define([
     'views/picdebug',
     'text!templates/group.html',
     'common'
-], function($, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicDebugView, groupTemplate, Common) {
+], function($, jqueryUI, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicDebugView, groupTemplate, Common) {
     
     var PIC_DEBUG = false;
     /**
@@ -83,9 +84,16 @@ define([
                 $(window).trigger("resize");
                 */
             }
-            
+
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
+            this.$picgrid.sortable({
+              connectWith: '.pic_grid',
+              forcePlaceholderSize: true,
+              placeholder: 'pic_target'
+            });
+            this.$picgrid.disableSelection();
+
             _.each(this.model.getPics(), this.addPicView, this);            
             
             // Render SubGroups     

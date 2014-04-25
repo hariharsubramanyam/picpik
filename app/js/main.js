@@ -22,6 +22,9 @@ require.config({
             deps: ['jquery'],
             exports: 'Gridly'
         },
+        jqueryUI: {
+            deps: ['jquery']
+        },
         freewall: {
             deps: ['jquery'],
             exports: 'freewall'
@@ -40,6 +43,7 @@ require.config({
     },
     paths: {
         jquery: '../lib/jquery',
+        jqueryUI: '../lib/jquery-ui',
         underscore: '../lib/underscore',
         backbone: '../lib/backbone',
         backboneLocalstorage: '../lib/backbone.localStorage',

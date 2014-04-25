@@ -16,7 +16,7 @@ define([
         template: _.template(picTemplate),
         
         events: {
-            "dragstart  .thumb" : "mouseDown",
+            "mousedown  .thumb" : "mouseDown",
             "mouseup  .thumb" : "mouseUp",
             "mousemove  .thumb" : "mouseMove",
             "dblclick  .thumb" : "doubleClick",
@@ -92,7 +92,9 @@ define([
         
         mouseUp: function() {
             console.log(this.getTagNames());
-            this.toggleSelection();
+            if (this.partialClick) {
+                this.toggleSelection();
+            }
         },
         getTagNames: function(){
             var tagNames = [];
