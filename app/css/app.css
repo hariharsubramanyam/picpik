@@ -530,3 +530,7 @@ input.tag_label {
 .tt-suggestion p {
   margin: 0;
 }
+.pic {
+  position: relative;
+  display: inline-block;
+}

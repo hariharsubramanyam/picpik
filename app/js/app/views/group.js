@@ -64,7 +64,7 @@ define([
                 columns: 12
             });*/
             if(!PIC_DEBUG) {
-            
+            /*
                  // Freewall
                 this.wall = new freewall(this.$('.pic_grid'));
                 var wall = this.wall;
@@ -81,6 +81,7 @@ define([
                 wall.filter(".visible");
                 this.wall.fitWidth();
                 $(window).trigger("resize");
+                */
             }
             
             // Render Pics     
