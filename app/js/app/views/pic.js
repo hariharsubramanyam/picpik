@@ -91,7 +91,6 @@ define([
         },
         
         mouseUp: function() {
-            console.log(this.getTagNames());
             if (this.partialClick) {
                 this.toggleSelection();
             }
