@@ -46,6 +46,7 @@ define([
         redo: function(){
             var command = this.commandStack[this.get('index') + 1];
             if (!command) {return;}
+            console.log(command.redo.m);
             this.callCommand(command.redo);
             this.set({index: this.get('index') + 1});   
         },

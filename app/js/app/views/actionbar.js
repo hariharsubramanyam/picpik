@@ -33,7 +33,7 @@ define([
         render: function() {
             var numPicsSelected = Common.numPicsSelected();
             this.$el.html(this.template({num_selected: numPicsSelected}));
-            if (numPicsSelected == 0) {
+            if (numPicsSelected === 0) {
                 this.$el.hide();
             } else {
                 this.$el.show();
@@ -51,7 +51,23 @@ define([
         },
         
         deleteClicked: function() {
-            _.each(Common.selectedPics, function(pic) { console.log("Deleted pic " + pic.get("picId"));pic.markDeleted() });
+            var undo_function = function(){
+                _.each(this, function(pic){
+                    pic.markNotDeleted();
+                    Backbone.trigger("imagesDeleted"); 
+                });
+            };
+            var redo_function = function(){
+                _.each(this, function(pic){
+                    pic.markDeleted();
+                    Backbone.trigger("imagesDeleted"); 
+                });
+            };
+
+            UndoManager.register(Common.selectedPics, undo_function, null, "Undeleted pictures", Common.selectedPics, redo_function, null, "Deleted pictures");
+            _.each(Common.selectedPics, function(pic){
+                pic.markDeleted();
+            });
             Backbone.trigger("imagesDeleted");         
         },
         
