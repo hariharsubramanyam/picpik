@@ -51,7 +51,7 @@ define([
         },
         
         deleteClicked: function() {
-            _.each(Common.selectedPics, function(pic) { pic.markDeleted() });
+            _.each(Common.selectedPics, function(pic) { console.log("Deleted pic " + pic.get("picId"));pic.markDeleted() });
             Backbone.trigger("imagesDeleted");         
         },
         

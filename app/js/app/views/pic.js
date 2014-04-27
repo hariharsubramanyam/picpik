@@ -39,10 +39,8 @@ define([
             this.$el.addClass("pic");
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('selected', this.model.selected);
-                            
-            var before = this.$el.hasClass('visible');          
+                             
             this.updateVisibility();
-            var after = this.$el.hasClass('visible');
                        
             this.trigger("visibilityChanged");
             return this;
@@ -59,9 +57,9 @@ define([
         updateVisibility: function() {
             var visible = Common.picVisible(this.model);
             if (visible) {
-                this.$el.toggleClass('visible', true);
+                this.$el.toggleClass('hide', false);
             } else {
-                this.$el.toggleClass('visible', false);
+                this.$el.toggleClass('hide', true);
             }
         },
         

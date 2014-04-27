@@ -77,6 +77,7 @@ define([
                 return false;
             }
             if (!this.deletedOnly && pic.get('deleted')) {
+                console.log(pic.toJSON().picId + " is not visible");
                 return false;                
             }
             if (this.visibleTags.length > 0 && !pic.hasTag(this.visibleTags[0])) {
