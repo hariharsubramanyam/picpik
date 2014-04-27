@@ -4,8 +4,9 @@ define([
     'backbone',
     'text!templates/actionbar.html',
     'common',
+    'models/undomanager'
 ], function($, _, Backbone, actionBarTemplate, 
-            Common) {
+            Common, UndoManager) {
     /**
      * The View object for a Picture in the grid.
      * The view object is a div

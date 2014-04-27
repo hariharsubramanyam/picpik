@@ -75,6 +75,10 @@ define([
         toggleDeleted: function() {
             this.save({deleted: !this.get("deleted")});
         },
+
+        markNotDeleted: function(){
+            this.save({deleted: false});
+        },
         
         hasTag: function(tag) {
             return _.contains(this.get('tagList'), tag.get('tagId'));

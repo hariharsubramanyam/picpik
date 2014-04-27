@@ -80,6 +80,17 @@ a {
   right: 0px;
   border: 0;
 }
+.topnav .undo_redo_container {
+  position: absolute;
+  top: 0px;
+  left: 40%;
+  text-align: center;
+  width: 200px;
+  height: 80px;
+}
+.topnav .undo_redo_container .undo_redo_button_div {
+  margin-top: 15px;
+}
 .tags-panel-container {
   position: absolute;
   display: block;

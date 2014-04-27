@@ -13,6 +13,7 @@ define([
     'views/tagoverlay',
     'views/groupoverlay',
     'views/filterbox',
+    'views/undo_redo',
     
     'demo-loader',
     'text!templates/stats.html',
@@ -24,6 +25,7 @@ define([
             TagOverlayView,
             GroupOverlayView,
             FilterBoxView,
+            UndoRedoView,
             DemoLoader,
             statsTemplate, Common) {
     /**
@@ -51,6 +53,7 @@ define([
             this.tagOverlay = new TagOverlayView();
             this.groupOverlay = new GroupOverlayView();
             this.filterBox = new FilterBoxView();
+            this.undoRedo = new UndoRedoView();
 
             
             this.$main = $('#main');
@@ -90,6 +93,9 @@ define([
             
             $("#filter_container").append(this.filterBox.$el);
             this.filterBox.render();
+
+            $("#undo_redo_container").append(this.undoRedo.$el);
+            this.undoRedo.render();
             
             
             this.$('#filters a').removeClass('selected')
