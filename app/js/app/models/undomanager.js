@@ -46,7 +46,6 @@ define([
         redo: function(){
             var command = this.commandStack[this.get('index') + 1];
             if (!command) {return;}
-            console.log(command.redo.m);
             this.callCommand(command.redo);
             this.set({index: this.get('index') + 1});   
         },
@@ -61,6 +60,18 @@ define([
 
         hasRedo: function(){
             return this.get('index') < (this.commandStack.length - 1);
+        },
+
+        peekUndoMessage: function(){
+            var command = this.commandStack[this.get('index')];
+            if (!command) {return null;}
+            return command.undo.m;
+        },
+
+        peekRedoMessage: function(){
+            var command = this.commandStack[this.get('index') + 1];
+            if (!command) {return null;}
+            return command.redo.m;
         },
 
         setCallback: function(){

@@ -13,7 +13,7 @@ define([
      */
     var ActionBarView = Backbone.View.extend({
         tagName: "div",
-        
+
         template: _.template(actionBarTemplate),
         
         events: {
@@ -54,7 +54,7 @@ define([
             var undo_function = function(){
                 _.each(this, function(pic){
                     pic.markNotDeleted();
-                    Backbone.trigger("imagesDeleted"); 
+                    Backbone.trigger("imagesUndeleted"); 
                 });
             };
             var redo_function = function(){
@@ -64,7 +64,7 @@ define([
                 });
             };
 
-            UndoManager.register(Common.selectedPics, undo_function, null, "Undeleted pictures", Common.selectedPics, redo_function, null, "Deleted pictures");
+            UndoManager.register(Common.selectedPics, undo_function, null, "Undo Delete", Common.selectedPics, redo_function, null, "Redo Delete");
             _.each(Common.selectedPics, function(pic){
                 pic.markDeleted();
             });
