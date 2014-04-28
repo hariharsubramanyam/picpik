@@ -83,13 +83,23 @@ a {
 .topnav .undo_redo_container {
   position: absolute;
   top: 0px;
-  left: 40%;
+  left: 30%;
   text-align: center;
-  width: 400px;
+  width: 500px;
   height: 80px;
 }
 .topnav .undo_redo_container .undo_redo_button_div {
   margin-top: 15px;
+}
+.topnav .undo_redo_container .undo_redo_button_div .undo-btn {
+  background-color: #222222;
+  color: white;
+  width: 200px;
+}
+.topnav .undo_redo_container .undo_redo_button_div .redo-btn {
+  background-color: #222222;
+  color: white;
+  width: 200px;
 }
 .tags-panel-container {
   position: absolute;

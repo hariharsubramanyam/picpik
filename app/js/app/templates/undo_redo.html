@@ -1,12 +1,12 @@
 <div class="undo_redo_button_div">
-		<button class="btn btn-default undo-btn btn-lg" type="button" <%if(!undo_message){%>disabled<%}%>>
+		<button class="btn undo-btn btn-lg" type="button" <%if(!undo_message){%>disabled<%}%>>
 			<% if(undo_message) {%>
 				<%= undo_message %>
 			<% }else{ %>
 				Undo
 			<% } %>
 		</button>
-		<button class="btn btn-default redo-btn btn-lg" type="button" <%if(!redo_message){%>disabled<%}%>>
+		<button class="btn redo-btn btn-lg" type="button" <%if(!redo_message){%>disabled<%}%>>
 			<% if(redo_message) {%>
 				<%= redo_message %>
 			<% }else{ %>
