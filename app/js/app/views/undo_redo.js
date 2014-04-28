@@ -17,11 +17,12 @@ define([
 		initialize: function(){
 			this.listenTo(Backbone, "imagesDeleted", this.render);
 			this.listenTo(Backbone, "imagesUndeleted", this.render);
+			this.listenTo(Backbone, "imagesUnfavorited", this.render);
+			this.listenTo(Backbone, "imagesFavorited", this.render);
 		},
 		render: function(){
 			var undo_message = UndoManager.peekUndoMessage();
 			var redo_message = UndoManager.peekRedoMessage();
-			console.log(undo_message + " " + redo_message);
 			this.$el.html(this.template({
 				"redo_message":redo_message,
 				"undo_message":undo_message

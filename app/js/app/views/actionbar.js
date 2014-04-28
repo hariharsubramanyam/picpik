@@ -54,20 +54,18 @@ define([
             var undo_function = function(){
                 _.each(this, function(pic){
                     pic.markNotDeleted();
-                    Backbone.trigger("imagesUndeleted"); 
                 });
+                Backbone.trigger("imagesUndeleted");
             };
             var redo_function = function(){
                 _.each(this, function(pic){
                     pic.markDeleted();
-                    Backbone.trigger("imagesDeleted"); 
                 });
+                Backbone.trigger("imagesDeleted"); 
             };
 
             UndoManager.register(Common.selectedPics, undo_function, null, "Undo Delete", Common.selectedPics, redo_function, null, "Redo Delete");
-            _.each(Common.selectedPics, function(pic){
-                pic.markDeleted();
-            });
+            _.each(Common.selectedPics, function(pic){pic.markDeleted();});
             Backbone.trigger("imagesDeleted");         
         },
         
@@ -80,12 +78,41 @@ define([
         },
         
         starClicked: function() {
-            var allFavorited = _.every(Common.selectedPics, function(pic) {return pic.get('favorited')});
+            var allFavorited = _.every(Common.selectedPics, function(pic) {return pic.get('favorited');});
             if (allFavorited) {
-                _.each(Common.selectedPics, function(pic) { pic.unfavorite() });
+                console.log("They were all favorites");
+                var redo_function = function(){
+                    _.each(this, function(pic){
+                        pic.unfavorite();
+                    });
+                    Backbone.trigger("imagesUnfavorited");
+                };
+                var undo_function = function(){
+                    _.each(this, function(pic){
+                        pic.favorite();
+                    });
+                    Backbone.trigger("imagesFavorited");
+                };
+                UndoManager.register(Common.selectedPics, undo_function, null, "Undo Unfavorite", Common.selectedPics, redo_function, null, "Redo Unfavorite");
+                _.each(Common.selectedPics, function(pic) { pic.unfavorite();});
+                Backbone.trigger("imagesUnfavorited");
             } else {
-                _.each(Common.selectedPics, function(pic) { pic.favorite() });
-                
+                console.log("They weren't all favorited");
+                var redo_function = function(){
+                    _.each(this, function(pic){
+                        pic.favorite();
+                    });
+                    Backbone.trigger("imagesFavorited");
+                };
+                var undo_function = function(){
+                    _.each(this, function(pic){
+                        pic.unfavorite();
+                    });
+                    Backbone.trigger("imagesUnfavorited");
+                };
+                UndoManager.register(Common.selectedPics, undo_function, null, "Undo Favorite", Common.selectedPics, redo_function, null, "Redo favorite");
+                _.each(Common.selectedPics, function(pic) { console.log("Favoriting");pic.favorite();});
+                Backbone.trigger("imagesFavorited");
             }
         },
     });
