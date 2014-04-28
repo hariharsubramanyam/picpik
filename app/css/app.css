@@ -91,15 +91,12 @@ a {
 .topnav .undo_redo_container .undo_redo_button_div {
   margin-top: 15px;
 }
-.topnav .undo_redo_container .undo_redo_button_div .undo-btn {
-  background-color: #222222;
-  color: white;
-  width: 200px;
-}
+.topnav .undo_redo_container .undo_redo_button_div .undo-btn,
 .topnav .undo_redo_container .undo_redo_button_div .redo-btn {
   background-color: #222222;
   color: white;
   width: 200px;
+  border-radius: 0px;
 }
 .tags-panel-container {
   position: absolute;
