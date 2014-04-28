@@ -80,34 +80,24 @@ define([
         starClicked: function() {
             var allFavorited = _.every(Common.selectedPics, function(pic) {return pic.get('favorited');});
             if (allFavorited) {
-                console.log("They were all favorites");
                 var redo_function = function(){
-                    _.each(this, function(pic){
-                        pic.unfavorite();
-                    });
+                    _.each(this, function(pic){pic.unfavorite();});
                     Backbone.trigger("imagesUnfavorited");
                 };
                 var undo_function = function(){
-                    _.each(this, function(pic){
-                        pic.favorite();
-                    });
+                    _.each(this, function(pic){pic.favorite();});
                     Backbone.trigger("imagesFavorited");
                 };
                 UndoManager.register(Common.selectedPics, undo_function, null, "Undo Unfavorite", Common.selectedPics, redo_function, null, "Redo Unfavorite");
                 _.each(Common.selectedPics, function(pic) { pic.unfavorite();});
                 Backbone.trigger("imagesUnfavorited");
             } else {
-                console.log("They weren't all favorited");
                 var redo_function = function(){
-                    _.each(this, function(pic){
-                        pic.favorite();
-                    });
+                    _.each(this, function(pic){pic.favorite();});
                     Backbone.trigger("imagesFavorited");
                 };
                 var undo_function = function(){
-                    _.each(this, function(pic){
-                        pic.unfavorite();
-                    });
+                    _.each(this, function(pic){pic.unfavorite();});
                     Backbone.trigger("imagesUnfavorited");
                 };
                 UndoManager.register(Common.selectedPics, undo_function, null, "Undo Favorite", Common.selectedPics, redo_function, null, "Redo favorite");
