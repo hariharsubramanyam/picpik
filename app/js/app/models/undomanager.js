@@ -1,8 +1,9 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function($, _, Backbone){
+    'backbone',
+    'common'
+], function($, _, Backbone, Common){
     'use strict';
 
     var UndoManager = Backbone.Model.extend({

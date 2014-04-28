@@ -4,8 +4,9 @@ define([
     'backbone',
     'text!templates/pic.html',
     'collections/tagset',    
-    'common'
-], function($, _, Backbone, picTemplate, TagSet, Common) {
+    'common',
+    'models/undomanager'
+], function($, _, Backbone, picTemplate, TagSet, Common, UndoManager) {
     /**
      * The View object for a Picture in the grid.
      * The view object is a div
@@ -68,11 +69,27 @@ define([
         },
 
         favorite: function() {
+            var undo_function = function(){
+                this.unfavorite();
+            };
+            var redo_function = function(){
+                this.favorite();
+            };
+            UndoManager.register(this.model, undo_function, null, "Undo Favorite", this.model, redo_function, null, "Redo Favorite");
             this.model.favorite();
+            Backbone.trigger("imagesFavorited");
         },
 
         unfavorite: function() {
+            var undo_function = function(){
+                this.favorite();
+            };
+            var redo_function = function(){
+                this.unfavorite();
+            };
+            UndoManager.register(this.model, undo_function, null, "Undo Unfavorite", this.model, redo_function, null, "Redo Unfavorite");
             this.model.unfavorite();
+            Backbone.trigger("imagesUnfavorited");
         },
         
         doubleClick: function() {

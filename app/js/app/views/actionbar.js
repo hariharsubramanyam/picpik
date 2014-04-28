@@ -101,7 +101,7 @@ define([
                     Backbone.trigger("imagesUnfavorited");
                 };
                 UndoManager.register(Common.selectedPics, undo_function, null, "Undo Favorite", Common.selectedPics, redo_function, null, "Redo favorite");
-                _.each(Common.selectedPics, function(pic) { console.log("Favoriting");pic.favorite();});
+                _.each(Common.selectedPics, function(pic) {pic.favorite();});
                 Backbone.trigger("imagesFavorited");
             }
         },
