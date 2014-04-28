@@ -19,6 +19,8 @@ define([
 			this.listenTo(Backbone, "imagesUndeleted", this.render);
 			this.listenTo(Backbone, "imagesUnfavorited", this.render);
 			this.listenTo(Backbone, "imagesFavorited", this.render);
+			this.listenTo(Backbone, "imagesTagged", this.render);
+			this.listenTo(Backbone, "imagesUntagged", this.render);
 		},
 		render: function(){
 			var undo_message = UndoManager.peekUndoMessage();

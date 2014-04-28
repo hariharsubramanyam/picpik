@@ -5,8 +5,9 @@ define([
     'collections/tagset',
     'text!templates/tagoverlay.html',
     'common',
+    'models/undomanager',
     'bootstrap'
-], function($, _, Backbone, TagSet, tagOverlayTemplate, Common) {
+], function($, _, Backbone, TagSet, tagOverlayTemplate, Common, UndoManager) {
     /**
      */
     var TagOverlayView = Backbone.View.extend({
@@ -58,16 +59,44 @@ define([
         },
         
         addTag: function() {
-            console.log("Tagging pics");
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
-            _.each(this.pics, function(pic) { pic.addTag(tag) });
+            var redo_function = function(tag){
+                _.each(this, function(pic){
+                    pic.addTag(tag);
+                });
+                Backbone.trigger("imagesTagged");
+            };
+            var undo_function = function(tag){
+                _.each(this, function(pic){
+                    pic.removeTag(tag);
+                });
+                Backbone.trigger("imagesUntagged");
+            };
+            UndoManager.register(this.pics, undo_function, [tag], "Undo Tagging", this.pics, redo_function, [tag], "Redo Tagging");
+            _.each(this.pics, function(pic) { pic.addTag(tag); });
+            Backbone.trigger("imagesTagged");
+
         },
         
         removeTag: function() {
             var tagId = parseInt(this.$(".tag_choice").val());
             var tag = TagSet.findWhere({tagId: tagId});
+            var redo_function = function(tag){
+                _.each(this, function(pic){
+                    pic.removeTag(tag);
+                });
+                Backbone.trigger("imagesUntagged");
+            };
+            var undo_function = function(pic){
+                _.each(this, function(pic){
+                    pic.addTag(tag);
+                });
+                Backbone.trigger("imagesTagged");
+            };
+            UndoManager.register(this.pics, undo_function, [tag], "Undo Untagging", this.pics, redo_function, [tag], "Redo Untagging");
             _.each(this.pics, function(pic) { pic.removeTag(tag) });
+            Backbone.trigger("imagesUntagged");
         },
     
     });
