@@ -15,6 +15,7 @@ define([
     'views/filterbox',
     'views/undo_redo',
     'views/droptargets',
+    'views/toast',
     
     'demo-loader',
     'text!templates/stats.html',
@@ -28,6 +29,7 @@ define([
             FilterBoxView,
             UndoRedoView,
             DropTargetsView,
+            ToastView,
             DemoLoader,
             statsTemplate, Common) {
     /**
@@ -57,6 +59,7 @@ define([
             this.filterBox = new FilterBoxView();
             this.undoRedo = new UndoRedoView();
             this.dropTargetsView = new DropTargetsView();
+            this.toastView = new ToastView();
 
             
             this.$main = $('#main');
@@ -102,6 +105,9 @@ define([
 
             $('#drop_targets_container').append(this.dropTargetsView.$el);
             this.dropTargetsView.render();
+
+            $("#toast_container").append(this.toastView.$el);
+            Backbone.trigger("showToast", "sample toast", 2000);
             
             
             this.$('#filters a').removeClass('selected')
