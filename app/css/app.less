@@ -67,6 +67,26 @@ body {
 
 }
 
+.drop-target{
+  position: fixed; 
+  height: 100px; 
+  width:200px; 
+  bottom: 5px;
+  opacity: 0.8;
+  &.delete-target{
+    left: 5px;
+  }
+  &.favorite-target{
+    right: 230px;
+  }
+  .target-icon{
+    font-size: 30px;
+  }
+  .target-text{
+    font-size: 40px;
+  }
+}
+
 .carousel_pic{
   height: 400px !important;
   margin-left:auto;

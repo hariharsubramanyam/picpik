@@ -31,6 +31,25 @@ body ::-webkit-scrollbar-track {
 body ::-webkit-scrollbar-thumb {
   background-color: #222222;
 }
+.drop-target {
+  position: fixed;
+  height: 100px;
+  width: 200px;
+  bottom: 5px;
+  opacity: 0.8;
+}
+.drop-target.delete-target {
+  left: 5px;
+}
+.drop-target.favorite-target {
+  right: 230px;
+}
+.drop-target .target-icon {
+  font-size: 30px;
+}
+.drop-target .target-text {
+  font-size: 40px;
+}
 .carousel_pic {
   height: 400px !important;
   margin-left: auto;
