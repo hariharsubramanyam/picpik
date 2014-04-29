@@ -27,7 +27,7 @@ define([
         
         initialize: function() {
             this.listenTo(Common, "selectionChange", this.render);
-
+            
         },
         
         render: function() {

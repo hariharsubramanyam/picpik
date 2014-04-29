@@ -31,6 +31,9 @@ body ::-webkit-scrollbar-track {
 body ::-webkit-scrollbar-thumb {
   background-color: #222222;
 }
+.bottom-padding-div {
+  height: 80px;
+}
 .drop-target {
   position: fixed;
   height: 75px;
@@ -397,9 +400,10 @@ a {
 }
 .tag_icon {
   background-color: white;
+  height: 30px;
 }
 .tag_icon .tag_image {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .tag_icon:focus .black {
   color: black;
@@ -589,5 +593,5 @@ input.tag_label {
   position: relative;
   display: inline-block;
   margin: 10px;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.2);
 }
