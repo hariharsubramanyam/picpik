@@ -221,6 +221,8 @@ a {
 }
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn {
   color: #dddddd;
+  position: absolute;
+  right: 2px;
 }
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn:hover {
   color: #bbbbbb;
@@ -424,14 +426,15 @@ a {
   color: yellow;
 }
 .tag_label {
-  font-size: 1.5em;
+  font-size: 1em;
   vertical-align: center;
   margin-left: 5px;
   margin-top: 5px;
-  max-width: 100px;
+  max-width: 80px;
   margin-bottom: 5px;
 }
 span.tag_label {
+  margin-top: 10px;
   max-width: 50px;
 }
 input.tag_label {
