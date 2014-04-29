@@ -14,6 +14,7 @@ define([
     'views/groupoverlay',
     'views/filterbox',
     'views/undo_redo',
+    'views/droptargets',
     
     'demo-loader',
     'text!templates/stats.html',
@@ -26,6 +27,7 @@ define([
             GroupOverlayView,
             FilterBoxView,
             UndoRedoView,
+            DropTargetsView,
             DemoLoader,
             statsTemplate, Common) {
     /**
@@ -54,6 +56,7 @@ define([
             this.groupOverlay = new GroupOverlayView();
             this.filterBox = new FilterBoxView();
             this.undoRedo = new UndoRedoView();
+            this.dropTargetsView = new DropTargetsView();
 
             
             this.$main = $('#main');
@@ -96,6 +99,9 @@ define([
 
             $("#undo_redo_container").append(this.undoRedo.$el);
             this.undoRedo.render();
+
+            $('#drop_targets_container').append(this.dropTargetsView.$el);
+            this.dropTargetsView.render();
             
             
             this.$('#filters a').removeClass('selected')
