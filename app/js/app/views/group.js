@@ -12,7 +12,7 @@ define([
     'text!templates/group.html',
     'common'
 ], function($, jqueryUI, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicDebugView, groupTemplate, Common) {
-    
+    'use strict';
     var PIC_DEBUG = false;
     /**
      * The View object for a Group in the grid.
