@@ -76,7 +76,7 @@ define([
             UndoManager.register(this.pics, undo_function, [tag], "Undo Tagging", this.pics, redo_function, [tag], "Redo Tagging");
             _.each(this.pics, function(pic) { pic.addTag(tag); });
             Backbone.trigger("imagesTagged");
-
+            Backbone.trigger("showToast", "tagged pics");
         },
         
         removeTag: function() {
@@ -97,6 +97,7 @@ define([
             UndoManager.register(this.pics, undo_function, [tag], "Undo Untagging", this.pics, redo_function, [tag], "Redo Untagging");
             _.each(this.pics, function(pic) { pic.removeTag(tag) });
             Backbone.trigger("imagesUntagged");
+            Backbone.trigger("showToast", "untagged pics");
         },
     
     });

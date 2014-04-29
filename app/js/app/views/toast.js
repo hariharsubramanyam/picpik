@@ -14,22 +14,24 @@ define([
 		},
 		initialize: function(){
 			this.listenTo(Backbone, "showToast", this.showToast);
-			console.log("Listening");
+			this.timeout = null;
 		},
-		showToast: function(message, timeout){
-			this.render(message, timeout);
+		showToast: function(message){
+			this.render(message);
 		},
-		render: function(message, timeout){
-			console.log(timeout);
+		render: function(message){
+			if(this.timeout != null){
+				clearTimeout(this.timeout);
+			}
 			this.$el.html(this.template({
 				"message": message
 			}));
 			this.$el.fadeOut(0);
-			this.$el.fadeIn(400);
+			this.$el.fadeIn(500);
 			var current_object = this;
-			setTimeout(function(){
-				current_object.$el.fadeOut(400);
-			}, timeout);
+			this.timeout = setTimeout(function(){
+				current_object.$el.fadeOut(500);
+			}, 3000);
 		}
 	});
 

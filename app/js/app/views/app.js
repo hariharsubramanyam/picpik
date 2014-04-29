@@ -107,7 +107,6 @@ define([
             this.dropTargetsView.render();
 
             $("#toast_container").append(this.toastView.$el);
-            Backbone.trigger("showToast", "sample toast", 2000);
             
             
             this.$('#filters a').removeClass('selected')
