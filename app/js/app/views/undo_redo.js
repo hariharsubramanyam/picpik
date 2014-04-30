@@ -33,14 +33,18 @@ define([
 		},
 		undo: function(){
 			if(UndoManager.hasUndo()){
+				var message = UndoManager.peekUndoMessage();
 				UndoManager.undo();
 				this.render();
+				Backbone.trigger("didUndo", message);
 			}
 		},
 		redo: function(){
 			if(UndoManager.hasRedo()){
+				var message = UndoManager.peekRedoMessage();
 				UndoManager.redo();
 				this.render();
+				Backbone.trigger("didRedo", message);
 			}
 		}
 	});

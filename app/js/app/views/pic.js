@@ -78,7 +78,6 @@ define([
             UndoManager.register(this.model, undo_function, null, "Undo Favorite", this.model, redo_function, null, "Redo Favorite");
             this.model.favorite();
             Backbone.trigger("imagesFavorited");
-            Backbone.trigger("showToast", "pics favorited");
         },
 
         unfavorite: function() {
@@ -91,7 +90,6 @@ define([
             UndoManager.register(this.model, undo_function, null, "Undo Unfavorite", this.model, redo_function, null, "Redo Unfavorite");
             this.model.unfavorite();
             Backbone.trigger("imagesUnfavorited");
-            Backbone.trigger("showToast", "pics unfavorited");
         },
         
         doubleClick: function() {

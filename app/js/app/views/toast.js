@@ -13,20 +13,30 @@ define([
 
 		},
 		initialize: function(){
-			this.listenTo(Backbone, "showToast", this.showToast);
+			var current_object = this;
+			this.listenTo(Backbone, "imagesDeleted", function(){current_object.showToast("Deleted Pics")});
+			this.listenTo(Backbone, "imagesUndeleted", function(){current_object.showToast("Undeleted Pics")});
+			this.listenTo(Backbone, "imagesFavorited", function(){current_object.showToast("Favorited Pics")});
+			this.listenTo(Backbone, "imagesUnfavorited", function(){current_object.showToast("Unfavorited Pics")});
+			this.listenTo(Backbone, "imagesTagged", function(){current_object.showToast("Tagged Pics")});
+			this.listenTo(Backbone, "imagesUntagged", function(){current_object.showToast("Untagged Pics")});
+			this.listenTo(Backbone, "didUndo", function(message){current_object.showToast(message)});
+			this.listenTo(Backbone, "didRedo", function(message){current_object.showToast(message)});
+			
 			this.timeout = null;
 		},
 		showToast: function(message){
 			this.render(message);
 		},
 		render: function(message){
+			this.$el.html("");
+			this.$el.fadeOut(0);
 			if(this.timeout != null){
 				clearTimeout(this.timeout);
 			}
 			this.$el.html(this.template({
 				"message": message
 			}));
-			this.$el.fadeOut(0);
 			this.$el.fadeIn(500);
 			var current_object = this;
 			this.timeout = setTimeout(function(){

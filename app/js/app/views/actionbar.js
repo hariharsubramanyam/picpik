@@ -66,13 +66,11 @@ define([
 
             UndoManager.register(Common.selectedPics, undo_function, null, "Undo Delete", Common.selectedPics, redo_function, null, "Redo Delete");
             _.each(Common.selectedPics, function(pic){pic.markDeleted();});
-            Backbone.trigger("imagesDeleted");
-            Backbone.trigger("showToast", "deleted pics");         
+            Backbone.trigger("imagesDeleted");      
         },
         
         groupClicked: function() {
             Backbone.trigger("groupPics", Common.selectedPics);
-            Backbone.trigger("showToast", "moved pics");
         },
         
         tagClicked: function() {
@@ -93,7 +91,6 @@ define([
                 UndoManager.register(Common.selectedPics, undo_function, null, "Undo Unfavorite", Common.selectedPics, redo_function, null, "Redo Unfavorite");
                 _.each(Common.selectedPics, function(pic) { pic.unfavorite();});
                 Backbone.trigger("imagesUnfavorited");
-                Backbone.trigger("showToast", "unfavorited pics");
             } else {
                 var redo_function = function(){
                     _.each(this, function(pic){pic.favorite();});
@@ -106,7 +103,6 @@ define([
                 UndoManager.register(Common.selectedPics, undo_function, null, "Undo Favorite", Common.selectedPics, redo_function, null, "Redo favorite");
                 _.each(Common.selectedPics, function(pic) {pic.favorite();});
                 Backbone.trigger("imagesFavorited");
-                Backbone.trigger("showToast", "favorited pics");
             }
             
         },
