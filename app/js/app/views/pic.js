@@ -65,7 +65,7 @@ define([
         },
         
         updateSelectionClass: function() {
-            this.$el.toggleClass('selected', this.model.selected);            
+            this.$el.toggleClass('selected', this.model.get("selected"));            
         },
 
         favorite: function() {
