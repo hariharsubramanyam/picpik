@@ -272,7 +272,7 @@ a {
   right: 250px;
 }
 .toast_div {
-  position: absolute;
+  position: fixed;
   height: 60px;
   width: 600px;
   bottom: 15px;
@@ -281,7 +281,7 @@ a {
   opacity: 0.95;
   border-radius: 15px;
 }
-.toast_message {
+.toast_div .toast_message {
   color: white;
   margin-top: 10px;
   font-size: 30px;
