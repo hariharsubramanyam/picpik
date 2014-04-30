@@ -134,8 +134,8 @@ define([
             
             // Root Children Debug Message
             
-            this.$('#root-kids').html(rootGroup.childrenString());
-            this.listenTo(rootGroup, "subgroupAdded", this.addTopLevelGroup);
+            // this.$('#root-kids').html(rootGroup.childrenString());
+            // this.listenTo(rootGroup, "subgroupAdded", this.addTopLevelGroup);
             
             
             // Render top-level groups
