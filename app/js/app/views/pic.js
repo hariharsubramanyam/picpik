@@ -31,7 +31,7 @@ define([
             
             this.listenTo(this.model, 'change:selected', this.updateSelectionClass);
             
-            this.selected = false;
+            this.model.set({selected: false});
             
             this.partialClick = false;
         },
