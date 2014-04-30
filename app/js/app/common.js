@@ -29,6 +29,7 @@ define([
         
         deselectAll: function() {
             _.each(this.selectedPics, function(pic) { pic.deselect(); });
+            this.selectedPics = [];
         },
         
         

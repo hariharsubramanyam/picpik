@@ -23,27 +23,28 @@ define([
                 picId: nextPicId,
                 picSrc: "pics/harihar/pic" + ( (nextPicId % 50) + 1) + ".jpg",
                 tagList: [],
+                selected: false
             };
         },
         
         initialize: function() {
-            this.selected = false;
+            this.set({"selected": false});
         },
         
         select: function() {
-            if (!this.selected) {
+            if (!this.get("selected")) {
                 Common.selectPic(this);
             }
-            this.selected = true;  
-            this.trigger("change:selected");            
+            this.set({"selected": true });  
+            this.trigger("change");         
         },
         
         deselect: function() {
-            if (this.selected) {
+            if (this.get("selected")) {
                 Common.deselectPic(this);
             }
-            this.selected = false;  
-            this.trigger("change:selected");
+            this.set({"selected": false});
+            this.trigger("change");
         },
         
         addTagListeners: function() {
@@ -58,26 +59,32 @@ define([
         
         toggleFavorited: function() {
             this.save({favorited: !this.get("favorited")});
+            this.trigger("change");
         },
         
         favorite: function() {
             this.save({favorited: true});
+            this.trigger("change");
         },
         
         unfavorite: function() {
             this.save({favorited: false});
+            this.trigger("change");
         },
         
         markDeleted: function() {
             this.save({deleted: true});
+            this.trigger("change");
         },
         
         toggleDeleted: function() {
             this.save({deleted: !this.get("deleted")});
+            this.trigger("change");
         },
 
         markNotDeleted: function(){
             this.save({deleted: false});
+            this.trigger("change");
         },
         
         hasTag: function(tag) {

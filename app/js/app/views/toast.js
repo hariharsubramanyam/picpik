@@ -22,6 +22,7 @@ define([
 			this.listenTo(Backbone, "imagesUntagged", function(){current_object.showToast("Untagged Pics")});
 			this.listenTo(Backbone, "didUndo", function(message){current_object.showToast(message)});
 			this.listenTo(Backbone, "didRedo", function(message){current_object.showToast(message)});
+			this.listenTo(Backbone, "selectedPics", function(message){current_object.showToast(message)});
 			
 			this.timeout = null;
 		},

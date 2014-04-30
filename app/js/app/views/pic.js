@@ -39,7 +39,7 @@ define([
         render: function() {
             this.$el.addClass("pic");
             this.$el.html(this.template(this.model.toJSON()));
-            this.$el.toggleClass('selected', this.model.selected);
+            this.$el.toggleClass('selected', this.model.get("selected"));
                              
             this.updateVisibility();
                        

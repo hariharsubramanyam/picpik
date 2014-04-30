@@ -5,13 +5,24 @@ define([
 	'text!templates/droptargets.html',
 	'collections/picset',
 	'models/undomanager',
+	'common',
 	'bootstrap'
-], function($, _, Backbone, dropTargetTemplate, PicSet, UndoManager){
+], function($, _, Backbone, dropTargetTemplate, PicSet, UndoManager, Common){
 	'use strict';
 	var DropTargetsView = Backbone.View.extend({
 		tagName: "div",
 		template: _.template(dropTargetTemplate),
 		events: {
+			'click .favorite-target': 'showFavorites'
+		},
+		showFavorites: function(){
+			Common.deselectAll();
+			PicSet.each(function(pic){
+				if(pic.get("favorited")){
+					pic.select();
+				}
+			});
+			Backbone.trigger("selectedPics", "Selected All Favorited Pics");
 		},
 		initialize: function(){
 			this.listenTo(Backbone, 'imagesDeleted', this.render);
