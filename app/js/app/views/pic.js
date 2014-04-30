@@ -71,9 +71,11 @@ define([
         favorite: function() {
             var undo_function = function(){
                 this.unfavorite();
+                Backbone.trigger("imagesUnfavorited");
             };
             var redo_function = function(){
                 this.favorite();
+                Backbone.trigger("imagesFavorited");
             };
             UndoManager.register(this.model, undo_function, null, "Undo Favorite", this.model, redo_function, null, "Redo Favorite");
             this.model.favorite();
@@ -83,9 +85,11 @@ define([
         unfavorite: function() {
             var undo_function = function(){
                 this.favorite();
+                Backbone.trigger("imagesFavorited");
             };
             var redo_function = function(){
                 this.unfavorite();
+                Backbone.trigger("imagesUnfavorited");
             };
             UndoManager.register(this.model, undo_function, null, "Undo Unfavorite", this.model, redo_function, null, "Redo Unfavorite");
             this.model.unfavorite();
