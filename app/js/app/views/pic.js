@@ -48,7 +48,7 @@ define([
         },
         
         toggleSelection: function() {
-            if (this.model.selected) {
+            if (this.model.get("selected")) {
                 this.model.deselect();
             } else {
                 this.model.select();
