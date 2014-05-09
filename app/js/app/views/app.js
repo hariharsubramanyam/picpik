@@ -165,6 +165,8 @@ define([
         createGroup: function(e) {
             var newGroup = GroupSet.create({name: "A New Group!"});
             GroupSet.rootGroup().addSubgroup(newGroup);
+            var view = new GroupView({model: newGroup});
+            this.$('#group_container').append(view.render().el);
         },
         
         clearLocalStorage: function() {
