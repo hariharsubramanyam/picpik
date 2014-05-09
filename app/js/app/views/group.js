@@ -28,10 +28,8 @@ define([
             "blur .group_name":  "closeName",
             "click .remove_group_button":  "removeGroup",            
             "click .add_pic_to_group": "addPicToGroup",
-            "click .add_subgroup_to_group": "createSubgroup",
             "mouseup .pic_grid": "resizePicGrid",
             "keydown .group_name":  "noShortcuts",
-            
         },
         
         noShortcuts: function(e) {
@@ -42,9 +40,11 @@ define([
             // "change" is slower, but will update the info list of children,
             // "addPic" is better when the only changes we care about are 
             // rendering new picture additions
-            //this.listenTo(this.model, 'addPic', this.addPic);
-            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'addPic', this.addPicViewe);
+            this.listenTo(this.model, 'addSubgroup', this.addSubgroupView);
             
+            //this.listenTo(this.model, 'change', this.render);
+                        
             this.listenTo(this.model, 'destroy', this.remove);
             
             this.listenTo(Backbone, 'filterChanged', this.filterWall);
@@ -89,6 +89,9 @@ define([
             _.each(subgroups, this.addSubgroupView, this);            
                         
 			this.$input = this.$('.group_name');            
+            
+            this.$(".add_subgroup_to_group").click(_.bind(this.createSubgroup, this));
+            
             return this;
         },
         
