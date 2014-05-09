@@ -124,7 +124,7 @@ define([
         addSubgroupView: function(group) {
             if (group) {
                 var view = new GroupView({model: group});                    
-                this.$subgroups.append(view.render().$el); 
+                this.$subgroups.prepend(view.render().$el); 
             }
         },
 
