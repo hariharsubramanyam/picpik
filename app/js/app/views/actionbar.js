@@ -44,6 +44,7 @@ define([
         
         deselectAll: function() {
             Common.deselectAll();
+            this.render();
         },
                 
         previewClicked: function() {
