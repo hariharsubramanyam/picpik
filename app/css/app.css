@@ -523,7 +523,7 @@ input.tag_label:focus {
 }
 .pic_grid {
   position: relative;
-  width: 90%;
+  width: 100%;
 }
 .typeahead,
 .tt-query,
