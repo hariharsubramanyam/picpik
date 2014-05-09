@@ -17,6 +17,12 @@ define([
         events: {
             "click .delete_tag_btn" : "removeTag",
             "blur .tag_name_field" : "closeName",
+            "keydown .group_name":  "noShortcuts",
+            
+        },
+        
+        noShortcuts: function(e) {
+            e.stopPropagation();  
         },
         
         initialize: function() {

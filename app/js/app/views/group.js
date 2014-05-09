@@ -30,7 +30,12 @@ define([
             "click .add_pic_to_group": "addPicToGroup",
             "click .add_subgroup_to_group": "createSubgroup",
             "mouseup .pic_grid": "resizePicGrid",
+            "keydown .group_name":  "noShortcuts",
             
+        },
+        
+        noShortcuts: function(e) {
+            e.stopPropagation();  
         },
         
         initialize: function() {

@@ -27,7 +27,12 @@ define([
             "keypress .filter-field" : "keyPress",
             'keyup .filter-field': 'keyUp',
             "click .tt-dropdown-menu" : "applyFilter",
+            "keydown .group_name":  "noShortcuts",
             
+        },
+        
+        noShortcuts: function(e) {
+            e.stopPropagation();  
         },
         
         initialize: function() {

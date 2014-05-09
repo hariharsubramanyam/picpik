@@ -60,6 +60,8 @@ define([
             this.undoRedo = new UndoRedoView();
             this.dropTargetsView = new DropTargetsView();
             this.toastView = new ToastView();
+            
+            this.$el.keydown(_.bind(this.onKeypress, this));
 
             
             this.$main = $('#main');
@@ -180,6 +182,34 @@ define([
         
         loadDemoData: function() {
             DemoLoader.loadDemo();
+        },
+        
+        onKeypress: function(e) {
+            console.log(e.keyCode);
+            if (e.keyCode == 27) {
+                // Escape
+                Common.deselectAll();
+            } else if (e.keyCode == 32 || e.keyCode == 80 || e.keyCode == 13) {
+                // Space
+                Backbone.trigger("previewPics", Common.selectedPics);
+                Common.deselectAll();
+            } else if (e.keyCode == 83 || e.keyCode == 70) {
+                // S or F
+                this.actionBar.starClicked();
+            }  else if (e.keyCode == 8) {
+                // Backspace
+                this.actionBar.deleteClicked();
+                e.preventDefault();
+            } else if (e.keyCode == 88) {
+                // X 
+                this.actionBar.deleteClicked();
+            } else if (e.keyCode == 77 || e.keyCode == 71) {
+                // M
+                this.actionBar.groupClicked();
+            } else if (e.keyCode == 84) {
+                // X 
+                this.actionBar.tagClicked();
+            }
         }
         
     });
