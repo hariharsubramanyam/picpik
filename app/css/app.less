@@ -646,9 +646,9 @@ input.tag_label{
   position: relative;
   margin: 1px;
   top: 50px; left: 0px;
-  -moz-box-shadow:    inset 0 0 20px rgba(0,0,0,0.2);
-  -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
-  box-shadow:         inset 0 0 20px rgba(0,0,0,0.2);
+  -moz-box-shadow:    inset 0 0 20px rgba(0,0,0,0.15);
+  -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
+  box-shadow:         inset 0 0 20px rgba(0,0,0,0.15);
 }
 
 .group .thumb {
@@ -677,6 +677,11 @@ input.tag_label{
     .glyphicon-star, .glyphicon-star-empty { top: 6px; left: 6px; font-size: 12px; }
     .group_header { font-size: 18px; }
     .remove_group_button { top: 18px; }
+    .pic_target {
+      -moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.15);
+      -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+      box-shadow:         inset 0 0 10px rgba(0,0,0,0.15);
+    }
 
     // SUB-SUB-GROUPS
     .group {
@@ -689,6 +694,11 @@ input.tag_label{
       .orange-btn { display: none; }
       .group_header { font-size: 15px; }
       .remove_group_button { top: 17px; }
+      .pic_target {
+        -moz-box-shadow:    inset 0 0 5px rgba(0,0,0,0.15);
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+        box-shadow:         inset 0 0 5px rgba(0,0,0,0.15);
+      }
     }
   }
 }
@@ -883,4 +893,9 @@ button:focus, button:active {
   &:hover {
     color: #ddd;
   }
+}
+
+.ui-draggable-helper {
+  padding: 100px !important;
+  opacity: 0.5 !important;
 }

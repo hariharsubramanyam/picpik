@@ -606,9 +606,9 @@ input.tag_label:focus {
   margin: 1px;
   top: 50px;
   left: 0px;
-  -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .group .thumb {
   border: solid #3399FF;
@@ -664,6 +664,11 @@ input.tag_label:focus {
 .group .group .remove_group_button {
   top: 18px;
 }
+.group .group .pic_target {
+  -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+}
 .group .group .group {
   margin-left: 51px;
   border-bottom: 0;
@@ -693,6 +698,11 @@ input.tag_label:focus {
 }
 .group .group .group .remove_group_button {
   top: 17px;
+}
+.group .group .group .pic_target {
+  -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
 }
 .orange-btn {
   margin-top: 10px;
@@ -872,4 +882,8 @@ button:active {
 }
 .utility:hover {
   color: #ddd;
+}
+.ui-draggable-helper {
+  padding: 100px !important;
+  opacity: 0.5 !important;
 }
