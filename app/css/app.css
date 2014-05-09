@@ -30,6 +30,7 @@ body ::-webkit-scrollbar-track {
 }
 body ::-webkit-scrollbar-thumb {
   background-color: #222222;
+  border-radius: 10px;
 }
 .bottom-padding-div {
   height: 80px;
@@ -42,14 +43,11 @@ body ::-webkit-scrollbar-thumb {
   border-radius: 0px;
   opacity: 0.7;
   -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 .drop-target.hover-over-target {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   opacity: 1.0;
 }
 .drop-target.favorite-target {
@@ -62,7 +60,7 @@ body ::-webkit-scrollbar-thumb {
   padding-top: 33px;
 }
 .drop-target.favorite-target.hover-over-target {
-  border-top-right-radius: 300px;
+  border-top-right-radius: 200px;
 }
 .drop-target.delete-target {
   right: 220px;
@@ -74,7 +72,7 @@ body ::-webkit-scrollbar-thumb {
   padding-top: 33px;
 }
 .drop-target.delete-target.hover-over-target {
-  border-top-left-radius: 300px;
+  border-top-left-radius: 200px;
 }
 .drop-target .target-icon {
   font-size: 30px;
@@ -135,7 +133,7 @@ a {
 .topnav .undo_redo_container {
   position: absolute;
   top: 0px;
-  right: 0px;
+  right: 420px;
   text-align: center;
   height: 80px;
 }
@@ -147,11 +145,12 @@ a {
 .topnav .undo_redo_container .undo_redo_button_div .redo-btn {
   background-color: #222222;
   color: white;
-  width: 150px;
+  width: 90px;
   height: 40px;
   border-radius: 0px;
   font-size: 1em;
   text-align: center;
+  margin-left: 5px;
 }
 .tags-panel-container {
   position: absolute;
@@ -159,10 +158,10 @@ a {
   top: 0px;
   right: 0px;
   padding-top: 80px;
-  background-color: #444444;
+  background-color: #eee;
   height: 100%;
   width: 210px;
-  border-left: solid 1px #444444;
+  border-left: solid 1px #bbb;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 99;
@@ -191,8 +190,8 @@ a {
 }
 .tags-panel-container .tags-panel .add_tag_btn {
   background-color: #ff9933;
-  position: absolute;
-  top: 10px;
+  position: relative;
+  top: 115px;
   left: 51px;
   width: 75px;
 }
@@ -205,7 +204,7 @@ a {
 }
 .tags-panel-container .tags-panel .tags {
   position: relative;
-  top: 95px;
+  top: 110px;
 }
 .tags-panel-container .tags-panel .tags .tag {
   position: relative;
@@ -288,35 +287,38 @@ a {
 }
 .toast_div {
   position: fixed;
-  padding: 10px 40px !important;
+  width: 200px;
+  margin-left: -100px !important;
   bottom: 15px;
-  left: 35%;
+  left: 50%;
+  text-align: center;
 }
 .actionbar_container {
-  height: 50px;
+  height: 70px;
 }
 .actionbar_container .action-bar {
   position: fixed;
   top: 80px;
-  left: 5px;
+  left: -220px;
   display: block;
   height: 70px;
-  width: 55%;
+  width: 100%;
   background-color: #ffffff;
+  padding-left: 200px;
   z-index: 99;
 }
 .actionbar_container .action-bar .count {
   position: relative;
   display: inline;
   top: 15px;
-  left: 30px;
+  left: 60px;
   font-size: 28px;
   color: #777777;
 }
 .actionbar_container .action-bar .btn-cancel {
   position: absolute;
   top: 20px;
-  left: 200px;
+  left: 420px;
   background-color: #dddddd;
 }
 .actionbar_container .action-bar .btn-x {
@@ -458,8 +460,15 @@ span.tag_label {
   color: #bbb;
 }
 input.tag_label {
-  border: 1px dashed #dddddd;
   width: 105px;
+  border: 1px dashed #EEE;
+  background-color: white;
+  transition: all 0.4s;
+}
+input.tag_label:hover,
+input.tag_label:focus {
+  border: 1px dashed #BBB;
+  background-color: #F7F7F7;
 }
 .add_tag_image {
   height: 25px;
@@ -473,17 +482,22 @@ input.tag_label {
 .group_header {
   display: inline;
   font-size: 21px;
-  border: 1px dashed #dddddd;
-  padding: 10px;
+  border: 0;
+  padding: 5px 10px;
   margin-top: 10px;
+  border: 1px dashed #E7E7E7;
   -moz-user-select: text;
   -khtml-user-select: text;
   -webkit-user-select: text;
   -o-user-select: text;
+  transition: all 0.4s;
+  background-color: #F7F7F7;
 }
 .group_header:hover,
 .group_header:focus {
   outline: 0;
+  border: 1px dashed #bbb;
+  background-color: #eee;
 }
 .subgroup_header {
   margin-left: 50px;
@@ -599,12 +613,17 @@ input.tag_label {
   display: inline-block;
   position: relative;
   margin: 1px;
-  border: dotted 1px #bbb;
   top: 50px;
   left: 0px;
   -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.group .thumb {
+  border: solid #3399FF;
+  border-width: 0px;
+  transition: border-width 4s ease-in-out;
+  -webkit-transition: border-width 4s ease-in-out;
 }
 .group {
   margin-left: 0px;
@@ -616,7 +635,7 @@ input.tag_label {
   width: 140px;
 }
 .group .selected .thumb {
-  border: 8px solid #3399FF;
+  border-width: 8px;
 }
 .group .pic_target {
   top: 67px;
@@ -637,7 +656,7 @@ input.tag_label {
   width: 069px;
 }
 .group .group .selected .thumb {
-  border: 4px solid #3399FF;
+  border-width: 4px;
 }
 .group .group .pic_target {
   top: 32px;
@@ -652,7 +671,7 @@ input.tag_label {
   font-size: 18px;
 }
 .group .group .remove_group_button {
-  top: 19px;
+  top: 18px;
 }
 .group .group .group {
   margin-left: 51px;
@@ -682,7 +701,7 @@ input.tag_label {
   font-size: 15px;
 }
 .group .group .group .remove_group_button {
-  top: 18px;
+  top: 17px;
 }
 .orange-btn {
   margin-top: 10px;
@@ -692,6 +711,7 @@ input.tag_label {
   color: white;
   font-weight: 400;
   padding: 8px 12px;
+  transition: background-color 0.4s;
 }
 .orange-btn:hover {
   background-color: #c4c4c4;
@@ -724,4 +744,45 @@ button:active {
 .progress-bar {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+}
+.tags-panel .protip {
+  position: absolute;
+  top: 76px;
+  left: 24px;
+  width: 170px;
+  font-size: 11px;
+  color: #999;
+}
+.main-panel .heading-text {
+  position: absolute;
+  top: 95px;
+  left: 250px;
+  font-size: 28px;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+}
+.main-panel .protip {
+  position: absolute;
+  top: 136px;
+  left: 251px;
+  width: 300px;
+  font-size: 11px;
+  color: #999;
+}
+.project_name {
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  font-size: 21px;
+  color: white;
+  border: dotted 1px #555;
+  background-color: #333;
+  padding: 5px 10px;
+  transition: all 0.4s;
+}
+.project_name:hover,
+.project_name:focus {
+  border: dotted 1px #777;
+  background-color: #222;
+  outline: 0;
 }

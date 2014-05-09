@@ -43,7 +43,7 @@ define([
 			var current_object = this;
 			this.timeout = setTimeout(function(){
 				current_object.$el.fadeOut(500);
-			}, 3000);
+			}, 5000);
 		}
 	});
 

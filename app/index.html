@@ -13,17 +13,19 @@
 <body id="picpicapp" class="body">
 
   <div class="topnav">
-    <img class="static-topnav-left" src="./assets/icons/static-topnav-left.png" draggable="false">
+    <img src="./assets/icons/static-topnav-right.png" style="position: absolute; top: 0px; right: 0px;">
+    <img src="./assets/icons/static-topnav-left.png" style="position: absolute; top: 0px; left: 0px;">
+    <span class="project_name" contenteditable="true">Death Valley National Park</span>
 
-    <!-- MAJOR HACK, Get rid of this! -->
-    <button style="position: absolute; margin-left:50%; margin-top:20px; background-color: rgb(34,34,34); color: white; width: 150px; height: 40px; border-radius: 0px; font-size: 1em; text-align: center;" class="btn btn-lg" type="button">Import</button>
-    <button style="position: absolute; margin-left:39%; margin-top:20px; background-color: rgb(34,34,34); color: white; width: 150px; height: 40px; border-radius: 0px; font-size: 1em; text-align: center;" class="btn btn-lg" type="button">Export</button>
     <div id="undo_redo_container" class="undo_redo_container" ></div>
   </div>
 
   <div class="tags-panel-container" id="tag_div"></div>
 
   <div class="main-panel deselectButton">
+
+    <div class="heading-text">Groups</div>
+    <div class="protip">Organize by time and place</div>
 
     <div id="actionbar_container" class="actionbar_container"></div>
     <div id="filter_container"></div>
@@ -34,7 +36,7 @@
       <button id="add-group" class="orange-btn" style="z-index:1">+ Group</button>
     </div>
       
-    <div> <!-- EPIC HACK, FIX THIS xD -->
+    <div>
       <div id="preview_overlay_container"></div>
       <div id="tag_overlay_container"></div>
       <div id="group_overlay_container"></div>

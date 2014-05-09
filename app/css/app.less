@@ -63,6 +63,7 @@ body {
 
   ::-webkit-scrollbar-thumb {
     background-color: @grayDarkest;
+    border-radius: 10px;
   }
 
 }
@@ -77,13 +78,10 @@ body {
   bottom: 0px;
   border-radius: 0px;
   opacity: 0.7;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   &.hover-over-target {
-    height: 300px; width: 300px;
+    height: 200px; width: 200px;
     opacity: 1.0;
     .target-icon {
       // font-size: 90px;
@@ -98,7 +96,7 @@ body {
     padding-right: 40px;
     padding-top: 33px;
     &.hover-over-target {
-      border-top-right-radius: 300px;
+      border-top-right-radius: 200px;
     }
   }
   &.delete-target{
@@ -110,7 +108,7 @@ body {
     padding-left: 40px;
     padding-top: 33px;
     &.hover-over-target {
-      border-top-left-radius: 300px;
+      border-top-left-radius: 200px;
     }
   }
   .target-icon {
@@ -174,7 +172,7 @@ a {
   .undo_redo_container{
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 420px;
     text-align: center;
     height: 80px;
     .undo_redo_button_div{
@@ -183,11 +181,12 @@ a {
       .undo-btn,.redo-btn{
         background-color: rgb(34,34,34);
         color: white;
-        width: 150px;
+        width: 90px;
         height: 40px;
         border-radius: 0px;
         font-size: 1em;
         text-align: center;
+        margin-left: 5px;
       }
     }
   }
@@ -198,9 +197,9 @@ a {
   display: block;
   top: 0px; right: 0px;
   padding-top: 80px;
-  background-color: @grayDarker;
+  background-color: #eee;
   height: 100%; width: 210px;
-  border-left: solid 1px @grayDarker;
+  border-left: solid 1px #bbb;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 99;
@@ -225,8 +224,8 @@ a {
     }
     .add_tag_btn {
       background-color: @orange;
-      position: absolute;
-      top: 10px; left: 51px;
+      position: relative;
+      top: 115px; left: 51px;
       width: 75px;
       &:hover {
         background-color: darken(@orange,10%);
@@ -238,7 +237,7 @@ a {
     }
     .tags {
       position: relative;
-      top: 95px;
+      top: 110px;
       .tag {
         position: relative;
         display: block;
@@ -311,29 +310,32 @@ a {
 
 .toast_div{
   position: fixed;
-  padding: 10px 40px !important;
-  bottom: 15px; left: 35%;
+  width: 200px;
+  margin-left: -100px !important;
+  bottom: 15px; left: 50%;
+  text-align: center;
 };
 
 .actionbar_container {
-  height: 50px;
+  height: 70px;
   .action-bar {
     position: fixed;
-    top: 80px; left: 5px;
+    top: 80px; left: -220px;
     display: block;
-    height: 70px; width: 55%;
+    height: 70px; width: 100%;
     background-color: @white;
+    padding-left: 200px;
     z-index: 99;
     .count {
       position: relative;
       display: inline;
-      top: 15px; left: 30px;
+      top: 15px; left: 60px;
       font-size: 28px;
       color: @softFontColor;
     }
     .btn-cancel {
       position: absolute;
-      top: 20px; left: 200px;
+      top: 20px; left: 420px;
       background-color: @grayLight;
     }
     .btn-x {
@@ -472,8 +474,14 @@ span.tag_label{
 }
 
 input.tag_label{
-  border: 1px dashed @grayLight;
   width: 105px;
+  border: 1px dashed #EEE;
+  background-color: white;
+  transition: all 0.4s;
+  &:hover, &:focus {
+    border: 1px dashed #BBB;
+    background-color: #F7F7F7;
+  }
 }
 
 .add_tag_image{
@@ -491,17 +499,20 @@ input.tag_label{
 .group_header{
   display: inline;
   font-size: 21px;
-  border: 1px dashed @grayLight ;
-  padding: 10px;
+  border: 0;
+  padding: 5px 10px;
   margin-top: 10px;
-
+  border: 1px dashed #E7E7E7;
   -moz-user-select: text; 
   -khtml-user-select: text; 
   -webkit-user-select: text; 
-  -o-user-select: text; 
-  
+  -o-user-select: text;
+  transition: all 0.4s;
+  background-color: #F7F7F7;
   &:hover, &:focus {
     outline: 0;
+    border: 1px dashed #bbb;
+    background-color: #eee;
   }
 }
 
@@ -634,11 +645,17 @@ input.tag_label{
   display: inline-block;
   position: relative;
   margin: 1px;
-  border: dotted 1px #bbb;
   top: 50px; left: 0px;
   -moz-box-shadow:    inset 0 0 20px rgba(0,0,0,0.2);
   -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
   box-shadow:         inset 0 0 20px rgba(0,0,0,0.2);
+}
+
+.group .thumb {
+  border: solid #3399FF;
+  border-width: 0px;
+  transition: border-width 4s ease-in-out;
+  -webkit-transition: border-width 4s ease-in-out;
 }
 
 .group {
@@ -646,7 +663,7 @@ input.tag_label{
   margin-left: 0px;
   border-bottom: solid 1px @grayLight;
   .pic, .pic_target { height: 140px; width: 140px; }
-  .selected .thumb { border: 8px solid #3399FF; }
+  .selected .thumb { border-width: 8px; }
   .pic_target { top: 67px; }
   .glyphicon-star, .glyphicon-star-empty { top: 12px; left: 12px; font-size: 16px; }
 
@@ -655,11 +672,11 @@ input.tag_label{
     margin-left: 51px;
     border-bottom: 0;
     .pic, .pic_target { height: 069px; width: 069px; }
-    .selected .thumb { border: 4px solid #3399FF; }
+    .selected .thumb { border-width: 4px; }
     .pic_target { top: 32px; }
     .glyphicon-star, .glyphicon-star-empty { top: 6px; left: 6px; font-size: 12px; }
     .group_header { font-size: 18px; }
-    .remove_group_button { top: 19px; }
+    .remove_group_button { top: 18px; }
 
     // SUB-SUB-GROUPS
     .group {
@@ -671,7 +688,7 @@ input.tag_label{
       .glyphicon-star, .glyphicon-star-empty { top: 4px; left: 4px; font-size: 8px; }
       .orange-btn { display: none; }
       .group_header { font-size: 15px; }
-      .remove_group_button { top: 18px; }
+      .remove_group_button { top: 17px; }
     }
   }
 }
@@ -684,6 +701,7 @@ input.tag_label{
   color: white;
   font-weight: 400;
   padding: 8px 12px;
+  transition: background-color 0.4s;
   &:hover {
     background-color: darken(#ddd,10%);
   }
@@ -697,7 +715,6 @@ input.tag_label{
   }
   &.add_tag_btn {
     background-color: @orange;
-
   }
 }
 
@@ -721,4 +738,47 @@ button:active {
 .progress-bar {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+.tags-panel {
+  .protip {
+    position: absolute;
+    top: 76px; left: 24px;
+    width: 170px;
+    font-size: 11px;
+    color: #999;
+  }
+}
+
+.main-panel {
+  .heading-text {
+    position: absolute;
+    top: 95px; left: 250px;
+    font-size: 28px;
+    font-weight: 300;
+    font-family: @baseFontFamily;
+  }
+  .protip {
+    position: absolute;
+    top: 136px; left: 251px;
+    width: 300px;
+    font-size: 11px;
+    color: #999;
+  }
+}
+
+.project_name {
+  position: absolute;
+  top: 20px; left: 80px;
+  font-size: 21px;
+  color: white;
+  border: dotted 1px #555;
+  background-color: #333;
+  padding: 5px 10px;
+  transition: all 0.4s;
+  &:hover, &:focus {
+    border: dotted 1px #777;
+    background-color: #222;
+    outline: 0;
+  }
 }
