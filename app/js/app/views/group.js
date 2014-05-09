@@ -52,8 +52,7 @@ define([
         
         filterWall: function() {
             _.each(this.picViews, function(picView) { 
-                picView.updateVisibility()}, this);       
-            this.wall.filter(".visible");
+                picView.updateVisibility()}, this);
         },
         
         render: function() {

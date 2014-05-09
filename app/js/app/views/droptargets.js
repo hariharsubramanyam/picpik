@@ -13,7 +13,8 @@ define([
 		tagName: "div",
 		template: _.template(dropTargetTemplate),
 		events: {
-			'click .favorite-target': 'showFavorites'
+			'click .favorite-target': 'showFavorites',
+			'click .delete-target': 'filterToDeleted'
 		},
 		showFavorites: function(){
 			Common.deselectAll();
@@ -23,6 +24,9 @@ define([
 				}
 			});
 			Backbone.trigger("selectedPics", "Selected All Favorited Pics");
+		},
+		filterToDeleted: function(){
+			Backbone.trigger("filterToDeleted");
 		},
 		initialize: function(){
 			this.listenTo(Backbone, 'imagesDeleted', this.render);

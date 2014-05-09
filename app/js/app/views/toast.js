@@ -20,6 +20,7 @@ define([
 			this.listenTo(Backbone, "imagesUnfavorited", function(){current_object.showToast("Unfavorited")});
 			this.listenTo(Backbone, "imagesTagged", function(){current_object.showToast("Tagged")});
 			this.listenTo(Backbone, "imagesUntagged", function(){current_object.showToast("Untagged")});
+			this.listenTo(Backbone, "showToast", function(message){current_object.showToast(message)});
 			// this.listenTo(Backbone, "didUndo", function(message){current_object.showToast(message)});
 			// this.listenTo(Backbone, "didRedo", function(message){current_object.showToast(message)});
 			// this.listenTo(Backbone, "selectedPics", function(message){current_object.showToast(message)});
