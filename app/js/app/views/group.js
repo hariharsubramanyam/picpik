@@ -8,10 +8,11 @@ define([
     'collections/picset',
     'collections/groupset',
     'views/pic',
+    'views/pictarget',
     'views/picdebug',
     'text!templates/group.html',
     'common'
-], function($, jqueryUI, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicDebugView, groupTemplate, Common) {
+], function($, jqueryUI, freewall, gridly, _, Backbone, PicSet, GroupSet, PicView, PicTargetView, PicDebugView, groupTemplate, Common) {
     'use strict';
     var PIC_DEBUG = false;
     /**
@@ -59,34 +60,7 @@ define([
             this.$el.html(this.template(this.model.toJSON()));
             this.$el.toggleClass('favorited', this.model.get('favorited'));
             this.toggleVisible();      
-                        
-            /* Gridly */
-            /*$('.pic_grid').gridly({
-                base: 60, // px 
-                gutter: 20, // px
-                columns: 12
-            });*/
-            if(!PIC_DEBUG) {
-            /*
-                 // Freewall
-                this.wall = new freewall(this.$('.pic_grid'));
-                var wall = this.wall;
-                this.wall.reset({
-                    draggable: true,
-                    selector: '.pic',                
-                    animate: true,
-                    cellW: 150,
-                    cellH: 150,
-                    onResize: function() {
-                        wall.refresh();
-                    },
-                });
-                wall.filter(".visible");
-                this.wall.fitWidth();
-                $(window).trigger("resize");
-                */
-            }
-
+      
             // Render Pics     
             this.$picgrid = this.$('.pic_grid');
             this.$picgrid.sortable({
@@ -96,7 +70,12 @@ define([
             });
             this.$picgrid.disableSelection();
 
-            _.each(this.model.getPics(), this.addPicView, this);            
+            var group_pics = this.model.getPics();
+            _.each(group_pics, this.addPicView, this);     
+          
+            if (group_pics.length == 0) {
+                this.addTargetView();
+            }
             
             // Render SubGroups     
             this.$subgroups = this.$('.subgroups');
@@ -125,6 +104,13 @@ define([
                 this.picViews.push(view);
                 this.$picgrid.append(view.render().$el); 
             }
+        },
+        
+        addTargetView: function(pic) {
+            var view = new PicTargetView();                    
+            //this.listenTo(view, "visibilityChanged", this.filterWall);
+            this.picViews.push(view);
+            this.$picgrid.append(view.render().$el); 
         },
         
         addSubgroupView: function(group) {

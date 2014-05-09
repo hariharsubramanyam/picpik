@@ -43,8 +43,8 @@ define([
         events: {
             "click #add-group": "createGroup",
             "click #load-demo": "loadDemoData",
-            "click #clear-storage": "clearLocalStorage"
-            
+            "click #clear-storage": "clearLocalStorage",
+            "click .main-panel": "deselectAll",
         },
         
         initialize: function() {  
@@ -171,6 +171,11 @@ define([
         
         clearLocalStorage: function() {
             DemoLoader.clearStorage();
+        },
+        
+        deselectAll: function() {
+            console.log("deselectAll");
+            Common.deselectAll();
         },
         
         loadDemoData: function() {
