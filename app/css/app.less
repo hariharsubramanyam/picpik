@@ -85,6 +85,9 @@ body {
   &.hover-over-target {
     height: 300px; width: 300px;
     opacity: 1.0;
+    .target-icon {
+      // font-size: 90px;
+    }
   }
   &.favorite-target{
     left: 0px;
@@ -247,12 +250,11 @@ a {
           top: 48px; left: 10px;
           width: 140px; height: 10px;
           margin: 0; padding: 0;
-          .black  { background-color: black;  }
-          .orange { background-color: orange; }
-          .blue   { background-color: blue;   }
-          .red    { background-color: red;    }
-          .green  { background-color: green;  }
-          .yellow { background-color: yellow; }
+          border-radius: 0 !important;
+          .blue   { background-color: #8ae0ed; }
+          .red    { background-color: #e28582; }
+          .green  { background-color: #8bcb8b; }
+          .yellow { background-color: #fce380; }
         }
         .delete_tag_btn {
           color: @grayLight;
@@ -381,6 +383,9 @@ a {
     position: absolute;
     top: 20px; left: -15px;
     color: @gray;
+    &:hover {
+      color: #999;
+    }
   }
   .pic_grid {
     margin-top: 20px;
@@ -391,13 +396,10 @@ a {
 
 /***** OLD STUFF *****/
 
-.black{ color: black; }
-.white{ color:white; }
-.orange{ color: orange; }
-.blue { color: blue; }
-.red{ color: red; }
-.green{ color: green; }
-.yellow{ color: yellow; }
+.blue   { color: #8ae0ed; }
+.red    { color: #e28582; }
+.green  { color: #8bcb8b; }
+.yellow { color: #fce380; }
 
 .modal-body{
   overflow: visible;
@@ -444,6 +446,7 @@ a {
 
 .tag_icon .tag_image {
   font-size: 1.5em;
+  top: 5px;
 }
 
 .tag_icon:focus .black {  color: black; }
@@ -458,17 +461,19 @@ a {
   vertical-align: center;
   margin-left: 5px;
   margin-top: 5px;
-  max-width: 80px;
+  max-width: 120px;
   margin-bottom: 5px;
 }
 
 span.tag_label{
-  margin-top: 10px;
-  max-width: 50px;
+  position: absolute;
+  top: 37px; left: 155px;
+  color: #bbb;
 }
 
 input.tag_label{
   border: 1px dashed @grayLight;
+  width: 105px;
 }
 
 .add_tag_image{
@@ -694,4 +699,26 @@ input.tag_label{
     background-color: @orange;
 
   }
+}
+
+button:active {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #ddd !important;
+}
+
+.form-control {
+  border-radius: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.progress-bar {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }

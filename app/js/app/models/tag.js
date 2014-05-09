@@ -17,9 +17,9 @@ define([
             return {
                 name: "Tag Name",
                 tagId: require("collections/tagset").nextTagId(),
-                color: _.sample(["red", "blue", "green", "orange"]),                
+                color: _.sample(["red", "blue", "green", "yellow"]),                
             };
-        }, 
+        },
                 
         getPics: function() {
             var pics =  PicSet.filter(function(pic) {return pic.hasTag(this)}, this);

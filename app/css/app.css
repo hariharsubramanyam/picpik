@@ -223,24 +223,19 @@ a {
   height: 10px;
   margin: 0;
   padding: 0;
-}
-.tags-panel-container .tags-panel .tags .tag .progress .black {
-  background-color: black;
-}
-.tags-panel-container .tags-panel .tags .tag .progress .orange {
-  background-color: orange;
+  border-radius: 0 !important;
 }
 .tags-panel-container .tags-panel .tags .tag .progress .blue {
-  background-color: blue;
+  background-color: #8ae0ed;
 }
 .tags-panel-container .tags-panel .tags .tag .progress .red {
-  background-color: red;
+  background-color: #e28582;
 }
 .tags-panel-container .tags-panel .tags .tag .progress .green {
-  background-color: green;
+  background-color: #8bcb8b;
 }
 .tags-panel-container .tags-panel .tags .tag .progress .yellow {
-  background-color: yellow;
+  background-color: #fce380;
 }
 .tags-panel-container .tags-panel .tags .tag .delete_tag_btn {
   color: #dddddd;
@@ -373,30 +368,24 @@ a {
   left: -15px;
   color: #bbbbbb;
 }
+.group .remove_group_button:hover {
+  color: #999;
+}
 .group .pic_grid {
   margin-top: 20px;
 }
 /***** OLD STUFF *****/
-.black {
-  color: black;
-}
-.white {
-  color: white;
-}
-.orange {
-  color: orange;
-}
 .blue {
-  color: blue;
+  color: #8ae0ed;
 }
 .red {
-  color: red;
+  color: #e28582;
 }
 .green {
-  color: green;
+  color: #8bcb8b;
 }
 .yellow {
-  color: yellow;
+  color: #fce380;
 }
 .modal-body {
   overflow: visible;
@@ -434,6 +423,7 @@ a {
 }
 .tag_icon .tag_image {
   font-size: 1.5em;
+  top: 5px;
 }
 .tag_icon:focus .black {
   color: black;
@@ -458,15 +448,18 @@ a {
   vertical-align: center;
   margin-left: 5px;
   margin-top: 5px;
-  max-width: 80px;
+  max-width: 120px;
   margin-bottom: 5px;
 }
 span.tag_label {
-  margin-top: 10px;
-  max-width: 50px;
+  position: absolute;
+  top: 37px;
+  left: 155px;
+  color: #bbb;
 }
 input.tag_label {
   border: 1px dashed #dddddd;
+  width: 105px;
 }
 .add_tag_image {
   height: 25px;
@@ -713,4 +706,22 @@ input.tag_label {
 }
 .orange-btn.add_tag_btn {
   background-color: #ff9933;
+}
+button:active {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.form-control:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #ddd !important;
+}
+.form-control {
+  border-radius: 0px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.progress-bar {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
