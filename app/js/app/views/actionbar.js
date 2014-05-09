@@ -7,6 +7,7 @@ define([
     'models/undomanager'
 ], function($, _, Backbone, actionBarTemplate, 
             Common, UndoManager) {
+    'use strict';
     /**
      * The View object for a Picture in the grid.
      * The view object is a div
@@ -15,6 +16,8 @@ define([
         tagName: "div",
 
         template: _.template(actionBarTemplate),
+
+        undelete_mode: false,
         
         events: {
             "click  .deselectButton" : "deselectAll",
@@ -23,22 +26,27 @@ define([
             "click  #groupButton" : "groupClicked",
             "click  #tagButton" : "tagClicked",
             "click  #starButton" : "starClicked",
+            "click  #undeleteButton": "undeleteClicked"
         },
         
         initialize: function() {
             this.listenTo(Common, "selectionChange", this.render);
-            
+            this.listenTo(Backbone, "filterToDeleted", function(){
+                this.undelete_mode = true;
+            });
+            this.listenTo(Backbone, "notFilteredToDeleted", function(){
+                this.undelete_mode = false;
+            });
         },
         
         render: function() {
             var numPicsSelected = Common.numPicsSelected();
-            this.$el.html(this.template({num_selected: numPicsSelected}));
+            this.$el.html(this.template({num_selected: numPicsSelected, "undelete_mode": this.undelete_mode}));
             if (numPicsSelected === 0) {
                 this.$el.hide();
             } else {
                 this.$el.show();
             }            
-            
             return this;
         },
         
@@ -49,6 +57,7 @@ define([
                 
         previewClicked: function() {
             Backbone.trigger("previewPics", Common.selectedPics);
+            this.deselectAll();
         },
         
         deleteClicked: function() {
@@ -68,14 +77,37 @@ define([
             UndoManager.register(Common.selectedPics, undo_function, null, "Undo Delete", Common.selectedPics, redo_function, null, "Redo Delete");
             _.each(Common.selectedPics, function(pic){pic.markDeleted();});
             Backbone.trigger("imagesDeleted");      
+            this.deselectAll();
+        },
+
+        undeleteClicked: function(){
+            var redo_function = function(){
+                _.each(this, function(pic){
+                    pic.markNotDeleted();
+                });
+                Backbone.trigger("imagesUndeleted");
+            };
+            var undo_function = function(){
+                _.each(this, function(pic){
+                    pic.markDeleted();
+                });
+                Backbone.trigger("imagesDeleted"); 
+            };
+
+            UndoManager.register(Common.selectedPics, undo_function, null, "Undo Undelete", Common.selectedPics, redo_function, null, "Redo Unelete");
+            _.each(Common.selectedPics, function(pic){pic.markNotDeleted();});
+            Backbone.trigger("imagesUndeleted");
+            this.deselectAll();
         },
         
         groupClicked: function() {
             Backbone.trigger("groupPics", Common.selectedPics);
+            this.deselectAll();
         },
         
         tagClicked: function() {
             Backbone.trigger("tagPics", Common.selectedPics);
+            this.deselectAll();
         },
         
         starClicked: function() {
@@ -105,7 +137,7 @@ define([
                 _.each(Common.selectedPics, function(pic) {pic.favorite();});
                 Backbone.trigger("imagesFavorited");
             }
-            
+            this.deselectAll();
         },
     });
     return ActionBarView;

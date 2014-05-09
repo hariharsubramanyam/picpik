@@ -12,10 +12,17 @@
         <span class="glyphicon glyphicon-star"></span>
         <span >Favorite</span>
       </button>
+      <% if (!undelete_mode){ %>
       <button type="button" class="action-button" id="deleteButton">
         <span class="glyphicon glyphicon-trash"></span>
         <span >Delete</span>
       </button>
+      <% }else{ %>
+      <button type="button" class="action-button" id="undeleteButton">
+        <span class="glyphicon glyphicon-home"></span>
+        <span >Undelete</span>
+      </button>
+      <% } %>
       <button type="button" class="action-button" id="groupButton">
         <span class="glyphicon glyphicon-th"></span>
         <span >Group</span>

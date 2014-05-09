@@ -113,6 +113,9 @@ define([
         
         applyFilter: function() {
             var selection = $(".filter-field").val();
+            if(selection != "Deleted"){
+                Backbone.trigger("notFilteredToDeleted");
+            }
             if (selection === "All") {
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
