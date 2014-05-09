@@ -51,11 +51,6 @@ define([
         
         filterTag: function() {
             Common.deselectAll();
-            
-            Common.clearVisibleTags();   
-            Common.setFavoritesOnly(false);
-            Common.setDeletedOnly(false);
-            Common.setVisibleTag(this.model);
             Backbone.trigger("setCurrentFilterTag", this.model.get('name'));
         }
     });

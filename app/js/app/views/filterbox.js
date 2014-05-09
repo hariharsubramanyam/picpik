@@ -44,8 +44,29 @@ define([
         },
         
         setCurrentFilterTag: function(tagName) {
-            console.log(tagName);
+            var selection= tagName;
+            var currentVal = this.$(".filter-field").val();
             this.$(".filter-field").val(tagName);
+            if (currentVal == tagName) {
+                Common.clearVisibleTags();   
+                Common.setFavoritesOnly(false);
+                Common.setDeletedOnly(false);
+                $(".filter-field").val("");
+            } else {
+                Common.clearVisibleTags();   
+                Common.setFavoritesOnly(false);
+                Common.setDeletedOnly(false);
+                
+                console.log(selection);
+                
+                var tag = TagSet.findWhere({name: selection});
+                if (tag) {
+                    Common.setVisibleTag(tag);
+                } else {
+                    // Bad value:
+                    var selection = $(".filter-field").val("");
+                }
+            }
         },
         
         filterToDeleted: function(){

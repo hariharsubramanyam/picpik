@@ -31,7 +31,7 @@ define([
         },
         
         render: function() {
-            this.$el.addClass("pic_target");                         
+            this.$el.addClass("pic_target_no_offset");                         
             return this;
         },
         
