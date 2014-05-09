@@ -48,10 +48,10 @@ define([
             this.listenTo(this.model, 'destroy', this.remove);
             
             this.listenTo(Backbone, 'filterChanged', this.filterWall);
-            this.listenTo(Backbone, 'imagesDeleted', this.render);
-            this.listenTo(Backbone, "imagesUndeleted", this.render);
-            this.listenTo(Backbone, "imagesFavorited", this.render);
-            this.listenTo(Backbone, "imagesUnfavorited", this.render);
+            //this.listenTo(Backbone, 'imagesDeleted', this.renderpicviews);
+            //this.listenTo(Backbone, "imagesUndeleted", this.renderpicviews);
+            //this.listenTo(Backbone, "imagesFavorited", this.renderpicviews);
+            //this.listenTo(Backbone, "imagesUnfavorited", this.renderpicviews);
             
             this.picViews = [];
         },
