@@ -28,6 +28,8 @@ define([
             
             var t2 = TagSet.create({name: "Rafting"});
             
+            var t3 = TagSet.create({name: "Sunset"});
+            
             var rootGroup = GroupSet.rootGroup();
             
             var p = GroupSet.create({name: "Eagle Point"});
@@ -40,6 +42,9 @@ define([
                 }
                 if (Math.random() < 0.4) {
                     newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
                 }
                 if (Math.random() < 0.2) {
                     newPic.set({favorited: true});
@@ -61,6 +66,9 @@ define([
                     newPic.addTag(t2);
                 }
                 if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
+                }
+                if (Math.random() < 0.2) {
                     newPic.set({favorited: true});
                 }
                 if (Math.random() < 0.1) {
@@ -78,6 +86,9 @@ define([
                 }
                 if (Math.random() < 0.4) {
                     newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
                 }
                 if (Math.random() < 0.2) {
                     newPic.set({favorited: true});
@@ -99,6 +110,9 @@ define([
                     newPic.addTag(t2);
                 }
                 if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
+                }
+                if (Math.random() < 0.2) {
                     newPic.set({favorited: true});
                 }
                 if (Math.random() < 0.1) {
@@ -116,6 +130,9 @@ define([
                 }
                 if (Math.random() < 0.4) {
                     newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
                 }
                 if (Math.random() < 0.2) {
                     newPic.set({favorited: true});
@@ -136,6 +153,9 @@ define([
                 }
                 if (Math.random() < 0.4) {
                     newPic.addTag(t2);
+                }
+                if (Math.random() < 0.2) {
+                    newPic.addTag(t3);
                 }
                 if (Math.random() < 0.2) {
                     newPic.set({favorited: true});

@@ -27,8 +27,7 @@ define([
             "keypress .filter-field" : "keyPress",
             'keyup .filter-field': 'keyUp',
             "click .tt-dropdown-menu" : "applyFilter",
-            "keydown .group_name":  "noShortcuts",
-            
+            "keydown .filter-field":  "noShortcuts",
         },
         
         noShortcuts: function(e) {
@@ -145,6 +144,8 @@ define([
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
                 Common.setDeletedOnly(false);
+                
+                console.log(selection);
                 
                 var tag = TagSet.findWhere({name: selection});
                 if (tag) {
