@@ -178,7 +178,7 @@ define([
         },
         
         createSubgroup: function() {
-            var newSubgroup = GroupSet.create({name: this.model.get('name') +" - Subgroup"});
+            var newSubgroup = GroupSet.create({name: "New Subgroup"});
             this.model.addSubgroup(newSubgroup);
         },
     });

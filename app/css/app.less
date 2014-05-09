@@ -223,8 +223,8 @@ a {
     .add_tag_btn {
       background-color: @orange;
       position: absolute;
-      top: 10px; left: 128px;
-      width: 75px; height: 60px;
+      top: 10px; left: 51px;
+      width: 75px;
       &:hover {
         background-color: darken(@orange,10%);
       }
@@ -376,7 +376,6 @@ a {
   position: relative;
   display: block;
   padding: 20px;
-  border-bottom: solid 1px @grayLight;
   .remove_group_button {
     background-color: rgba(0,0,0,0);
     position: absolute;
@@ -640,24 +639,59 @@ input.tag_label{
 .group {
   // GROUPS
   margin-left: 0px;
+  border-bottom: solid 1px @grayLight;
   .pic, .pic_target { height: 140px; width: 140px; }
   .selected .thumb { border: 8px solid #3399FF; }
   .pic_target { top: 67px; }
   .glyphicon-star, .glyphicon-star-empty { top: 12px; left: 12px; font-size: 16px; }
+
   // SUB-GROUPS
   .group {
     margin-left: 51px;
+    border-bottom: 0;
     .pic, .pic_target { height: 069px; width: 069px; }
     .selected .thumb { border: 4px solid #3399FF; }
     .pic_target { top: 32px; }
     .glyphicon-star, .glyphicon-star-empty { top: 6px; left: 6px; font-size: 12px; }
+    .group_header { font-size: 18px; }
+    .remove_group_button { top: 19px; }
+
     // SUB-SUB-GROUPS
     .group {
       margin-left: 51px;
+      border-bottom: 0;
       .pic, .pic_target { height: 034px; width: 034px; }
       .selected .thumb { border: 2px solid #3399FF; }
       .pic_target { top: 14px; }
       .glyphicon-star, .glyphicon-star-empty { top: 4px; left: 4px; font-size: 8px; }
+      .orange-btn { display: none; }
+      .group_header { font-size: 15px; }
+      .remove_group_button { top: 18px; }
     }
+  }
+}
+
+.orange-btn {
+  margin-top: 10px;
+  margin-left: 70px;
+  border: 0;
+  background-color: #ddd;
+  color: white;
+  font-weight: 400;
+  padding: 8px 12px;
+  &:hover {
+    background-color: darken(#ddd,10%);
+  }
+  &#add-group {
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: @orange;
+    &:hover {
+      background-color: darken(@orange,10%);
+    }
+  }
+  &.add_tag_btn {
+    background-color: @orange;
+
   }
 }

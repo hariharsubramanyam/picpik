@@ -193,9 +193,8 @@ a {
   background-color: #ff9933;
   position: absolute;
   top: 10px;
-  left: 128px;
+  left: 51px;
   width: 75px;
-  height: 60px;
 }
 .tags-panel-container .tags-panel .add_tag_btn:hover {
   background-color: #ff8000;
@@ -366,7 +365,6 @@ a {
   position: relative;
   display: block;
   padding: 20px;
-  border-bottom: solid 1px #dddddd;
 }
 .group .remove_group_button {
   background-color: rgba(0, 0, 0, 0);
@@ -617,6 +615,7 @@ input.tag_label {
 }
 .group {
   margin-left: 0px;
+  border-bottom: solid 1px #dddddd;
 }
 .group .pic,
 .group .pic_target {
@@ -637,6 +636,7 @@ input.tag_label {
 }
 .group .group {
   margin-left: 51px;
+  border-bottom: 0;
 }
 .group .group .pic,
 .group .group .pic_target {
@@ -655,8 +655,15 @@ input.tag_label {
   left: 6px;
   font-size: 12px;
 }
+.group .group .group_header {
+  font-size: 18px;
+}
+.group .group .remove_group_button {
+  top: 19px;
+}
 .group .group .group {
   margin-left: 51px;
+  border-bottom: 0;
 }
 .group .group .group .pic,
 .group .group .group .pic_target {
@@ -674,4 +681,36 @@ input.tag_label {
   top: 4px;
   left: 4px;
   font-size: 8px;
+}
+.group .group .group .orange-btn {
+  display: none;
+}
+.group .group .group .group_header {
+  font-size: 15px;
+}
+.group .group .group .remove_group_button {
+  top: 18px;
+}
+.orange-btn {
+  margin-top: 10px;
+  margin-left: 70px;
+  border: 0;
+  background-color: #ddd;
+  color: white;
+  font-weight: 400;
+  padding: 8px 12px;
+}
+.orange-btn:hover {
+  background-color: #c4c4c4;
+}
+.orange-btn#add-group {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #ff9933;
+}
+.orange-btn#add-group:hover {
+  background-color: #ff8000;
+}
+.orange-btn.add_tag_btn {
+  background-color: #ff9933;
 }
