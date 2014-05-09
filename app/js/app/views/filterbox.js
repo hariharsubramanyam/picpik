@@ -40,6 +40,7 @@ define([
         filterToDeleted: function(){
             this.$(".filter-field").val("Deleted");
             this.applyFilter();
+            Backbone.trigger("showToast", "Filtering to Deleted Photos");
         },
         substringMatcher: function(strs) {
           return function findMatches(q, cb) {
