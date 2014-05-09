@@ -168,24 +168,28 @@ a {
     top: 0px; right: 0px;
     border: 0;
   }
-  .undo_redo_container{
+  .undo_redo_container {
     position: absolute;
-    top: 0px;
-    right: 420px;
+    top: 0px; right: 220px;
     text-align: center;
     height: 80px;
     .undo_redo_button_div{
       margin-top: 20px;
       margin-right: 10px;
-      .undo-btn,.redo-btn{
-        background-color: rgb(34,34,34);
+      .undo-btn,
+      .redo-btn {
+        width: 90px; height: 40px;
+        background-color: #222;
         color: white;
-        width: 90px;
-        height: 40px;
         border-radius: 0px;
         font-size: 1em;
         text-align: center;
         margin-left: 5px;
+        transition: all 0.2s;
+        &[disabled] {
+          background-color: #333;
+          color: #777;
+        }
       }
     }
   }
@@ -335,7 +339,12 @@ a {
     .btn-cancel {
       position: absolute;
       top: 20px; left: 420px;
-      background-color: @grayLight;
+      background-color: @grayLighter;
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: @grayLight;
+        color: @grayDarkest;
+      }
     }
     .btn-x {
       position: absolute;
@@ -359,6 +368,7 @@ a {
           padding-top: 3px;
           color: @grayDark;
         }
+        transition: all 0.2s;
         &:hover {
           background-color: @grayLight;
           span {
@@ -469,7 +479,7 @@ input.tag_label{
   width: 105px;
   border: 1px dashed #EEE;
   background-color: white;
-  transition: all 0.4s;
+  transition: all 0.2s;
   &:hover, &:focus {
     border: 1px dashed #BBB;
     background-color: #F7F7F7;
@@ -499,7 +509,7 @@ input.tag_label{
   -khtml-user-select: text; 
   -webkit-user-select: text; 
   -o-user-select: text;
-  transition: all 0.4s;
+  transition: all 0.2s;
   background-color: #F7F7F7;
   &:hover, &:focus {
     outline: 0;
@@ -622,7 +632,7 @@ input.tag_label{
         }
       }
       .glyphicon-star-empty {
-        opacity: 0.4;
+        opacity: 0.67;
         transition: opacity 0.2s;
         &:hover {
           opacity: 1.0;
@@ -691,7 +701,7 @@ input.tag_label{
   color: white;
   font-weight: 400;
   padding: 8px 12px;
-  transition: background-color 0.4s;
+  transition: background-color 0.2s;
   &:hover {
     background-color: darken(#ddd,10%);
   }
@@ -765,7 +775,7 @@ button:active {
   border: dotted 1px #555;
   background-color: #333;
   padding: 5px 10px;
-  transition: all 0.4s;
+  transition: all 0.2s;
   &:hover, &:focus {
     border: dotted 1px #777;
     background-color: #222;
@@ -792,6 +802,9 @@ button:focus, button:active {
     max-width: 380px;
     border-radius: 0;
   }
+  option {
+    padding: 5px;
+  }
   background-color: #F7F7F7 !important;
 }
 
@@ -811,7 +824,7 @@ button:focus, button:active {
   margin: 120px auto !important;
   &.narrow {
     width: 400px !important;
-    margin: 240px auto !important;
+    margin: 200px auto !important;
     .close {
       position: absolute;
       top: 15px;
@@ -819,7 +832,7 @@ button:focus, button:active {
       z-index: 10000;
       font-size: 21px !important;
       opacity: 0.4 !important;
-      transition: opacity 0.4s;
+      transition: opacity 0.2s;
       &:hover {
         opacity: 0.7 !important;
       }
@@ -830,6 +843,7 @@ button:focus, button:active {
     border: 0 !important;
     background-color: @orange;
     color: white !important;
+    transition: background-color 0.2s;
     &:hover {
       background-color: darken(@orange,10%);
       color: white !important;
@@ -840,6 +854,7 @@ button:focus, button:active {
     border: 0 !important;
     background-color: #ddd;
     color: white;
+    transition: background-color 0.2s;
     &:hover {
       background-color: darken(#ddd,10%);
       color: white;
@@ -854,8 +869,18 @@ button:focus, button:active {
   z-index: 10000;
   font-size: 40px !important;
   opacity: 0.7 !important;
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
   &:hover {
     opacity: 1.0 !important;
+  }
+}
+
+.utility {
+  display: block;
+  margin: 10px 40px;
+  text-decoration: none;
+  color: #ddd;
+  &:hover {
+    color: #ddd;
   }
 }
