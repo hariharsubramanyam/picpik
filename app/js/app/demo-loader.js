@@ -21,16 +21,16 @@ define([
             });
             TagSet.each(function(tag) { 
                 try { tag.destroy(); } catch (err) { }
-            });            
+            });
             
             
-            var t1 = TagSet.create({name: "John"});
+            var t1 = TagSet.create({name: "David"});
             
-            var t2 = TagSet.create({name: "Food"});
+            var t2 = TagSet.create({name: "Rafting"});
             
             var rootGroup = GroupSet.rootGroup();
             
-            var p = GroupSet.create({name: "Mumbai"});
+            var p = GroupSet.create({name: "Eagle Point"});
             rootGroup.addSubgroup(p);
             for (var i = 0; i < 10 + Math.random() * 5 ; i++) {
                 var newPic = PicSet.create({title: "New Pic"});
@@ -48,7 +48,7 @@ define([
                     newPic.set({deleted: true});
                 }
             }
-            var p = GroupSet.create({name: "New Dehli"});
+            var p = GroupSet.create({name: "Hermit's Rest"});
             rootGroup.addSubgroup(p);
             for (var i = 0; i < 15 + Math.random() * 5; i++) {
                 var newPic = PicSet.create({title: "New Pic"});
