@@ -25,6 +25,7 @@ define([
             "click  #show_deleted" : "clickDeleted",
             "change  .tag_choice" : "pickTag",
             "keypress .filter-field" : "keyPress",
+            'keyup .filter-field': 'keyUp',
             "click .tt-dropdown-menu" : "applyFilter",
             
         },
@@ -32,9 +33,14 @@ define([
         initialize: function() {
             this.listenTo(Common, "filterTag", this.filterTag);
             
-            this.listenTo(TagSet, 'all', this.render);            
+            this.listenTo(TagSet, 'all', this.render);      
+            this.listenTo(Backbone, "filterToDeleted", this.filterToDeleted);
         },
         
+        filterToDeleted: function(){
+            this.$(".filter-field").val("Deleted");
+            this.applyFilter();
+        },
         substringMatcher: function(strs) {
           return function findMatches(q, cb) {
             var matches, substringRegex;
@@ -95,7 +101,13 @@ define([
         keyPress: function(e) {
 			if (e.which === Common.ENTER_KEY) {
 				this.applyFilter();
-			}        
+			}
+        },
+
+        keyUp: function(e){
+            if(this.$('.filter-field').val().length == 0){
+                this.applyFilter();
+            }
         },
         
         applyFilter: function() {
