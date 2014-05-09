@@ -14,15 +14,15 @@ define([
 		},
 		initialize: function(){
 			var current_object = this;
-			this.listenTo(Backbone, "imagesDeleted", function(){current_object.showToast("Deleted Pics")});
-			this.listenTo(Backbone, "imagesUndeleted", function(){current_object.showToast("Undeleted Pics")});
-			this.listenTo(Backbone, "imagesFavorited", function(){current_object.showToast("Favorited Pics")});
-			this.listenTo(Backbone, "imagesUnfavorited", function(){current_object.showToast("Unfavorited Pics")});
-			this.listenTo(Backbone, "imagesTagged", function(){current_object.showToast("Tagged Pics")});
-			this.listenTo(Backbone, "imagesUntagged", function(){current_object.showToast("Untagged Pics")});
-			this.listenTo(Backbone, "didUndo", function(message){current_object.showToast(message)});
-			this.listenTo(Backbone, "didRedo", function(message){current_object.showToast(message)});
-			this.listenTo(Backbone, "selectedPics", function(message){current_object.showToast(message)});
+			this.listenTo(Backbone, "imagesDeleted", function(){current_object.showToast("Deleted")});
+			this.listenTo(Backbone, "imagesUndeleted", function(){current_object.showToast("Undeleted")});
+			this.listenTo(Backbone, "imagesFavorited", function(){current_object.showToast("Favorited")});
+			this.listenTo(Backbone, "imagesUnfavorited", function(){current_object.showToast("Unfavorited")});
+			this.listenTo(Backbone, "imagesTagged", function(){current_object.showToast("Tagged")});
+			this.listenTo(Backbone, "imagesUntagged", function(){current_object.showToast("Untagged")});
+			// this.listenTo(Backbone, "didUndo", function(message){current_object.showToast(message)});
+			// this.listenTo(Backbone, "didRedo", function(message){current_object.showToast(message)});
+			// this.listenTo(Backbone, "selectedPics", function(message){current_object.showToast(message)});
 			
 			this.timeout = null;
 		},
