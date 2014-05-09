@@ -390,7 +390,7 @@ a {
   color: #fce380;
 }
 .modal-body {
-  overflow: visible;
+  overflow: hidden;
 }
 .brick.normal {
   width: 140px;
@@ -426,24 +426,6 @@ a {
 .tag_icon .tag_image {
   font-size: 1.5em;
   top: 5px;
-}
-.tag_icon:focus .black {
-  color: black;
-}
-.tag_icon:focus .orange {
-  color: orange;
-}
-.tag_icon:focus .blue {
-  color: blue;
-}
-.tag_icon:focus .red {
-  color: red;
-}
-.tag_icon:focus .green {
-  color: green;
-}
-.tag_icon:focus .yellow {
-  color: yellow;
 }
 .tag_label {
   font-size: 1em;
@@ -514,8 +496,6 @@ input.tag_label:focus {
   margin-bottom: 10px;
 }
 .preview_overlay {
-  max-width: 1200px;
-  max-height: 600px;
   overflow: hidden;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -785,4 +765,27 @@ button:active {
   border: dotted 1px #777;
   background-color: #222;
   outline: 0;
+}
+button:focus,
+button:active {
+  outline: 0;
+}
+.modal {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+.modal-header {
+  display: none;
+}
+.modal-body {
+  padding: 0 !important;
+  border-radius: 0;
+  height: 540px !important;
+  width: 960px !important;
+  background-color: #333;
+}
+.modal-dialog {
+  height: 540px !important;
+  width: 960px !important;
+  margin: 100px auto !important;
 }
