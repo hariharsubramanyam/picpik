@@ -34,6 +34,7 @@ define([
             this.model.set({selected: false});
             
             this.partialClick = false;
+            this.inDoubleClickPeriod = false;
         },
         
         render: function() {
@@ -112,6 +113,14 @@ define([
         mouseUp: function() {
             if (this.partialClick) {
                 this.toggleSelection();
+            }
+            if (this.inDoubleClickPeriod) {
+                this.doubleClick();
+                this.inDoubleClickPeriod = false;
+            } else {
+                this.inDoubleClickPeriod = true;
+                var self = this;
+                setTimeout(function () {self.inDoubleClickPeriod = false;}, 500);
             }
         },
         getTagNames: function(){
