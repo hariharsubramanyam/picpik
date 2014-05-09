@@ -132,7 +132,7 @@ a {
 .topnav .undo_redo_container {
   position: absolute;
   top: 0px;
-  right: 420px;
+  right: 220px;
   text-align: center;
   height: 80px;
 }
@@ -142,14 +142,20 @@ a {
 }
 .topnav .undo_redo_container .undo_redo_button_div .undo-btn,
 .topnav .undo_redo_container .undo_redo_button_div .redo-btn {
-  background-color: #222222;
-  color: white;
   width: 90px;
   height: 40px;
+  background-color: #222;
+  color: white;
   border-radius: 0px;
   font-size: 1em;
   text-align: center;
   margin-left: 5px;
+  transition: all 0.2s;
+}
+.topnav .undo_redo_container .undo_redo_button_div .undo-btn[disabled],
+.topnav .undo_redo_container .undo_redo_button_div .redo-btn[disabled] {
+  background-color: #333;
+  color: #777;
 }
 .tags-panel-container {
   position: absolute;
@@ -318,7 +324,12 @@ a {
   position: absolute;
   top: 20px;
   left: 420px;
+  background-color: #eeeeee;
+  transition: background-color 0.2s;
+}
+.actionbar_container .action-bar .btn-cancel:hover {
   background-color: #dddddd;
+  color: #222222;
 }
 .actionbar_container .action-bar .btn-x {
   position: absolute;
@@ -341,6 +352,7 @@ a {
   width: 64px;
   height: 50px;
   border: 0;
+  transition: all 0.2s;
 }
 .actionbar_container .action-bar .actions .action-button span {
   display: block;
@@ -444,7 +456,7 @@ input.tag_label {
   width: 105px;
   border: 1px dashed #EEE;
   background-color: white;
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
 input.tag_label:hover,
 input.tag_label:focus {
@@ -471,7 +483,7 @@ input.tag_label:focus {
   -khtml-user-select: text;
   -webkit-user-select: text;
   -o-user-select: text;
-  transition: all 0.4s;
+  transition: all 0.2s;
   background-color: #F7F7F7;
 }
 .group_header:hover,
@@ -582,7 +594,7 @@ input.tag_label:focus {
   cursor: pointer;
 }
 .group .pic .glyphicon-star-empty {
-  opacity: 0.4;
+  opacity: 0.67;
   transition: opacity 0.2s;
 }
 .group .pic .glyphicon-star-empty:hover {
@@ -690,7 +702,7 @@ input.tag_label:focus {
   color: white;
   font-weight: 400;
   padding: 8px 12px;
-  transition: background-color 0.4s;
+  transition: background-color 0.2s;
 }
 .orange-btn:hover {
   background-color: #c4c4c4;
@@ -757,7 +769,7 @@ button:active {
   border: dotted 1px #555;
   background-color: #333;
   padding: 5px 10px;
-  transition: all 0.4s;
+  transition: all 0.2s;
 }
 .project_name:hover,
 .project_name:focus {
@@ -784,6 +796,9 @@ button:active {
   max-width: 380px;
   border-radius: 0;
 }
+.modal-body option {
+  padding: 5px;
+}
 .modal-footer {
   margin-top: 0px !important;
   border-top: 0px !important;
@@ -799,7 +814,7 @@ button:active {
 }
 .modal-dialog.narrow {
   width: 400px !important;
-  margin: 240px auto !important;
+  margin: 200px auto !important;
 }
 .modal-dialog.narrow .close {
   position: absolute;
@@ -808,7 +823,7 @@ button:active {
   z-index: 10000;
   font-size: 21px !important;
   opacity: 0.4 !important;
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
 }
 .modal-dialog.narrow .close:hover {
   opacity: 0.7 !important;
@@ -819,6 +834,7 @@ button:active {
   border: 0 !important;
   background-color: #ff9933;
   color: white !important;
+  transition: background-color 0.2s;
 }
 .modal-dialog .btn-tag:hover,
 .modal-dialog .btn-group:hover {
@@ -830,6 +846,7 @@ button:active {
   border: 0 !important;
   background-color: #ddd;
   color: white;
+  transition: background-color 0.2s;
 }
 .modal-dialog .btn-untag:hover {
   background-color: #c4c4c4;
@@ -842,8 +859,17 @@ button:active {
   z-index: 10000;
   font-size: 40px !important;
   opacity: 0.7 !important;
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
 }
 .close:hover {
   opacity: 1.0 !important;
+}
+.utility {
+  display: block;
+  margin: 10px 40px;
+  text-decoration: none;
+  color: #ddd;
+}
+.utility:hover {
+  color: #ddd;
 }
