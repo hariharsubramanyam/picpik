@@ -31,9 +31,13 @@ define([
         },
         
         render: function() {
-            this.$el.addClass("pic_target");                             
+            this.$el.addClass("pic_target");                         
             return this;
         },
+        
+        updateVisibility: function() {
+            // Pass;
+        }
     });
     return PicTargetView;
 });

@@ -40,6 +40,13 @@ define([
             
             this.listenTo(TagSet, 'all', this.render);      
             this.listenTo(Backbone, "filterToDeleted", this.filterToDeleted);
+            
+            this.listenTo(Backbone, 'setCurrentFilterTag', _.bind(this.setCurrentFilterTag, this));            
+        },
+        
+        setCurrentFilterTag: function(tagName) {
+            console.log(tagName);
+            this.$(".filter-field").val(tagName);
         },
         
         filterToDeleted: function(){
@@ -117,6 +124,7 @@ define([
         },
         
         applyFilter: function() {
+            Common.deselectAll();
             var selection = $(".filter-field").val();
             if(selection != "Deleted"){
                 Backbone.trigger("notFilteredToDeleted");
