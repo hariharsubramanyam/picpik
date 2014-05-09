@@ -1,16 +1,16 @@
 <div class="modal fade tag_overlay" id="tagModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog narrow">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Add/Remove Tag</h4>
+        <h4 class="modal-title">Tag</h4>
       </div>
       <div class="modal-body">
 	    <select class ='tag_choice form-control' name="tag"></select>
       </div>
       <div class="modal-footer">
-      	<button class="add_tag btn btn-default" type="button" data-dismiss="modal">Assign Tag</button>
-	    <button class="remove_tag btn btn-default" type="button" data-dismiss="modal">Remove Tag</button>
+        <button class="remove_tag btn btn-untag" type="button" data-dismiss="modal">Untag</button>
+      	<button class="add_tag btn btn-tag" type="button" data-dismiss="modal">Tag</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

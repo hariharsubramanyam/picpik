@@ -121,7 +121,6 @@ body {
 }
 
 .carousel_pic{
-  height: 400px !important;
   margin-left:auto;
   margin-right:auto;
 }
@@ -782,20 +781,81 @@ button:focus, button:active {
   overflow-x: hidden !important;
   overflow-y: hidden !important;
 }
-.modal-header {
-  display: none;
+
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.modal-body {
+  select {
+    margin: 10px !important;
+    max-width: 380px;
+    border-radius: 0;
+  }
+  background-color: #F7F7F7 !important;
+}
+
+.modal-footer {
+  margin-top: 0px !important;
+  border-top: 0px !important;
+  background-color: #F7F7F7 !important;
 }
 
 .modal-body {
   padding: 0 !important;
   border-radius: 0;
-  // height: 540px !important;
-  // width: 960px !important;
-  background-color: #333;
 }
 
 .modal-dialog {
-  //height: 540px !important;
-  // width: 960px !important;
+  width: 1024px !important;
   margin: 120px auto !important;
+  &.narrow {
+    width: 400px !important;
+    margin: 240px auto !important;
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 10000;
+      font-size: 21px !important;
+      opacity: 0.4 !important;
+      transition: opacity 0.4s;
+      &:hover {
+        opacity: 0.7 !important;
+      }
+    }
+  }
+  .btn-tag, .btn-group {
+    border-radius: 0px !important;
+    border: 0 !important;
+    background-color: @orange;
+    color: white !important;
+    &:hover {
+      background-color: darken(@orange,10%);
+      color: white !important;
+    }
+  }
+  .btn-untag {
+    border-radius: 0px !important;
+    border: 0 !important;
+    background-color: #ddd;
+    color: white;
+    &:hover {
+      background-color: darken(#ddd,10%);
+      color: white;
+    }
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  font-size: 40px !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.4s;
+  &:hover {
+    opacity: 1.0 !important;
+  }
 }

@@ -82,7 +82,6 @@ body ::-webkit-scrollbar-thumb {
   display: none;
 }
 .carousel_pic {
-  height: 400px !important;
   margin-left: auto;
   margin-right: auto;
 }
@@ -774,14 +773,77 @@ button:active {
   overflow-x: hidden !important;
   overflow-y: hidden !important;
 }
-.modal-header {
-  display: none;
+.modal-content {
+  border-radius: 0 !important;
+}
+.modal-body {
+  background-color: #F7F7F7 !important;
+}
+.modal-body select {
+  margin: 10px !important;
+  max-width: 380px;
+  border-radius: 0;
+}
+.modal-footer {
+  margin-top: 0px !important;
+  border-top: 0px !important;
+  background-color: #F7F7F7 !important;
 }
 .modal-body {
   padding: 0 !important;
   border-radius: 0;
-  background-color: #333;
 }
 .modal-dialog {
+  width: 1024px !important;
   margin: 120px auto !important;
+}
+.modal-dialog.narrow {
+  width: 400px !important;
+  margin: 240px auto !important;
+}
+.modal-dialog.narrow .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10000;
+  font-size: 21px !important;
+  opacity: 0.4 !important;
+  transition: opacity 0.4s;
+}
+.modal-dialog.narrow .close:hover {
+  opacity: 0.7 !important;
+}
+.modal-dialog .btn-tag,
+.modal-dialog .btn-group {
+  border-radius: 0px !important;
+  border: 0 !important;
+  background-color: #ff9933;
+  color: white !important;
+}
+.modal-dialog .btn-tag:hover,
+.modal-dialog .btn-group:hover {
+  background-color: #ff8000;
+  color: white !important;
+}
+.modal-dialog .btn-untag {
+  border-radius: 0px !important;
+  border: 0 !important;
+  background-color: #ddd;
+  color: white;
+}
+.modal-dialog .btn-untag:hover {
+  background-color: #c4c4c4;
+  color: white;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  font-size: 40px !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.4s;
+}
+.close:hover {
+  opacity: 1.0 !important;
 }
