@@ -17,6 +17,13 @@ define([
         events: {
             "click .delete_tag_btn" : "removeTag",
             "blur .tag_name_field" : "closeName",
+            "keydown .group_name":  "noShortcuts",
+            "click .filter_tag_btn": "filterTag",
+            
+        },
+        
+        noShortcuts: function(e) {
+            e.stopPropagation();  
         },
         
         initialize: function() {
@@ -40,6 +47,16 @@ define([
         closeName: function() {
             var value = this.$nameInput.val();
             this.model.save({name: value});        
+        },
+        
+        filterTag: function() {
+            Common.deselectAll();
+            
+            Common.clearVisibleTags();   
+            Common.setFavoritesOnly(false);
+            Common.setDeletedOnly(false);
+            Common.setVisibleTag(this.model);
+            Backbone.trigger("setCurrentFilterTag", this.model.get('name'));
         }
     });
     return TagView;

@@ -100,7 +100,7 @@ define([
             this.addChild(this.GROUP_TYPE, group.get('groupId'));
             this.listenTo(group, "destroy", function () {this.removeSubgroup(group)});
             this.listenTo(group, "leaveGroup", function () {this.removeSubgroup(group)});
-            this.trigger("subgroupAdded", group);
+            this.trigger("addSubgroup", group);
         },
         
         removeSubgroup: function(group) {
