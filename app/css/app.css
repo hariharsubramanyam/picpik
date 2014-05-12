@@ -826,7 +826,7 @@ button:active {
   width: 400px !important;
   margin: 200px auto !important;
 }
-.modal-dialog.narrow .close {
+.modal-dialog.narrow .modal_close_btn {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -835,7 +835,7 @@ button:active {
   opacity: 0.4 !important;
   transition: opacity 0.2s;
 }
-.modal-dialog.narrow .close:hover {
+.modal-dialog.narrow .modal_close_btn:hover {
   opacity: 0.7 !important;
 }
 .modal-dialog .btn-tag,
@@ -862,7 +862,7 @@ button:active {
   background-color: #c4c4c4;
   color: white;
 }
-.close {
+.modal_close_btn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -871,7 +871,7 @@ button:active {
   opacity: 0.7 !important;
   transition: opacity 0.2s;
 }
-.close:hover {
+.modal_close_btn:hover {
   opacity: 1.0 !important;
 }
 .utility {

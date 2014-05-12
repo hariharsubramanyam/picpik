@@ -28,8 +28,12 @@ define([
         render: function() {
             if (this.active) {
                 this.$el.html(this.singleImageTemplate({pics: this.pics}));
-                $('#previewModal').modal("show");
                 $('.carousel').carousel();
+                var modal = $('#previewModal')
+                modal.modal("show");
+                this.$(".modal_close_btn").click(function() {
+                    modal.modal("hide");
+                });
             } 
             return this;
         },
