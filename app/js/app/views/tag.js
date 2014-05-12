@@ -17,9 +17,8 @@ define([
         events: {
             "click .delete_tag_btn" : "removeTag",
             "blur .tag_name_field" : "closeName",
-            "keydown .group_name":  "noShortcuts",
+            "keydown .tag_name_field":  "noShortcuts",
             "click .filter_tag_btn": "filterTag",
-            
         },
         
         noShortcuts: function(e) {

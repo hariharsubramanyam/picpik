@@ -25,6 +25,7 @@ define([
             "click  #show_deleted" : "clickDeleted",
             "change  .tag_choice" : "pickTag",
             "keypress .filter-field" : "keyPress",
+            "blur .filter-field" : "onBlur",            
             'keyup .filter-field': 'keyUp',
             "click .tt-dropdown-menu" : "applyFilter",
             "keydown .filter-field":  "noShortcuts",
@@ -135,6 +136,10 @@ define([
 			if (e.which === Common.ENTER_KEY) {
 				this.applyFilter();
 			}
+        },
+        
+        onBlur: function() {
+				this.applyFilter();
         },
 
         keyUp: function(e){
