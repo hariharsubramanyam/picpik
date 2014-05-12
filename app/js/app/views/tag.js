@@ -50,7 +50,7 @@ define([
         
         filterTag: function() {
             Common.deselectAll();
-            Backbone.trigger("setCurrentFilterTag", this.model.get('name'));
+            Backbone.trigger("setCurrentFilterTag", this.model.get('name'));            
         }
     });
     return TagView;

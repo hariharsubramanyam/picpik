@@ -40,6 +40,7 @@ define([
             
             this.listenTo(TagSet, 'all', this.render);      
             this.listenTo(Backbone, "filterToDeleted", this.filterToDeleted);
+            this.listenTo(Backbone, "filterToFavorited", this.filterToFavorited);
             
             this.listenTo(Backbone, 'setCurrentFilterTag', _.bind(this.setCurrentFilterTag, this));            
         },
@@ -53,6 +54,7 @@ define([
                 Common.setFavoritesOnly(false);
                 Common.setDeletedOnly(false);
                 $(".filter-field").val("");
+                Backbone.trigger("showToast", "Filtering to All Photos");
             } else {
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
@@ -63,6 +65,7 @@ define([
                 var tag = TagSet.findWhere({name: selection});
                 if (tag) {
                     Common.setVisibleTag(tag);
+                    Backbone.trigger("showToast", "Filtering to tag " + tagName);
                 } else {
                     // Bad value:
                     var selection = $(".filter-field").val("");
@@ -71,10 +74,27 @@ define([
         },
         
         filterToDeleted: function(){
-            this.$(".filter-field").val("Deleted");
+            if (this.$(".filter-field").val() == "Deleted") {
+                this.$(".filter-field").val("");
+                Backbone.trigger("showToast", "Filtering to All Photos");
+            } else {
+                this.$(".filter-field").val("Deleted");      
+                Backbone.trigger("showToast", "Filtering to Deleted Photos");
+            }
             this.applyFilter();
-            Backbone.trigger("showToast", "Filtering to Deleted Photos");
         },
+        
+        filterToFavorited: function(){
+            if (this.$(".filter-field").val() == "Favorited") {
+                this.$(".filter-field").val("");
+                Backbone.trigger("showToast", "Filtering to All Photos");
+            } else {
+                this.$(".filter-field").val("Favorited");                
+                Backbone.trigger("showToast", "Filtering to Favorited Photos");
+            }
+            this.applyFilter();
+        },
+        
         substringMatcher: function(strs) {
           return function findMatches(q, cb) {
             var matches, substringRegex;

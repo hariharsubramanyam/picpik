@@ -17,13 +17,7 @@ define([
 			'click .delete-target': 'filterToDeleted'
 		},
 		showFavorites: function(){
-			Common.deselectAll();
-			PicSet.each(function(pic){
-				if(pic.get("favorited")){
-					pic.select();
-				}
-			});
-			Backbone.trigger("selectedPics", "Selected All Favorited Pics");
+			Backbone.trigger("filterToFavorited");
 		},
 		filterToDeleted: function(){
 			Backbone.trigger("filterToDeleted");
@@ -46,14 +40,9 @@ define([
 				activeClass: "active-target",
 				hoverClass: 'hover-over-target',
 				drop: function( event, ui ) {
-					var picture_src = $(ui.draggable[0]).find('img')[0].src;
-					var deleteMe = PicSet.filter(function(pic){
-						if(picture_src.indexOf(pic.get("picSrc")) != -1){
-							return true;
-						}
-						return false;
-					})[0];
-					var undo_function = function(){
+					var picId = $(ui.draggable[0]).find('img').attr('picId');
+                    var deleteMe = PicSet.findWhere({picId: parseInt(picId)});
+                    var undo_function = function(){
 						this.markNotDeleted();
 						Backbone.trigger("imagesUndeleted");
 					};
@@ -71,13 +60,8 @@ define([
 				activeClass: "active-target",
 				hoverClass: 'hover-over-target',
 				drop: function( event, ui ) {
-					var picture_src = $(ui.draggable[0]).find('img')[0].src;
-					var favoriteMe = PicSet.filter(function(pic){
-						if(picture_src.indexOf(pic.get("picSrc")) != -1){
-							return true;
-						}
-						return false;
-					})[0];
+					var picId = $(ui.draggable[0]).find('img').attr('picId');
+                    var favoriteMe = PicSet.findWhere({picId: parseInt(picId)});
 					var undo_function = function(){
 						this.unfavorite();
 						Backbone.trigger("imagesUnfavorited");
