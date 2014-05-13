@@ -118,6 +118,12 @@ define([
             this.$('#filters a').removeClass('selected')
             .filter('[href="#/' + (Common.picFilter || '') + '"]')
             .addClass('selected');
+          
+            this.$('#group_container').sortable({
+                handle: '.group-handle',
+                connectWith: '.subgroups',
+            });
+
             
         },
         

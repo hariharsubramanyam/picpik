@@ -90,6 +90,13 @@ define([
             
             // Render SubGroups     
             this.$subgroups = this.$('.subgroups');
+          
+            this.$subgroups.sortable({
+              handle: '.group-handle',
+              connectWith: '.subgroups',
+            });
+
+          
             var subgroups = this.model.getSubgroups();
 
             _.each(subgroups, this.addSubgroupView, this);            
