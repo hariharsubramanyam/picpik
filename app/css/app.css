@@ -386,6 +386,15 @@ a {
 }
 .group .pic_grid {
   margin-top: 20px;
+  min-height: 15px;
+  list-style-type: none;
+}
+.group .pic_grid:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 /***** OLD STUFF *****/
 .blue {
@@ -580,8 +589,7 @@ input.tag_label:focus {
   width: 100%;
 }
 .group .pic {
-  display: inline-block;
-  position: relative;
+  float: left;
   margin: 1px;
 }
 .group .pic .glyphicon-star,
@@ -601,11 +609,8 @@ input.tag_label:focus {
   opacity: 1.0;
 }
 .pic_target {
-  display: inline-block;
-  position: relative;
+  float: left;
   margin: 1px;
-  top: 50px;
-  left: 0px;
   -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
@@ -628,9 +633,6 @@ input.tag_label:focus {
 .group .selected .thumb {
   border-width: 8px;
 }
-.group .pic_target {
-  top: 67px;
-}
 .group .glyphicon-star,
 .group .glyphicon-star-empty {
   top: 12px;
@@ -648,9 +650,6 @@ input.tag_label:focus {
 }
 .group .group .selected .thumb {
   border-width: 4px;
-}
-.group .group .pic_target {
-  top: 32px;
 }
 .group .group .glyphicon-star,
 .group .group .glyphicon-star-empty {
@@ -680,9 +679,6 @@ input.tag_label:focus {
 }
 .group .group .group .selected .thumb {
   border: 2px solid #3399FF;
-}
-.group .group .group .pic_target {
-  top: 14px;
 }
 .group .group .group .glyphicon-star,
 .group .group .group .glyphicon-star-empty {

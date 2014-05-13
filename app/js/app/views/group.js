@@ -79,7 +79,7 @@ define([
             _.each(group_pics, this.addPicView, this);     
           
             if (group_pics.length == 0) {
-                this.addTargetView();
+                //this.addTargetView();
             }
             
             // Render SubGroups     

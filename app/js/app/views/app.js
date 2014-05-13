@@ -16,6 +16,8 @@ define([
     'views/undo_redo',
     'views/droptargets',
     'views/toast',
+    'views/pic',
+    
     
     'demo-loader',
     'text!templates/stats.html',
@@ -30,6 +32,7 @@ define([
             UndoRedoView,
             DropTargetsView,
             ToastView,
+            PicView,
             DemoLoader,
             statsTemplate, Common) {
     /**

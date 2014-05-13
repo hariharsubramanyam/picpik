@@ -12,7 +12,7 @@ define([
      * The view object is a div
      */
     var PicTargetView = Backbone.View.extend({
-        tagName: "div",
+        tagName: "li",
         
         template: _.template(picTargetTemplate),
         
@@ -31,7 +31,7 @@ define([
         },
         
         render: function() {
-            this.$el.addClass("pic_target_no_offset");                         
+            this.$el.addClass("pic_target_hidden");                         
             return this;
         },
         

@@ -12,7 +12,7 @@ define([
      * The view object is a div
      */
     var PicView = Backbone.View.extend({
-        tagName: "div",
+        tagName: "li",
         
         template: _.template(picTemplate),
         
