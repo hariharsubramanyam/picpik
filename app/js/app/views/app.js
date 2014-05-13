@@ -48,6 +48,7 @@ define([
             "click #load-demo": "loadDemoData",
             "click #clear-storage": "clearLocalStorage",
             "click .main-panel": "deselectAll",
+            "keydown .project_name":  "noShortcuts",
         },
         
         initialize: function() {  
@@ -213,7 +214,13 @@ define([
                 // X 
                 this.actionBar.tagClicked();
             }
-        }
+        },
+      
+        noShortcuts: function(e) {
+            e.stopPropagation();  
+        },
+        
+      
         
     });
     return AppView;
