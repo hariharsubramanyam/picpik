@@ -28,7 +28,15 @@ define([
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
                 this.renderGroupChoices();
-                $("#groupModal").modal("show");
+                var modal = $('#groupModal')
+                modal.modal("show");
+                this.listenTo(Backbone, "closeModal", function() {
+                    modal.modal("hide");
+                });
+              
+                this.$(".small_modal_close_btn").click(function() {
+                    modal.modal("hide");
+                });              
             }
             return this;
         },

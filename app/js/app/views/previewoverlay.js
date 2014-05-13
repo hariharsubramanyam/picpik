@@ -31,6 +31,10 @@ define([
                 $('.carousel').carousel();
                 var modal = $('#previewModal')
                 modal.modal("show");
+                this.listenTo(Backbone, "closeModal", function() {
+                    modal.modal("hide");
+                });
+              
                 this.$(".modal_close_btn").click(function() {
                     modal.modal("hide");
                 });

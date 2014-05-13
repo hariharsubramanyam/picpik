@@ -180,7 +180,6 @@ define([
         },
         
         deselectAll: function() {
-            console.log("deselectAll");
             Common.deselectAll();
         },
         
@@ -193,6 +192,7 @@ define([
             if (e.keyCode == 27) {
                 // Escape
                 Common.deselectAll();
+                Backbone.trigger("closeModal");        
             } else if (e.keyCode == 32 || e.keyCode == 80 || e.keyCode == 13) {
                 // Space
                 Backbone.trigger("previewPics", Common.selectedPics);

@@ -32,7 +32,15 @@ define([
             this.$el.html(this.template());
             if (this.active && this.pics.length > 0) {
                 this.renderTagChoices();
-                $("#tagModal").modal("show");
+                var modal = $('#tagModal')
+                modal.modal("show");
+                this.listenTo(Backbone, "closeModal", function() {
+                    modal.modal("hide");
+                });
+              
+                this.$(".small_modal_close_btn").click(function() {
+                    modal.modal("hide");
+                });   
             }
             return this;
         },
