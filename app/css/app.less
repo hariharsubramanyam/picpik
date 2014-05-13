@@ -630,6 +630,7 @@ input.tag_label{
 
 .group {
   .pic {  
+      position: relative;
       float: left;
       margin: 1px;
       .glyphicon-star,
@@ -878,12 +879,14 @@ button:focus, button:active {
 
 .modal_close_btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0px; right: 0px;
+  height: 55px; width: 55px;
   z-index: 10000;
   font-size: 40px !important;
   opacity: 0.7 !important;
   transition: opacity 0.2s;
+  background: transparent;
+  border: 0;
   &:hover {
     opacity: 1.0 !important;
   }
