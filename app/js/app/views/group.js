@@ -71,7 +71,13 @@ define([
             this.$picgrid.sortable({
               connectWith: '.pic_grid',
               forcePlaceholderSize: true,
-              placeholder: 'pic_target'
+              placeholder: 'pic_target',
+              stop: function() {
+                if ($(this).hasClass('dropped')){
+                    $(this).sortable('cancel');
+                    $(this).removeClass('dropped');
+                }
+              }
             });
             this.$picgrid.disableSelection();
 

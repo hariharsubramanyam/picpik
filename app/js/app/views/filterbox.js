@@ -65,7 +65,7 @@ define([
                 var tag = TagSet.findWhere({name: selection});
                 if (tag) {
                     Common.setVisibleTag(tag);
-                    Backbone.trigger("showToast", "Filtering to tag " + tagName);
+                    Backbone.trigger("showToast", "Filtering to tag " + selection);
                 } else {
                     // Bad value:
                     var selection = $(".filter-field").val("");
@@ -159,7 +159,8 @@ define([
         },
         
         onBlur: function() {
-				this.applyFilter();
+            Backbone.trigger("showToast", "Filtering to SHOW tag " + $(".filter-field").val());              
+		    this.applyFilter();
         },
 
         keyUp: function(e){
@@ -175,14 +176,17 @@ define([
                 Backbone.trigger("notFilteredToDeleted");
             }
             if (selection === "All") {
+                Backbone.trigger("showToast", "Filtering to All Photos");              
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
                 Common.setDeletedOnly(false);
-            } else if (selection == "Favorited") {
+            } else if (selection == "Favorited" || selection == "favorited") {
+                Backbone.trigger("showToast", "Filtering to Favorited Photos");                            
                 Common.clearVisibleTags();
                 Common.setFavoritesOnly(true);
                 Common.setDeletedOnly(false);
-            } else if (selection == "Deleted") {
+            } else if (selection === "Deleted") {
+                Backbone.trigger("showToast", "Filtering to Deleted Photos");              
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
                 Common.setDeletedOnly(true);
@@ -190,15 +194,14 @@ define([
                 Common.clearVisibleTags();   
                 Common.setFavoritesOnly(false);
                 Common.setDeletedOnly(false);
-                
-                console.log(selection);
-                
+                console.log("selection: " + selection);
                 var tag = TagSet.findWhere({name: selection});
+              
                 if (tag) {
                     Common.setVisibleTag(tag);
                 } else {
                     // Bad value:
-                    var selection = $(".filter-field").val("");
+                    $(".filter-field").val("");
                 }
             }
         },

@@ -40,6 +40,7 @@ define([
 				activeClass: "active-target",
 				hoverClass: 'hover-over-target',
 				drop: function( event, ui ) {
+                    ui.draggable.parent().addClass('dropped');
 					var picId = $(ui.draggable[0]).find('img').attr('picId');
                     var deleteMe = PicSet.findWhere({picId: parseInt(picId)});
                     var undo_function = function(){
@@ -59,7 +60,9 @@ define([
 				accept: ".pic_grid .pic",
 				activeClass: "active-target",
 				hoverClass: 'hover-over-target',
+                revert: "valid",
 				drop: function( event, ui ) {
+                    ui.draggable.parent().addClass('dropped');
 					var picId = $(ui.draggable[0]).find('img').attr('picId');
                     var favoriteMe = PicSet.findWhere({picId: parseInt(picId)});
 					var undo_function = function(){
