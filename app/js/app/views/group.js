@@ -94,6 +94,7 @@ define([
             this.$subgroups.sortable({
               handle: '.group-handle',
               connectWith: '.subgroups',
+              placeholder: 'group_target',              
             });
 
           
