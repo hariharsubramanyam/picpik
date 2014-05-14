@@ -175,8 +175,9 @@ define([
         },
         
         checkFirst: function() {
-            if (PicSet.size() == 0 && GroupSet.size() == 0) {
+            if (PicSet.size() == 0) {
                 this.loadDemo();
+              location.reload();
             }
         }
 	};
